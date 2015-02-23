@@ -3,4 +3,9 @@ baseurl: https://larry-price.com/
 languageCode: en-us
 title: Larry Price
 subtitle: And the Endless Cup of Coffee
+indexes:
+    category: categories
+permalinks:
+    post: /blog/:year/:month/:day/:title/
+metadataformat: yaml
 ---
