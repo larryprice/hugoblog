@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Use NVM to manage your NodeJS install &middot; Larry Price </title>
+
+  
+  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>Larry Price</h1>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+<div class="post">
+  <h1>Use NVM to manage your NodeJS install</h1>
+  <span class="post-date">Sat, Aug 2, 2014</span>
+      <p>I&rsquo;ve been trying to get into <a href="http://nodejs.org/">NodeJS</a>, and so my immediate thought is that I want to be able to install different versions for different projects, a la <a href="https://rvm.io">rvm</a> for <a href="https://ruby-lang.org">ruby</a>. Fortunately, this already exists.</p>
+
+<p><a href="https://github.com/creationix/nvm">NVM</a> gives me the equivalent functionality of rvm but for NodeJS, making all my dreams come true. Here&rsquo;s how I installed it on my Linux boxes:</p>
+
+<pre><code class="language-bash">$ curl https://raw.githubusercontent.com/creationix/nvm/v0.12.2/install.sh | bash
+</code></pre>
+
+<p><em>Note: This URL will get you nvm version 0.12.2. This link may not be valid in the future, where you come from. Check out the <a href="https://github.com/creationix/nvm">github repo</a> for any newer versions. If you&rsquo;re brave, trusting, or just really naïve, you can even change <code>v0.12.2</code> above to <code>master</code> to get the bleeding edge install.</em></p>
+
+<p>The above line of code will download the files, install nvm in your home directory, and update your profile to include nvm&rsquo;s current Node version in your path. NVM autocomplete isn&rsquo;t in place by default, but we can enable it by adding the following to the end of our .bash_profile:</p>
+
+<pre><code class="language-bash">[[ -r $NVM_DIR/bash_completion ]] &amp;&amp; . $NVM_DIR/bash_completion
+</code></pre>
+
+<p>Now it&rsquo;s time to actually install us some Node! You can use <code>nvm ls-remote</code> to list the versions of Node currently available for download. At the time of this writing, the most recent version is <strong>v0.11.13</strong>. Installing is easy (and quick):</p>
+
+<pre><code class="language-bash">$ nvm install 0.11.13
+...
+$ nvm use 0.11.13
+</code></pre>
+
+<p>Since this is the only Node on my system, I&rsquo;d like to set it as the default.</p>
+
+<pre><code class="language-bash">$ nvm alias default 0.11.13
+</code></pre>
+
+<p>What if I&rsquo;m <code>cd</code>ing out of control and I don&rsquo;t know what Node version I need in my current directory? Create a file called <code>.nvmrc</code> in the directory containing the version number you want nvm to use and then type <code>node use</code> ENTER; Now you&rsquo;re using the version of Node you meant to. This also prevents people from using the wrong versions of Node to try to run your code, which would of course be a catastrophe.</p>
+
+<p>PLUS nvm installs the right version of npm whenever you install Node, so there&rsquo;s no need to worry about dealing with your base npm not working with different versions of Node.</p>
+
+<p>Thank <a href="https://en.wikipedia.org/wiki/Free_and_Open_Source_Software">FOSS</a> for nvm. Maybe one day soon I&rsquo;ll do useful things in Node an tell you about them.</p>
+
+</div>
+</div>
+
+  <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

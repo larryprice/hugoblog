@@ -15,17 +15,15 @@
       <pubDate>Sun, 22 Feb 2015 15:56:28 -0500</pubDate>
       
       <guid>http://localhost:1313/blog/2015-02-22-peopleware/</guid>
-      <description>
-
-&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;Visual supervision is a joke for development workers. Visual supervision is for prisoners.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;the-gist:0b0fe3f9a61469ebe1117b9d7cab5664&#34;&gt;The Gist&lt;/h3&gt;
+&lt;p&gt;###The Gist&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://amzn.to/1JzYT3i&#34;&gt;Peopleware&lt;/a&gt;, originally published in 1987, is the most relevant book ever written for managing software teams and organizations. DeMarco and Lister give a light-hearted take on all the wrong ways to manage IT projects and give helpful shoves towards some better alternatives.&lt;/p&gt;
 
-&lt;h3 id=&#34;my-opinion:0b0fe3f9a61469ebe1117b9d7cab5664&#34;&gt;My Opinion&lt;/h3&gt;
+&lt;p&gt;###My Opinion&lt;/p&gt;
 
 &lt;p&gt;I knew this book would be a good fit for me, but I had no idea just how much I would like it. This book connects a lot of pain points I&amp;rsquo;ve had so far in my (relatively) short career, so much so that I cannot believe we still have these problems nearly thirty years since its inception.&lt;/p&gt;
 
@@ -47,9 +45,867 @@
 
 &lt;p&gt;All in all, this book was incredibly useful for me and made me feel a little less alien. I read the second edition of this book, though I have come to learn there has recently been a third edition released.&lt;/p&gt;
 
-&lt;h3 id=&#34;who-would-like-this:0b0fe3f9a61469ebe1117b9d7cab5664&#34;&gt;Who Would Like This&lt;/h3&gt;
+&lt;p&gt;###Who Would Like This&lt;/p&gt;
 
 &lt;p&gt;Software developers and anyone who thinks they have direct control over software developers should stop whatever they are doing right now and read this book. Did you read this book twenty years ago? &lt;em&gt;Read it again&lt;/em&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ollert is now open source</title>
+      <link>http://localhost:1313/blog/2015-02-11-ollert-is-now-open-source/</link>
+      <pubDate>Wed, 11 Feb 2015 05:54:26 -0500</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015-02-11-ollert-is-now-open-source/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://ollertapp.com&#34;&gt;Ollert&lt;/a&gt;, the Trello data analytics tool, has been open sourced under &lt;a href=&#34;https://github.com/sep/ollert/blob/master/LICENSE&#34;&gt;GNU Affero GPL v3.0&lt;/a&gt;. The source code can be found &lt;a href=&#34;https://github.com/sep/ollert/&#34;&gt;on Github&lt;/a&gt; and I&amp;rsquo;ve already accepted several pull requests.&lt;/p&gt;
+
+&lt;h4 id=&#34;why:91a8505ce7232e3372e61c9b8f758bab&#34;&gt;Why?&lt;/h4&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been working towards this for a few months now. Although Ollert was a lot of fun to create and has helped quite a few people learn more about their Trello boards, I&amp;rsquo;ve been having trouble finding the time to write new features in between my other pursuits. Although &lt;a href=&#34;http://www.sep.com/&#34;&gt;SEP&lt;/a&gt; has given me resources in the past, it&amp;rsquo;s not always easy to find people off-project who have the right experience, determination, and time to grok the codebase and start churning out new features.&lt;/p&gt;
+
+&lt;p&gt;An interesting pattern started to appear: With every other feature request I received for Ollert, the requestor would add in some other loaded question: Where is the source code? Is there a Github repo so I can add issues? Do you accept pull requests?&lt;/p&gt;
+
+&lt;p&gt;Random strangers on the internet wanted to help. These are people with the drive to work with me even though I couldn&amp;rsquo;t give them anything in return. These are people with fresh perspectives on Trello usage which I had never imagined. These are the developers whose help I sorely wanted.&lt;/p&gt;
+
+&lt;h4 id=&#34;feature-requests:91a8505ce7232e3372e61c9b8f758bab&#34;&gt;Feature requests?&lt;/h4&gt;
+
+&lt;p&gt;I am still accepting feature requests. Feature requests are now dealt with through our &lt;a href=&#34;https://github.com/sep/ollert/issues&#34;&gt;issues page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;contributing:91a8505ce7232e3372e61c9b8f758bab&#34;&gt;Contributing?&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Write tests&lt;/li&gt;
+&lt;li&gt;Run tests&lt;/li&gt;
+&lt;li&gt;Seriously, the &lt;a href=&#34;https://travis-ci.org/sep/ollert&#34;&gt;travis-ci build&lt;/a&gt; had better be green.&lt;/li&gt;
+&lt;li&gt;Follow the currently in-place patterns. If you don&amp;rsquo;t like them, let me know your idea before you work for a week and I deny your changes.&lt;/li&gt;
+&lt;li&gt;Create issues for whatever you&amp;rsquo;re working on.&lt;/li&gt;
+&lt;li&gt;We do things by pull requests. Make a fork, make a branch, let Github do the rest.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;and-so-it-continues:91a8505ce7232e3372e61c9b8f758bab&#34;&gt;And so, it continues&amp;hellip;&lt;/h4&gt;
+
+&lt;p&gt;This does not mean I am abandoning Ollert. Internally we&amp;rsquo;ll still be discussing how to increase traffic and improve user experience. Hopefully, open sourcing Ollert will give us invaluable feedback on the code and fresh perspectives on features. I&amp;rsquo;m looking forward to the future of Ollert.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Managing a Go Environment in Ubuntu</title>
+      <link>http://localhost:1313/blog/2015-01-17-managing-a-go-environment-in-ubuntu/</link>
+      <pubDate>Sun, 18 Jan 2015 10:58:04 -0500</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015-01-17-managing-a-go-environment-in-ubuntu/</guid>
+      <description>&lt;p&gt;Many moons ago, I wrote about &lt;a href=&#34;http://localhost:1313/blog/2013/12/15/setting-up-a-go-environment-in-ubuntu-12-dot-04&#34;&gt;setting up a Go environment in Ubuntu&lt;/a&gt;. After writing that post, I dropped Go development for nearly a year. Today I run the &lt;a href=&#34;http://www.meetup.com/Indy-Golang/events/219612982/&#34;&gt;Indy Golang meetup&lt;/a&gt;, and soon I&amp;rsquo;ll be starting a new work project where I&amp;rsquo;ll be recommending a Go-based tech stack. I&amp;rsquo;ve learned a thing or two about Go and managing its dependencies since I wrote that initial blog post, and I intend to give a short presentation to my meetup about my recent findings. Before I do, I thought I&amp;rsquo;d write a preliminary blog post detailing the tools I use to keep my Go environment sane.&lt;/p&gt;
+
+&lt;p&gt;###Installing Go###&lt;/p&gt;
+
+&lt;p&gt;The easiest way to install Go in Ubuntu is through &lt;code&gt;aptitude&lt;/code&gt;. However, the default version in the Ubuntu repos gets stale fast. I found a tool similar to &lt;code&gt;rvm&lt;/code&gt; for downloading and installing local versions of Go called &lt;a href=&#34;https://github.com/moovweb/gvm&#34;&gt;gvm&lt;/a&gt;. For better or worse, &lt;code&gt;gvm&lt;/code&gt; is installed through a bash script. Fortunately, it doesn&amp;rsquo;t require sudo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ bash &amp;lt; &amp;lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At this point I removed all my previous finaglig with &lt;code&gt;$GOROOT&lt;/code&gt; and &lt;code&gt;$GOPATH&lt;/code&gt; from my dot files. You can use &lt;code&gt;gvm listall&lt;/code&gt; to see all available versions of Go. As of the writing of this blog post, &lt;code&gt;go1.4.1&lt;/code&gt; is the latest release; however, &lt;code&gt;go1.4&lt;/code&gt; is the most recent release available with &lt;code&gt;gvm&lt;/code&gt;. I&amp;rsquo;m not sure when the list is updated, but I have confidence that it is fairly regular. To install a Go and set it as the default Go:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ gvm install go1.4 --default
+$ which go
+/home/lrp/.gvm/gos/go1.4/bin/go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;###Managing Packages###&lt;/p&gt;
+
+&lt;p&gt;This is where I come to a fork in the road: &lt;code&gt;gvm&lt;/code&gt;, the tool we used to install the desired version of Go, has a concept of pkgset similar to &lt;code&gt;rvm gemset&lt;/code&gt;. However, I find the syntax for using a pkgset tiresome every time I come into a directory. I prefer something more automatic. As an additional pain, &lt;code&gt;gvm&lt;/code&gt; does not provide a mechanism for installing dependencies from a list of known dependencies. I sought out other tools to address these pains and found &lt;a href=&#34;https://github.com/pote/gpm&#34;&gt;gpm&lt;/a&gt; and &lt;a href=&#34;https://github.com/pote/gvp&#34;&gt;gvp&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;gpm&lt;/code&gt; is a tool used to manage Go packages. It reads in a file called &lt;code&gt;Godeps&lt;/code&gt; which contains a list of packages with versions and can install them from their individual sources. I&amp;rsquo;m currently infatuated with &lt;code&gt;gpm&lt;/code&gt; as it addresses a lot of concerns I had when initially learning Go: shared local dependencies, unclear versioning, and installing dependencies from a fresh clone. Install &lt;code&gt;gvm&lt;/code&gt; and &lt;code&gt;gvp&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ pushd /tmp
+$ git clone https://github.com/pote/gvp.git &amp;amp;&amp;amp; cd gvp
+$ ./configure &amp;amp;&amp;amp; sudo make install
+$ cd /tmp
+$ git clone https://github.com/pote/gpm.git &amp;amp;&amp;amp; cd gpm
+$ ./configure &amp;amp;&amp;amp; sudo make install
+$ popd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can follow two paths here: using &lt;code&gt;gvm pkgset&lt;/code&gt; or using a local &lt;code&gt;.godeps&lt;/code&gt; directory to store our dependencies discretely. For these examples, I&amp;rsquo;ll create a directory called &lt;code&gt;gotest&lt;/code&gt; with a single file in it:&lt;/p&gt;
+
+&lt;p&gt;``` go hello.go
+package main&lt;/p&gt;
+
+&lt;p&gt;import &amp;ldquo;github.com/go-martini/martini&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;func main() {
+    server := martini.Classic()
+    server.Get(&amp;ldquo;/&amp;rdquo;, func() string {
+        return &amp;ldquo;&lt;h1&gt;Hello, world!&lt;/h1&gt;&amp;ldquo;
+    })&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server.Run()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+####Method 1: gvm pkgset alongside gpm####
+
+Create and start using a new pkgset:
+
+``` bash
+$ gvm pkgset create gotest
+$ echo $GOPATH
+/home/lrp/.gvm/pkgsets/go1.4/global
+$ gvm pkgset use gotest
+$ echo $GOPATH
+/home/lrp/.gvm/pkgsets/go1.4/gotest:/home/lrp/.gvm/pkgsets/go1.4/global
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What this means is that we are now using our &lt;code&gt;gotest&lt;/code&gt; pkgset as default, but the global pkgset will be used to dig up any missing packages. In order to install any dependencies, we need to create a &lt;code&gt;Godeps&lt;/code&gt; file for &lt;code&gt;gpm&lt;/code&gt; to consume. Our application from above has a dependency on &lt;code&gt;go-martini&lt;/code&gt;, so let&amp;rsquo;s add a dependency to &lt;code&gt;v1.0&lt;/code&gt; in our Godeps file:&lt;/p&gt;
+
+&lt;p&gt;``` text Godeps
+github.com/go-martini/martini v1.0&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+After you run `go build` to verify that the dependencies aren&#39;t installed, run `gpm install` to pull the required packages into your specified pkgset. Run `go build` again and revel in your own brilliance.
+
+That was pretty great, right? The only issue is remembering to type `gvm pkgset use gotest` every time you restart your terminal or switch projects. Otherwise, `gvm` is practically a replacement for one of my favorite ruby tools `rvm`.
+
+####Method 2: gpm and gvp####
+
+`gpm` is intended to be similar to `npm`, a package management tool for NodeJS. The author suggests using a tool called `gvp` to set the `GOPATH` without much thought. If we start a fresh terminal in our example directory, we can use `gvp` to set up our `GOPATH`:
+
+``` bash
+$ echo $GOPATH
+/home/lrp/.gvm/pkgsets/go1.4/global
+$ source gvp
+$ echo $GOPATH
+/home/lrp/Projects/2015/gotest/.godeps:/home/lrp/Projects/2015/gotest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can note the difference in our &lt;code&gt;GOPATH&lt;/code&gt; here relative to &lt;code&gt;gvm&lt;/code&gt;: we will be using our current directory as a source of code in addition to a local &lt;code&gt;.godeps&lt;/code&gt; directory. Go ahead and add &lt;code&gt;.godeps&lt;/code&gt; to your &lt;code&gt;.gitignore&lt;/code&gt; file or equivalent. We can use the same &lt;code&gt;Godeps&lt;/code&gt; file as before:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;text Godeps
+github.com/go-martini/martini v1.0
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We run &lt;code&gt;gpm install&lt;/code&gt; to install the dependencies to our local &lt;code&gt;.godeps&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;I prefer this method to using pkgsets. I&amp;rsquo;ve had better luck building projects with complicated structures, and it&amp;rsquo;s a lot easier for me to run &lt;code&gt;source gvp&lt;/code&gt; than it is to remember the name of my pkgset. Both methods work pretty well and give me warm fuzzies about managing my dependencies. I&amp;rsquo;m certain that as Go continues to mature more solutions will come available. I&amp;rsquo;ve also been researching using Docker with gpm only, which requires very little tweaking to what I&amp;rsquo;ve already discussed here.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Think Like a Chef</title>
+      <link>http://localhost:1313/blog/2015-01-16-think-like-a-chef/</link>
+      <pubDate>Fri, 16 Jan 2015 17:40:45 -0500</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015-01-16-think-like-a-chef/</guid>
+      <description>&lt;p&gt;###The Gist&lt;/p&gt;
+
+&lt;p&gt;Celebrity chef Tom Colicchio&amp;rsquo;s &lt;a href=&#34;http://amzn.to/15faZfN&#34;&gt;Think Like a Chef&lt;/a&gt; is a recipe-book-slash-culinary-theory hybrid. The reader is taken through a series of basic cooking techniques applied to a plethora of ingredients, followed by a focus on several interesting ingredients used in a variety of recipes, climaxing with a series of three ingredients used to create many interesting meals.&lt;/p&gt;
+
+&lt;p&gt;###My Opinion&lt;/p&gt;
+
+&lt;p&gt;This book is designed to not just be about recipes, but instead about taking techniques and ingredients and demonstrating unique and interesting ways to think about them. I&amp;rsquo;ve always liked to think that cooking and software engineering have a lot in common. Chefs and programmers have to juggle whole systems of information in their heads at once to solve the problem at hand. Chefs and programmers follow instructions until it no longer benefits them, at which point they make substitutions to create novel solutions. Chefs and programmers tend to dress a bit strange compared to the average businessman. Not to mention we both have to wear hair nets.&lt;/p&gt;
+
+&lt;p&gt;I like to cook. I like to think about how I can create different dishes, how I can utilize aging pantry or freezer items, and how I can perfect spice combinations to build restaurant-quality meals. And I like to eat. So I thought I would like this book. Personally, I found the author to be distractingly arrogant and the book design to be irritatingly repetitive. Although not designed as a simple recipe book, I would have been better served using it as such. However, were I to use this as a recipe book, I would have a lot of issues finding many of the exotic ingredients called for in the middle of Indiana, to say nothing of how expensive all his favorite ingredients are.&lt;/p&gt;
+
+&lt;p&gt;The pieces of this book that I really enjoyed were the prose on using one&amp;rsquo;s intuition to substitute ingredients, spices, and cooking styles as appropriate; these seemed like the more intellectual parts of the book that I could actually relate to. As a software engineer, I&amp;rsquo;m often working on a problem that seems like it can be solved by following the standard recipe, but actually requires a level of clever substitution to build it into a new idea entirely. As a home cook, I make a substitution in nearly every recipe I find; sometimes it works, sometimes it doesn&amp;rsquo;t. I would have enjoyed this book much more thoroughly had the focus actually been on intuitive cooking instead of fanciful recipes.&lt;/p&gt;
+
+&lt;p&gt;###Who Would Like This&lt;/p&gt;
+
+&lt;p&gt;Are you about to make a lavish dinner to impress house guests? You could probably find some pretty good (and descriptive) recipes in this book. However, I heard of this thing called the internet that has many more recipes and descriptions of cooking styles as well. If you like beautiful pictures of food, you may also eat this book up (though hopefully not literally). If you happen to be a fan of this celebrity clown, maybe you&amp;rsquo;d enjoy his cavalier writing style more than I did.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An Example Use Case for Docker</title>
+      <link>http://localhost:1313/blog/2015-01-11-an-example-use-case-for-docker/</link>
+      <pubDate>Sun, 11 Jan 2015 19:22:43 -0500</pubDate>
+      
+      <guid>http://localhost:1313/blog/2015-01-11-an-example-use-case-for-docker/</guid>
+      <description>&lt;p&gt;I spent a lot of time last week asking questions about Docker. &lt;a href=&#34;#whatdocker&#34;&gt;What&lt;/a&gt; is Docker? How could Docker help me &lt;a href=&#34;#whydocker&#34;&gt;day-to-day&lt;/a&gt;? How easy is Docker to &lt;a href=&#34;#howdocker&#34;&gt;use&lt;/a&gt;? How does Docker like its eggs cooked? Isn&amp;rsquo;t Docker a brand of sneakers?&lt;/p&gt;
+
+&lt;p&gt;###&lt;a name=&#34;whatdocker&#34;&gt;&lt;/a&gt;What is Docker?###&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; is a utility for maintaining system environments. Docker capitalizes on &lt;a href=&#34;https://en.wikipedia.org/wiki/LXC&#34;&gt;Linux containers&lt;/a&gt;, a method of operating system virtualization which isolates multiple process groups on a single host.&lt;/p&gt;
+
+&lt;p&gt;Through a series of commands, Docker pulls up a base system image and applies changes to create a custom image. Docker provides the means to access any of these step-level containers for further manipulation. Docker uses a unique layered system such that sibling layers can utilize the same base images, in contrast to a virtual machine which would require multiple copies of things like operating systems, shared libraries, and shared binaries. The image below is an excellent visualization of the difference between a virtual machine and a Docker container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/Lps6K6y.png?1&#34; alt=&#34;VM vs LXC&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;###&lt;a name=&#34;whydocker&#34;&gt;&lt;/a&gt;Why use Docker?###&lt;/p&gt;
+
+&lt;p&gt;Docker&amp;rsquo;s primary job is to take in a series of commands and spit out a clean environment with those settings. This is especially useful in deployment. I can take the Docker &lt;code&gt;ubuntu&lt;/code&gt; image, download and install all my dependencies, copy over my application code, and run my application given some environment variables.&lt;/p&gt;
+
+&lt;p&gt;All of that should sound somewhat familiar if you&amp;rsquo;ve ever used &lt;a href=&#34;https://heroku.com&#34;&gt;heroku&lt;/a&gt;. Heroku performs very similar tasks to get your application up and running: take a Linux image, download base tools for ruby/python/nodejs/whatever, install application-specific dependencies (through bundler, flask, npm, etc.), and run your application given some environment. Docker gives you the power of heroku at the development level. &amp;hellip;Sort of.&lt;/p&gt;
+
+&lt;p&gt;If I can create a Docker container for my application to run in, I can set up a build server to use a container to run my tests. I can use that same container to build a &lt;em&gt;clean&lt;/em&gt; staging environment. I can use the staging container to build an &lt;em&gt;identically clean&lt;/em&gt; production environment. With that knowledge in hand, I know the exact state of the production environment every time I deploy and I can reproduce it locally.&lt;/p&gt;
+
+&lt;p&gt;Theoretically, I can even use Docker for setting up a development environment, although after a few days of attempting this I still think you&amp;rsquo;re better off running natively.&lt;/p&gt;
+
+&lt;p&gt;Of course, Docker keeps &lt;a href=&#34;https://www.docker.com/resources/usecases/&#34;&gt;a big list of examples&lt;/a&gt; from big-name company use-cases if you&amp;rsquo;re interested.&lt;/p&gt;
+
+&lt;p&gt;###&lt;a name=&#34;howdocker&#34;&gt;&lt;/a&gt;Example Usage###&lt;/p&gt;
+
+&lt;p&gt;Brass. Tacks. Let us get down to them, compadre.&lt;/p&gt;
+
+&lt;p&gt;You probably want to &lt;a href=&#34;https://docs.docker.com/installation/#installation&#34;&gt;install Docker&lt;/a&gt; first. If you&amp;rsquo;re not using Linux, have fun installing &lt;a href=&#34;https://github.com/boot2docker/boot2docker&#34;&gt;boot2docker&lt;/a&gt;, the rest of us are going to get started without you.&lt;/p&gt;
+
+&lt;p&gt;I started by trying to bootstrap my environment for &lt;a href=&#34;https://ollertapp.com&#34;&gt;Ollert&lt;/a&gt; with Docker. Ollert uses ruby-2.2, QtWebkit (in test), and MongoDB. It uses bundler to install any required ruby gems. Not too complicated, but I&amp;rsquo;ve noticed it&amp;rsquo;s never easy to get a new developer&amp;rsquo;s environment quite right.&lt;/p&gt;
+
+&lt;p&gt;We start out with the official &lt;a href=&#34;https://registry.hub.docker.com/_/ruby/&#34;&gt;ruby:2.2.0&lt;/a&gt; image from the Docker Hub:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run ruby:2.2.0 echo &amp;quot;B-b-b-b-brass t-t-t-t-tacks!&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OMG that step will take forever if you&amp;rsquo;ve never downloaded the base &lt;code&gt;debian&lt;/code&gt; image. It downloads and sets up quite a few layers. If you&amp;rsquo;re interested in what it&amp;rsquo;s doing behind the scenes and you can read Dockerfiles, &lt;a href=&#34;https://github.com/docker-library/ruby/blob/b7fefd2fa79882da90feb0718430680c77c5fa8b/2.2/Dockerfile&#34;&gt;this file&lt;/a&gt; is what&amp;rsquo;s being executed. Anyway, when it&amp;rsquo;s done you should see a friendly reminder about what we&amp;rsquo;ve gotten down to. We use &lt;code&gt;docker run&lt;/code&gt; to run (download first if necessary) an image; in this case, the &lt;code&gt;ruby:2.2.0&lt;/code&gt; image. Everything after the image name is the command to run. Now that we&amp;rsquo;ve downloaded some base images, you can check out your available images using &lt;code&gt;docker images&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now I need to install my system-level dependencies:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run ruby:2.2.0 apt-get update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note how this time the base image was already found in your local repository, resulting in a command that ran pretty quickly (based on your internet speeds (sorry Comcast customers!)). But what have we really done so far? We&amp;rsquo;ve created two separate containers: one with our initial echo command (useless) and one with all our updates. To see these containers, use &lt;code&gt;docker ps -a&lt;/code&gt;. This will give you output similar to the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS             NAMES
+ad5ddd55f2c2        ruby:2.2.0        &amp;quot;apt-get update&amp;quot;         2 seconds ago       Exited (0) 2 seconds ago                        mad_curie
+10cbaac4488c        ruby:2.2.0        &amp;quot;echo &#39;B-b-b-b-brass&amp;quot;    15 minutes ago      Exited (0) 15 minutes ago                       mad_perlman
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These are now the containers available. We can create a new image from the first container using &lt;code&gt;docker commit ad5 rubyapp&lt;/code&gt;, which will allow us to use it to create further containers. However, if we were to do this for every command we wanted to execute, we might be here for a while. We could go into &lt;code&gt;bash&lt;/code&gt; on the base image and do all of our steps:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run -it ruby:2.2.0 /bin/bash
+root@1be43510341e:/# apt-get update
+...
+root@1be43510341e:/# apt-get auto-remove
+...
+root@1be43510341e:/# apt-get install -y --force-yes libqtwebkit-dev mongodb
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We could then use this image to run our app - however, this is also tedious and a bad solution. We want something that we can see on a granular level and reproduce every time for a base image. Fortunately, Docker provides us an easy way to do this using a DSL. Introducing the &lt;code&gt;Dockerfile&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Dockerfile&#34;&gt;# base image
+FROM ruby:2.2.0
+
+#install system-level dependencies
+RUN apt-get update &amp;amp;&amp;amp; apt-get autoremove -y &amp;amp;&amp;amp; apt-get install -y --force-yes libqtwebkit-dev mongodb
+
+# install gems from /tmp such that bundling is CACHED
+WORKDIR /tmp
+ADD Gemfile Gemfile
+ADD Gemfile.lock Gemfile.lock
+ADD .env .env
+RUN bundle install
+
+# load application source
+ADD . /usr/src/app
+WORKDIR /usr/src/app
+
+# port where application is served
+EXPOSE 5000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The syntax is a little different, but all we&amp;rsquo;re doing is telling Docker our base image, issuing commands, and copying files. The &lt;code&gt;ADD&lt;/code&gt; command allows us to copy files from our host system. In this case, I copy over &lt;code&gt;.&lt;/code&gt; to &lt;code&gt;/usr/src/app&lt;/code&gt; in the container. I also copy over my Gemfile separately to &lt;a href=&#34;http://ilikestuffblog.com/2014/01/06/how-to-skip-bundle-install-when-deploying-a-rails-app-to-docker/&#34;&gt;cache the bundle so it does not install every time&lt;/a&gt;. I then expose the port I want my application to use. Run this file as such:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker build -t rubyapp .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This creates an image called &lt;code&gt;rubyapp&lt;/code&gt; and a container for every line of the Dockerfile that is run. Although your first build may take a moment, subsequent builds will be cached and should be significantly faster. Now, if we want to run my application:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run -d --name rubyappinstance rubyapp foreman start -d /usr/src/app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I use &lt;code&gt;foreman&lt;/code&gt; to start my application from the given directory. I tell Docker that the application will be daemonized using the &lt;code&gt;-d&lt;/code&gt; flag. If I check my running containers with &lt;code&gt;docker ps&lt;/code&gt;, I&amp;rsquo;ll see my application running. If I want to stop it, I just run &lt;code&gt;docker stop rubyappinstance&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m going to stop there for now. In order to get Ollert working properly, I also need to &lt;a href=&#34;http://docs.docker.com/userguide/dockerlinks/&#34;&gt;link a Mongo database&lt;/a&gt; and change some environment variables in my application, but those are relatively easy tasks.&lt;/p&gt;
+
+&lt;p&gt;###Is it worth it?###&lt;/p&gt;
+
+&lt;p&gt;The only conclusion is a definite maybe. Docker is definitely pretty cool. It may be able to help you deploy custom applications easier; for Ollert, it feels like overkill. There is a lot of overhead in downloading core versions of different operating systems, and I already find myself itching to clean up all the leftover Docker images/containers on my machine I used once and never again. After getting the Docker development out of the way (building and testing a Dockerfile), you may save yourself some time in the future if you have to change hosting services or CI environments. Try it out! It&amp;rsquo;s a pretty neat concept and definitely worth your attention in 2015.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2014 Retrospective</title>
+      <link>http://localhost:1313/blog/2014-12-31-2014-retrospective/</link>
+      <pubDate>Wed, 31 Dec 2014 11:40:00 -0500</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014-12-31-2014-retrospective/</guid>
+      <description>&lt;p&gt;Happy New Year, dear reader.&lt;/p&gt;
+
+&lt;p&gt;2014 was a fairly good year for me. I wrote a lot of code, read a lot of books, and published a lot of blog posts.&lt;/p&gt;
+
+&lt;p&gt;###Things I got paid to do###&lt;/p&gt;
+
+&lt;p&gt;2014 was a reaffirmation of career goals alongside the opportunities to work with several very different clients. In addition to working on cool stuff, I was promoted to Software Engineer 2. During the tail end of the year, I had the chance to work from home part of the week, which was a great experience. A sampling of my professional works this year:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I wrapped up my time writing Qt/C++ for a touch-screen automated-guidance system embedded in heavy machinery. I spent the first two months of the year playing Tech Lead for a small team of misfits leaving the project during an organizational restructure. I had the opportunity to work directly with a project architect to redesign features and guide my fellow developers through the implementation.&lt;/li&gt;
+&lt;li&gt;I worked on &lt;a href=&#34;https://h2w.cc&#34;&gt;Health2Wealth&lt;/a&gt;, a ruby application created by some work friends to track Fitbit data and allow an administrator to award monetary rewards for reaching goals.&lt;/li&gt;
+&lt;li&gt;I pitched, designed, and implemented a product called &lt;a href=&#34;https://ollertapp.com&#34;&gt;Ollert&lt;/a&gt;, a Trello analysis tool written in ruby. Built during a 48-hour &lt;a href=&#34;http://www.sep.com/labs/startupweekend/&#34;&gt;SEP Startup Weekend&lt;/a&gt;, I led a team of 6 to bring the project to fruition. SEP has fully embraced the product and I continue to work on &lt;a href=&#34;http://localhost:1313/blog/2014/12/02/ollert-6-months-later/&#34;&gt;improving it&lt;/a&gt; when not on project work. We currently get about 300 sessions a month, and I frequently get emails from users thanking me, reporting bugs, or submitting feature requests.&lt;/li&gt;
+&lt;li&gt;I became part of a team of developers working on a modern asset-tracking tool to replace an existing Microsoft Access tool. This was my introduction to C# programming with ASP.NET MVC. The project was short-lived for my team, but sparked my interests in RESTful APIs and Javascript.&lt;/li&gt;
+&lt;li&gt;I worked on a rewrite of a huge WebForms e-commerce site. We created a hybrid site running some pages in the WebForms engine and all of our new pages in fresh MVC. We worked with a high-fidelity prototype created by an outside company, which proved at times invaluable and at other times a thorn in our sides. We worked directly with members of the client on-site, who were able to provide us with great insights into the legacy system and helped us work out unclear requirements.&lt;/li&gt;
+&lt;li&gt;In December, I had some fun working on a solo proof-of-concept with a new client. This client is planning to do a rewrite of a large application in 2015 and wanted to do some investigation into rules engines, particularly those using Java. I worked through a few libraries and landed on JBoss Drools, an open-source rules engine with an integrated frontend called KIE Workbench. It&amp;rsquo;s been a while since I wrote any Java code, and I&amp;rsquo;d certainly never deployed any Java web applications. After two weeks of work, I was able to launch a web application using Spring MVC and integrate a KIE Workbench instance running on the same Azure virtual machine. The application is able to pick up rule changes from the Workbench automatically, without recompilation or redeployment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;###Of my own volition###&lt;/p&gt;
+
+&lt;p&gt;I had a lot of fun coding ideas this year, most of them lost to the raptures of time. A few items of note:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;BYO Game of Life (&lt;a href=&#34;http://byo-game-of-life.herokuapp.com&#34;&gt;http://byo-game-of-life.herokuapp.com&lt;/a&gt;)
+
+&lt;ul&gt;
+&lt;li&gt;My most recent release - a frontend web client allowing the user to give a URL pointing to a Game of Life backend. I created a &lt;a href=&#34;https://github.com/larryprice/game-of-life-impl&#34;&gt;Go implementation&lt;/a&gt; as part of my presentation for the inaugural &lt;a href=&#34;http://www.meetup.com/Indy-Golang/events/219199103/&#34;&gt;Indy Golang meetup&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;3rd Day Organics
+
+&lt;ul&gt;
+&lt;li&gt;We finally finished version 1.0 of 3DO, a custom e-commerce website for a co-worker&amp;rsquo;s spouse&amp;rsquo;s cooperative food program. We built the whole application from scratch; in hindsight, we should have set something up using &lt;a href=&#34;https://spreecommerce.com&#34;&gt;spree&lt;/a&gt; or another commerce framework.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Fortune Cookie API (&lt;a href=&#34;http://fortunecookieapi.com&#34;&gt;http://fortunecookieapi.com&lt;/a&gt;)
+
+&lt;ul&gt;
+&lt;li&gt;A fairly silly API written using NodeJS to get data associated with fortune cookies: fortunes, lessons in Chinese, and lottery numbers. I implemented a simple application to access the data at &lt;a href=&#34;http://demo.fortunecookieapi.com&#34;&gt;http://demo.fortunecookieapi.com&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;mongoose-simple-random (&lt;a href=&#34;https://www.npmjs.com/package/mongoose-simple-random&#34;&gt;https://www.npmjs.com/package/mongoose-simple-random&lt;/a&gt;)
+
+&lt;ul&gt;
+&lt;li&gt;My foray into NodeJS packages - this is a plugin which adds &lt;code&gt;findRandom&lt;/code&gt; and &lt;code&gt;findOneRandom&lt;/code&gt; methods to any mongoose schema. Used extensively in the Fortune Cookie API.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Ollert (&lt;a href=&#34;https://ollertapp.com&#34;&gt;https://ollertapp.com&lt;/a&gt;)
+
+&lt;ul&gt;
+&lt;li&gt;I know I listed it under a paid project, but I was putting over 8 hours a week into Ollert between the time it was originally built and the time I was paid to work on it. It&amp;rsquo;s my big pet project, and I&amp;rsquo;m proud of the things that it and I have accomplished. Trello has noted our accomplishments, validating all the hard work and long hours I&amp;rsquo;d sunk into it.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;###Book It - Where&amp;rsquo;s my free pizza?###&lt;/p&gt;
+
+&lt;p&gt;I think that I read 11 books this year. See my &lt;a href=&#34;http://localhost:1313/blog/books&#34;&gt;books section&lt;/a&gt; for a quick check of which books you should be reading. Some of my favorites:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://amzn.to/14coDAd&#34;&gt;Rework&lt;/a&gt; and &lt;a href=&#34;http://amzn.to/1rzTsZH&#34;&gt;Remote&lt;/a&gt; by Jason Fried&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://amzn.to/14coIUG&#34;&gt;Punished by Rewards&lt;/a&gt; by Alfie Kohn&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://amzn.to/1tAMWU0&#34;&gt;The XX Factor&lt;/a&gt; by Alison Wolf&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://amzn.to/1Ai3mBk&#34;&gt;The Lean Startup&lt;/a&gt; by Eric Ries&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://amzn.to/1x4jaXh&#34;&gt;Made to Stick&lt;/a&gt; by Chip Heath&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;###This blog o&amp;rsquo; mine###&lt;/p&gt;
+
+&lt;p&gt;In reality, I put quite a bit of work into this blog.&lt;/p&gt;
+
+&lt;p&gt;I published &lt;strong&gt;24 blog posts in 2013&lt;/strong&gt;; I published &lt;strong&gt;37 in 2014&lt;/strong&gt; (including this one).&lt;/p&gt;
+
+&lt;p&gt;I had &lt;strong&gt;1700 sessions and 2420 pageviews in 2013&lt;/strong&gt;. I did almost that well in a single month at the end of 2014. I had &lt;strong&gt;10,194 sessions and 12,997 pageviews in 2014&lt;/strong&gt; (as of 10:46AM EST &lt;sup&gt;12&lt;/sup&gt;&amp;frasl;&lt;sub&gt;31&lt;/sub&gt;/2014).&lt;/p&gt;
+
+&lt;p&gt;In February, I set up a custom domain at &amp;ldquo;larry-price.com&amp;rdquo;. Since then, &lt;a href=&#34;http://localhost:1313/blog/2014/12/14/migrating-an-octopress-blog-from-github-pages-to-openshift/&#34;&gt;I moved from Github Pages to OpenShift&lt;/a&gt; and added SSL.&lt;/p&gt;
+
+&lt;p&gt;I integrated Google AdSense this summer. Full disclosure: I&amp;rsquo;ve &amp;ldquo;earned&amp;rdquo; $3.78 in the past 6 months. From my perspective, these ads are simply an experiment to see how I could potentially monetize this blog. Another experiment was posting Amazon Associate links with my &lt;a href=&#34;http://localhost:1313/blog/categories/write-ups&#34;&gt;write-up posts&lt;/a&gt;; I&amp;rsquo;ve gotten 4 clicks and 0 buys.&lt;/p&gt;
+
+&lt;p&gt;In an attempt to keep people on the site &amp;ldquo;longer&amp;rdquo;, I added a Related Posts section above the Comments - it makes the blog take forever to generate and has had negligible results. It turns out users are more likely to click the related tags than the related posts. I intend to remove the Related Posts section soon (it may not be there when you read this).&lt;/p&gt;
+
+&lt;p&gt;###Hello, 2015###&lt;/p&gt;
+
+&lt;p&gt;As I enter the new year, I want to be able to look back next year at a set of naïve goals and wonder why I ever thought they were practical. So here they are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Contribute meaningful code to several open source projects not created by me&lt;/li&gt;
+&lt;li&gt;Read at least 1 book per month&lt;/li&gt;
+&lt;li&gt;Attend more meetups
+
+&lt;ul&gt;
+&lt;li&gt;As a note, I am in fact &lt;em&gt;starting&lt;/em&gt; a &lt;a href=&#34;http://www.meetup.com/Indy-Golang&#34;&gt;meetup for Google Go in Indianapolis&lt;/a&gt; starting on January 6, 2015. This goal may actually be attainable!&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;gt;3000 sessions/month on this blog (currently ~1400)&lt;/li&gt;
+&lt;li&gt;Become pro at using chopsticks
+
+&lt;ul&gt;
+&lt;li&gt;I&amp;rsquo;m already pretty good, but by the end of 2015 I will be eating pizza with chopsticks&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;More effectively conceal emotions when working with peers and clients
+
+&lt;ul&gt;
+&lt;li&gt;Use this energy and passion to put the situation in my control instead&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Work remotely more and better&lt;/li&gt;
+&lt;li&gt;Obtain more technical leadership roles on projects
+
+&lt;ul&gt;
+&lt;li&gt;Not entirely in my control, I know, but I&amp;rsquo;m hoping that 2015 is a year where I&amp;rsquo;m able to demonstrate both my technical skills and proclivity to command&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;###Goodbye, 2014###&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading. Have you thought about doing one of these yourself? You really should! There&amp;rsquo;s lots of help out there if you need it - you can even reach out to me, if you like.&lt;/p&gt;
+
+&lt;p&gt;As always, may your compile times be short and your error messages meaningful.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Deploying an Octopress site to Openshift</title>
+      <link>http://localhost:1313/blog/2014-12-12-migrating-an-octopress-blog-from-github-pages-to-openshift/</link>
+      <pubDate>Sun, 14 Dec 2014 20:15:00 -0500</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014-12-12-migrating-an-octopress-blog-from-github-pages-to-openshift/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ll detail how to take a new or existing GH Pages blog in Octopress and deploy it to OpenShift.&lt;/p&gt;
+
+&lt;p&gt;###Why?&lt;/p&gt;
+
+&lt;p&gt;I recently moved my blog from Github Pages to &lt;a href=&#34;https://www.openshift.com/&#34;&gt;OpenShift Online&lt;/a&gt;. I did this because I wanted to utilize SSL with my custom domain - &lt;a href=&#34;https://github.com/isaacs/github/issues/156&#34;&gt;a feature not currently available on Github Pages&lt;/a&gt; (it&amp;rsquo;s &lt;sup&gt;12&lt;/sup&gt;&amp;frasl;&lt;sub&gt;14&lt;/sub&gt;/2014 - let me know when this becomes possible!). OpenShift supports SSL with a free account, so I decided to make the switch. I wanted to use the existing architecture set up by &lt;a href=&#34;https://github.com/imathis/octopress&#34;&gt;Octopress&lt;/a&gt; that built my GH Pages blog. Hopefully you see a little lock icon in your address bar if you&amp;rsquo;re reading this from &lt;a href=&#34;http://localhost:1313/&#34;&gt;the site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;###&lt;a name=&#34;step0&#34;&gt;&lt;/a&gt;Step 0: Create an OpenShift account&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the link: &lt;a href=&#34;https://www.openshift.com/app/account/new&#34;&gt;https://www.openshift.com/app/account/new&lt;/a&gt;. They&amp;rsquo;re serious about the first and second options being free. The difference is signing up for the second option requires credit card information to give you the possibility of scaling your application. The second option is what allows you to add certs for doing SSL.&lt;/p&gt;
+
+&lt;p&gt;###&lt;a name=&#34;step1&#34;&gt;&lt;/a&gt;Step 1: Create a Ruby 1.9.3 application&lt;/p&gt;
+
+&lt;p&gt;Octopress still uses ruby 1.9.3; for simplicity&amp;rsquo;s sake, so will we. Assuming you have ruby-1.9.3 installed and the rhc gem installed (gem install rhc), create a new ruby-1.9 application on OpenShift:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rhc app create octopress ruby-1.9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;replacing &amp;ldquo;octopress&amp;rdquo; with your desired application name. I&amp;rsquo;ve found this action takes some time, usually over a minute, while OpenShift allocates resources. When your application has been created, you should see an &lt;code&gt;ssh://&lt;/code&gt; URL for your git repository on OpenShift. Make sure you can get access to this later.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re using a custom domain, now is as good a time as any to set it up. OpenShift has &lt;a href=&#34;https://blog.openshift.com/custom-url-names-for-your-paas-applications-host-forwarding-and-cnames-the-openshift-way/&#34;&gt;its own docs&lt;/a&gt; to cover this topic.&lt;/p&gt;
+
+&lt;p&gt;###&lt;a name=&#34;step2&#34;&gt;&lt;/a&gt;Step 2: Merge in &amp;ldquo;Octoshift&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve made some updates to the octopress repo that I haven&amp;rsquo;t requested be pulled into the master branch yet. I&amp;rsquo;ll update this section in the future if necessary.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re new to Octopress, clone from the master branch:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git clone git@github.com:imathis/octopress.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Either way, &lt;code&gt;cd&lt;/code&gt; into your octopress directory and merge in my fork:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git remote add octoshift git@github.com:larryprice/octopress.git
+$ git pull octoshift master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;###&lt;a name=&#34;step3&#34;&gt;&lt;/a&gt;Step 3: Set up deployment&lt;/p&gt;
+
+&lt;p&gt;There is a rake task for setting up an OpenShift deployment called &lt;code&gt;setup_openshift&lt;/code&gt;. This rake task clobbers the &lt;code&gt;_deploy&lt;/code&gt; directory and reinitializes it using the URL for your OpenShift repository, which we committed to memory in &lt;a href=&#34;#step1&#34;&gt;Step 1&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rake setup_openshift[&amp;quot;ssh://548e1873e0b8cddccf000094@octopress-username.rhcloud.com/~/git/octopress.git/&amp;quot;]
+rm -rf _deploy
+mkdir -p _deploy/public
+cd _deploy
+Initialized empty Git repository in /home/lrp/Projects/2014/octopress/_deploy/.git/
+remote: Counting objects: 21, done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 21 (delta 2), reused 21 (delta 2)
+Unpacking objects: 100% (21/21), done.
+From ssh://octopress-username.rhcloud.com/~/git/octopress
+ * branch            master     -&amp;gt; FETCH_HEAD
+ * [new branch]      master     -&amp;gt; origin/master
+cd -
+cp config.ru _deploy/
+cd _deploy
+[master 5204046] Octopress init
+ 3 files changed, 27 insertions(+), 295 deletions(-)
+ create mode 100644 Gemfile
+ rewrite config.ru (99%)
+ create mode 100644 public/index.html
+cd -
+
+---
+## Now you can deploy to ssh://548e1873e0b8cddccf000094@octopress-username.rhcloud.com/~/git/octopress.git/ with `rake deploy` or `rake openshift` ##
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;###&lt;a name=&#34;step35&#34;&gt;&lt;/a&gt;Step 3.5 Set up forcing SSL&lt;/p&gt;
+
+&lt;p&gt;Do you already have SSL for your domain? Bully for you! I&amp;rsquo;ve included an option to &lt;code&gt;setup_openshift&lt;/code&gt; to force traffic to use &lt;code&gt;https&lt;/code&gt; in a production environment. Just send a second parameter to rake and it&amp;rsquo;ll do the rest.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rake setup_openshift[&amp;quot;ssh://548e1873e0b8cddccf000094@octopress-username.rhcloud.com/~/git/octopress.git/&amp;quot;,true]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that you will still need to change your URL in &lt;code&gt;_config.yml&lt;/code&gt; if you are using a custom domain.&lt;/p&gt;
+
+&lt;p&gt;###&lt;a name=&#34;step4&#34;&gt;&lt;/a&gt;Step 4: Deploy&lt;/p&gt;
+
+&lt;p&gt;Now we can just run the &lt;code&gt;openshift&lt;/code&gt; or &lt;code&gt;deploy&lt;/code&gt; rake tasks to deploy our app to OpenShift. This task verifies we have the latest version of our OpenShift &lt;code&gt;master&lt;/code&gt; branch, installs missing gems, copies over your &lt;code&gt;public&lt;/code&gt; folder, and pushes the application to OpenShift.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rake deploy
+## Deploying branch to OpenShift
+## Pulling any updates from OpenShift
+cd _deploy
+From ssh://octopress-username.rhcloud.com/~/git/octopress
+ * branch            master     -&amp;gt; FETCH_HEAD
+Already up-to-date.
+Fetching gem metadata from https://rubygems.org/...........
+Resolving dependencies...
+Using rack (1.5.2) 
+Using rack-protection (1.5.3) 
+Using tilt (1.4.1) 
+Using sinatra (1.4.5) 
+Using bundler (1.3.5) 
+Your bundle is complete!
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+cd -
+cd _deploy
+
+## Committing: Site updated at 2014-12-14 23:13:54 UTC
+[master b17225e] Site updated at 2014-12-14 23:13:54 UTC
+ 1 file changed, 17 insertions(+)
+ create mode 100644 Gemfile.lock
+
+## Pushing generated _deploy website
+Counting objects: 9, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (9/9), 1.29 KiB | 0 bytes/s, done.
+Total 9 (delta 1), reused 0 (delta 0)
+remote: Stopping Ruby cartridge
+remote: Waiting for stop to finish
+remote: Building git ref &#39;master&#39;, commit b17225e
+remote: Building Ruby cartridge
+remote: bundle install --deployment --path ./app-root/repo/vendor/bundle
+remote: Fetching gem metadata from https://rubygems.org/..........
+remote: Installing rack (1.5.2) 
+remote: Installing rack-protection (1.5.3) 
+remote: Installing tilt (1.4.1) 
+remote: Installing sinatra (1.4.5) 
+remote: Using bundler (1.3.5) 
+remote: Your bundle is complete!
+remote: It was installed into ./vendor/bundle
+remote: Preparing build for deployment
+remote: Deployment id is b4ef1149
+remote: Activating deployment
+remote: Compilation of assets is disabled or assets not detected.
+remote: Starting Ruby cartridge
+remote: -------------------------
+remote: Git Post-Receive Result: success
+remote: Activation status: success
+remote: Deployment completed with status: success
+To ssh://548e1873e0b8cddccf000094@octopress-username.rhcloud.com/~/git/octopress.git/
+   a5071bb..b17225e  master -&amp;gt; master
+
+## OpenShift deploy complete
+cd -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;###Fin&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s that. Treat it as any Octopress install. I&amp;rsquo;ll see if the owners of the octopress repository would be interested in pulling in my customizations and update this blog post as necessary.&lt;/p&gt;
+
+&lt;p&gt;As for my switch from GH Pages to OpenShift: I&amp;rsquo;ve found OpenShift to be just as fast as the GH Pages static server, especially when combined with &lt;a href=&#34;https://www.cloudflare.com/&#34;&gt;Cloudflare&amp;rsquo;s&lt;/a&gt; CDN and optimization systems. No regrets so far. Drop me a line in the comments if you have a beef with OpenShift or know of any equivalent alternatives.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Millennials &amp;amp; Management</title>
+      <link>http://localhost:1313/blog/2014-12-08-millennials-and-management/</link>
+      <pubDate>Mon, 08 Dec 2014 21:22:41 -0500</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014-12-08-millennials-and-management/</guid>
+      <description>&lt;p&gt;###The Gist&lt;/p&gt;
+
+&lt;p&gt;A generation that grew up with the internet has entered the workforce, and they&amp;rsquo;ve begun to make demands that some managers find uncomfortable. &lt;a href=&#34;http://amzn.to/12kiG2J&#34;&gt;Millennials &amp;amp; Management&lt;/a&gt; addresses some of the generational disconnects between Baby Boomers/Generation X and the fresh faces of Generation Y.&lt;/p&gt;
+
+&lt;p&gt;###My Opinion&lt;/p&gt;
+
+&lt;p&gt;The most difficult part of this book is coming to terms with the word millennial; a vague term used to describe those of us born anywhere between the early 80s and early 00s (&lt;a href=&#34;https://en.wikipedia.org/wiki/Millennials&#34;&gt;Wikipedia agrees&lt;/a&gt;). The term encapsulates several distinct sets of young adults: those entering the workforce around the time the .com bubble burst; those entering the workforce post-&lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;11&lt;/sub&gt;; and those still struggling to find jobs after entering the workforce in the currently receding recession. Fortunately, it does not generally include those whipper-snappers born with a cell phone in their hand.&lt;/p&gt;
+
+&lt;p&gt;From a series of surveys with millennials (1980-2000), Gen Xers (1960-1980), and Baby Boomers (1945-1960), the author finds that this generation has very different aspirations from their parents. Millennials saw their parents grow old slagging through a job they hated with the dream of a big fat pension waiting for them when they retire. Millennials were told they could achieve anything and would be rewarded for perfect attendence. Millennials want to live life to the fullest while they&amp;rsquo;re young and when they retire. Millennials think they&amp;rsquo;re entitled to work wherever they want whenever they want wearing whatever they want. Millennials are pretty much the reason that iPhones exist.&lt;/p&gt;
+
+&lt;p&gt;The author discusses her own company&amp;rsquo;s struggle to fit Generation Y into company culture. Her experiences arevery relevant and highly laudable, evolving from a crotchity old boss complaining about kids and their cell phones to an approachable, flexible manager who sits in the cube area with her employees and allows for remote work when appropriate. She describes how millennials want to be happy in their work, and thus always on the lookout for greener pastures. This causes a lot of turnover for younger employees who don&amp;rsquo;t believe they are living up to their full potential or don&amp;rsquo;t think they are being respected.&lt;/p&gt;
+
+&lt;p&gt;There is advice in this book for managing millennials mostly revolving around being more flexible for a modern electronic world. Being a part of Gen Y myself, I was doing a lot of mental head-nodding and &amp;ldquo;yeah, that&amp;rsquo;s how I want to be treated&amp;rdquo; during most chapters. However, there were a few areas where the author&amp;rsquo;s advice is essentially to pander to millennials, which I don&amp;rsquo;t necessarily agree with. There needs to be compromise and understanding on both sides &lt;em&gt;every time&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;The author also includes advice for millennials dealing with superiors and co-workers. Some of this advice is common sense and good manners, sometimes making it sound like it&amp;rsquo;s aimed towards snot-nosed kids; but generally the advice provided is valid and good to follow. I didn&amp;rsquo;t pick up any one-liners after reading this book, but I certainly found it helpful (and interesting) to see inside the heads of individuals with a Generation X or Boomer mindset. I think it will help me empathize with my more mature peers when discussing my career and ideas that are important in my working life.&lt;/p&gt;
+
+&lt;p&gt;###Who Would Like This&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s in the title. Millennials should be able to scrape some empathy out of this book for more mature generations, and maybe even for other millennials. Managers can also get an eye-opening view into how Generation Y thinks, especially managers having trouble relating to younger generations. Parents just don&amp;rsquo;t understand, after all. A good, short read for both sides of the equation.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ollert - 6 Months Later</title>
+      <link>http://localhost:1313/blog/2014-12-02-ollert-6-months-later/</link>
+      <pubDate>Tue, 02 Dec 2014 18:54:12 -0500</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014-12-02-ollert-6-months-later/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/2014/03/17/sep-startup-weekend-ollert&#34;&gt;Nine months ago&lt;/a&gt; I brought a team of 6 together to build a data analysis tool called &lt;a href=&#34;https://ollertapp.com&#34;&gt;Ollert&lt;/a&gt;. &lt;a href=&#34;http://localhost:1313/blog/2014/07/13/ollert-reveal-the-data-behind-your-trello-boards&#34;&gt;A few months later&lt;/a&gt;, I started working with &lt;a href=&#34;//sep.com&#34;&gt;SEP&lt;/a&gt; to find time to make Ollert better. Where do we stand today?&lt;/p&gt;
+
+&lt;p&gt;From a traffic perspective, we&amp;rsquo;re doing pretty well. The numbers are increasing steadily over time, as are the number of people who use the application on a near-daily basis. Although we have surpassed our modest initial goals, we would like to build up a larger audience in the coming months.&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;ve had about 1800 different users visit the site for a total of over 5000 pageviews. On average, users hit about 2 pages per visit and stay with us for almost 90 seconds at a time. About half of all traffic comes from social media such as Twitter, LinkedIn, and Reddit, but we&amp;rsquo;ve also seen some interesting traffic patterns come out of Trello, &lt;a href=&#34;http://localhost:1313/&#34;&gt;my blog&lt;/a&gt;, &lt;a href=&#34;//sep.com/labs&#34;&gt;SEP Labs&lt;/a&gt;, and various other blogs.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;//trello.com&#34;&gt;Trello&lt;/a&gt; reached out to us a few months ago to congratulate us on making such a neat application using their API. They sent us some shirts and stickers for our trouble. It was an extremely satisfying moment.&lt;/p&gt;
+
+&lt;p&gt;On the technical side of things, we&amp;rsquo;ve made several changes to the application.&lt;/p&gt;
+
+&lt;p&gt;We removed the concept of &amp;ldquo;signing up&amp;rdquo; for Ollert, as it was the greatest cause of confusion on the site. I replaced it with a mechanism that &amp;ldquo;automatically&amp;rdquo; signs a user up when they connect to a Trello account using OAuth. This makes our lives easier because we don&amp;rsquo;t have to store passwords, and the lives of users easier because they don&amp;rsquo;t have to come up with and remember another password.&lt;/p&gt;
+
+&lt;p&gt;Every aspect of the site has been made faster. Server requests have been made faster by switching to unicorn and utilizing the &amp;ldquo;workers&amp;rdquo; feature. Trello API call times have been slashed - Board fetch time dropped from 1.8s to .18s, Label chart 17.6s down to .426s, WIP chart 18.2s to .221s, CFD 15s to 1s.&lt;/p&gt;
+
+&lt;p&gt;We added two highly-requested charts - the Burn Down and Burn Up. It takes a certain type of Trello board to make these useful, and I&amp;rsquo;m looking forward to finding someone one day who&amp;rsquo;s able to make good use of them.&lt;/p&gt;
+
+&lt;p&gt;We also improved the look of all pages (most notably the home page) with some help from SEP&amp;rsquo;s UX team.&lt;/p&gt;
+
+&lt;p&gt;Oh, and now it works significantly better on mobile.&lt;/p&gt;
+
+&lt;p&gt;What does the future hold for Ollert?&lt;/p&gt;
+
+&lt;p&gt;In the short term I&amp;rsquo;m looking to implement a Cycle Time chart and add in a baseline for the Burndown chart. Long-term is a little less clear, but we may have a sizable announcement soon.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Remote: Office Not Required</title>
+      <link>http://localhost:1313/blog/2014-10-31-remote-office-not-required/</link>
+      <pubDate>Fri, 31 Oct 2014 19:34:13 -0400</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014-10-31-remote-office-not-required/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;The city is the original talent hub. Traditionally, those who ran the engines of capitalism thought: &amp;ldquo;Let&amp;rsquo;s gather a large numberof people in a small grographical are where they must live on top of each other in tight quarters, and we&amp;rsquo;ll be able to find plenty of able bodies to man our factories.&amp;rdquo; Most splendid, Sir Moneybags!&lt;/p&gt;
+
+&lt;p&gt;From the section titled &amp;ldquo;End of city monopoly&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;###The Gist&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.amazon.com/gp/product/0804137501/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=0804137501&amp;amp;linkCode=as2&amp;amp;tag=larpriandthee-20&amp;amp;linkId=6RSEPWJB4VV7ZUGR&#34;&gt;&lt;strong&gt;Remote&lt;/strong&gt;&lt;/a&gt; by Jason Fried and David Hansson of &lt;a href=&#34;https://basecamp.com/&#34;&gt;BaseCamp&lt;/a&gt; (formerly 37signals), similarly to previous entry &lt;a href=&#34;http://www.amazon.com/gp/product/0307463745/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=0307463745&amp;amp;linkCode=as2&amp;amp;tag=larpriandthee-20&#34;&gt;&lt;strong&gt;Rework&lt;/strong&gt;&lt;/a&gt;, is a book that will surely resonate with most working Americans who despise commuting and the constant distraction of the modern office. &lt;strong&gt;Remote&lt;/strong&gt; discusses the pros and cons of working remotely, with a bias towards the positive aspects.&lt;/p&gt;
+
+&lt;p&gt;###My Opinion&lt;/p&gt;
+
+&lt;p&gt;I read this book in a day. I don&amp;rsquo;t mean a Saturday or a holiday of some kind (although it was Halloween, I suppose). I mean I read part of it in the morning, drove to the office, returned home in the afternoon, and finished it before dark. I love the authors&amp;rsquo; down-to-earth tone and I love the idea of telecommuting. There&amp;rsquo;s also lots of pictures. Yea, pictures!&lt;/p&gt;
+
+&lt;p&gt;Remote work is not a new concept, but the number of people choosing to telecommute has begun to dramatically increase. This is mostly because we all work with a digital wall in front of us all day called a computer, and many jobs don&amp;rsquo;t require direct contact with human beings the entire work-day. America seems to be coming to terms with the fact that our current corporate system is broken: the offices of 2014 are not the offices of the 1960s, but we still live in a world of endless meetings and sprawling cube farms.&lt;/p&gt;
+
+&lt;p&gt;Telecommuting opens up a world of possibilities. Obviously, a company offering remote positions will gain the opportunity to hire new talent from other cities, states, or even countries. Less obviously, current employees can be given the chance to be free from the shackles of a single office buildling in a single city. Instead of a company&amp;rsquo;s top talent leaving the company to go live in New Orleans instead of Chicago, the employee can choose to live wherever she wants and telecommute, keeping all the training and knowledge gained inside the company.&lt;/p&gt;
+
+&lt;p&gt;Co-working spaces are becoming much more prevalant in major cities across the US, and are a great home office replacement for those without a spare room. If you haven&amp;rsquo;t visited a local co-working space, I suggest you go visit one! Someone will gladly let you in for a tour and you can see what all the fuss is about. If you&amp;rsquo;re not into paying for an open-space membership, there are always coffee shops and libraries that are happy to house you on a daily basis.&lt;/p&gt;
+
+&lt;p&gt;The biggest downside to remote work seems to be in isolation: socializing becomes more of a hobby than a requirement. There may be chats, emails, and the occasional phone call to respond to throughout the day, but none of those can make up for face-time with other humans. Some individuals will have families to socialize with, but you can&amp;rsquo;t put all the burden on the people you love. Hobbies, meetups, and conferences would likely become much more important from a social perspective to an individual working remotely.&lt;/p&gt;
+
+&lt;p&gt;###Who Would Like This&lt;/p&gt;
+
+&lt;p&gt;The modern workforce will eat this up. There is no way that millenials will put up with the archaic concept of 9-5 in the office. They (I suppose &lt;em&gt;we&lt;/em&gt;, though sometimes it pains me to admit it) never take the status quo as a satisfactory answer.&lt;/p&gt;
+
+&lt;p&gt;I think that the blanket term &amp;ldquo;manager&amp;rdquo; would benefit from reading this book, but may be disgruntled by what they find inside. Handling people is not easy, and handling them remotely seems like an unsettling concept.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>My Battle With Hour-Based Estimation</title>
+      <link>http://localhost:1313/blog/2014-10-29-the-epic-battle-between-estimates-and-getting-work-done/</link>
+      <pubDate>Wed, 29 Oct 2014 18:33:27 -0400</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014-10-29-the-epic-battle-between-estimates-and-getting-work-done/</guid>
+      <description>&lt;p&gt;I despise estimating in hours. Hours are too granular. Hours are too difficult to distinguish from hours on a clock (&lt;em&gt;they&amp;rsquo;re even spelled the same&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;In any project where we work in hours, we always desparately task out stories in hours fill our capacity. &lt;em&gt;Which is also measured in hours&lt;/em&gt;. We take people&amp;rsquo;s days off and we estimate that developers spend about &lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;4&lt;/sub&gt; of the day watching Youtube videos and reading Hacker News. So a developer works &lt;strong&gt;about 6 clock hours&lt;/strong&gt; in a given day.&lt;/p&gt;
+
+&lt;p&gt;Then we start tasking out stories. We estimate that this task will take &lt;strong&gt;about 12 hours&lt;/strong&gt;, this one &lt;strong&gt;about 8 hours&lt;/strong&gt;, and we&amp;rsquo;ll top it all off with a task of &lt;strong&gt;about 4 hours&lt;/strong&gt; for ad-hoc testing. All in all, this story is estimated to take &lt;strong&gt;exactly 24 hours&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now we do some math. Obviously, since a developer can get &lt;strong&gt;6 hours&lt;/strong&gt; of work done in a day and this story will take &lt;strong&gt;24 hours&lt;/strong&gt;, the story will be done in &lt;strong&gt;exactly 4 development days&lt;/strong&gt;, or &lt;strong&gt;exactly 3 real days&lt;/strong&gt;. We watch our capacity (in hours) fill by 24 and note all the space that&amp;rsquo;s left.&lt;/p&gt;
+
+&lt;p&gt;Someone without reference to our developer-day-to-work-day comparison walks by. Excellent, it&amp;rsquo;ll be done in three days, you say? That fits the schedule perfectly, tell the client we&amp;rsquo;ll be done with that feature by Thursday. Let&amp;rsquo;s add some more to your backlog&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;For all we know, this estimate may work out. However, from my experience, the 8 hour task and 12 hour task will probably spend about the same amount of time in development, taking anywhere from 1-3 days each. Fortunately, the &amp;ldquo;testing&amp;rdquo; task will only take about 30 minutes.&lt;/p&gt;
+
+&lt;p&gt;What&amp;rsquo;s wrong here?&lt;/p&gt;
+
+&lt;p&gt;Humans are bad at estimating. We become much worse at estimating when we start talking about knowledge work. I happen to believe we become even worse at estimating when we try to use time as a unit of measure. How long does it take you to get to work? I would say it takes me about 5 minutes. Google Maps tells me I would be lucky to get there in 10 without traffic. My estimation in minutes is &lt;strong&gt;bad&lt;/strong&gt;, conflated by the monotony of performing a menial task over and over again.&lt;/p&gt;
+
+&lt;p&gt;When we have retros, we don&amp;rsquo;t discuss how incorrect our hourly measurements were. We have a hybrid system of estimating stories in points and tasks in hours. We discuss the discrepancy between estimated and actual story points instead, despite the disconnect between our task estimates and our story estimates. (Another reason we don&amp;rsquo;t discuss hour estimations at the retro is that it would take &lt;strong&gt;forever&lt;/strong&gt; due to the high number of tasks and the granularity of hours (did this take one day or two, I can&amp;rsquo;t remember)).&lt;/p&gt;
+
+&lt;p&gt;Do I have a solution to this problem? Of course I do. Don&amp;rsquo;t use hours. Stick with points, and keep them as vague and hand-wavey as possible.&lt;/p&gt;
+
+&lt;p&gt;We often run into an issue of associating points with number of hours or days. &amp;ldquo;Well, a 3 takes us about a week and a 5 takes us about 2 weeks. This story seems like it&amp;rsquo;ll take about a week.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Points &lt;strong&gt;do not&lt;/strong&gt; translate directly to how long a story will take. Points &lt;strong&gt;do&lt;/strong&gt; translate to how much work a story feels like relative to the stories which have come before it.&lt;/p&gt;
+
+&lt;p&gt;Eventually, you should have a big enough pile of 1s, 2s, 3s, and 5s that you can relate a new story to a previous story. This story feels like a 3, about as much work as that story where we had to herd those cats. This story feels like a 1, technically all I have to do is flip this boolean&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;When starting a project, estimate stories but don&amp;rsquo;t try to estimate a capacity. Just see how many points you can get done in a sprint. Do it again for the second sprint. Keep doing it until your numbers balance out. This means that your estimates are becoming consistent and you&amp;rsquo;re getting over the new project hump. Now you can tell your manager that you should be able to get 20 points done in a sprint, because you&amp;rsquo;ve consistently bounced around that number the past few sprints.&lt;/p&gt;
+
+&lt;p&gt;Don&amp;rsquo;t get too hasty and start telling people that you should be able to do more points with each sprint. I hate to break it to you, but you&amp;rsquo;re not getting that much better each sprint. You need to adjust your point estimation to match your current competency level.&lt;/p&gt;
+
+&lt;p&gt;End rant. It&amp;rsquo;ll probably be a long time before we see the death of hourly estimations, especially with big-name tools like Rally and Visual Studio Online containing fields explicitly for that purpose. Just fight the good fight for now.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>To System Test or Not to System Test</title>
+      <link>http://localhost:1313/blog/2014-10-28-to-system-test-or-not-to-system-test/</link>
+      <pubDate>Tue, 28 Oct 2014 17:42:06 -0400</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014-10-28-to-system-test-or-not-to-system-test/</guid>
+      <description>&lt;p&gt;System tests: a boon to product verification, but also time taken away from raw development. System-level testing means bringing up the whole system and running through a set of steps to verify that the system is working properly on all levels.&lt;/p&gt;
+
+&lt;p&gt;We have lots of system tests on our project, some that check for the existence of UI elements, and some that verify that a user can go through the entire e-commerce process. Some of the tests require network access, so they take up to 3 or 4 minutes. I had gotten used to writing system tests with &lt;a href=&#34;https://www.ruby-lang.org/en/&#34;&gt;ruby&lt;/a&gt; and &lt;a href=&#34;https://github.com/jnicklas/capybara&#34;&gt;capybara&lt;/a&gt;, which I&amp;rsquo;ve always found straightforward and easy to write. But this current project is in ASP.NET MVC, which seems to have greatly complicated bringing up and automatically manipulating the system. Our current test suite takes over an hour to run and results in at least 10 consistently-failing tests (referred to as &amp;ldquo;flaky&amp;rdquo; for dignity&amp;rsquo;s sake).&lt;/p&gt;
+
+&lt;p&gt;Because of this, there has been talk about getting rid of the system tests.&lt;/p&gt;
+
+&lt;p&gt;Getting rid of system tests? Doesn&amp;rsquo;t this go against everything we believe in? Think of TDD! Think of the children! Think of acceptance criteria! Won&amp;rsquo;t somebody think of the children!&lt;/p&gt;
+
+&lt;p&gt;So I&amp;rsquo;ve been thinking: what is the purpose of system tests? The first thing that comes to mind is the obvious: to test the full stack. Often components work well individually but throw tantrums when forced to interact with the rest of the system.&lt;/p&gt;
+
+&lt;p&gt;Another obvious answer: system health. If the system tests are passing, then surely the site still works after my push! You did add a system test for that changeset, right?&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m not satisfied with those answers. Those are great &lt;em&gt;side effects&lt;/em&gt; to writing system tests, but they aren&amp;rsquo;t &lt;em&gt;sustainable&lt;/em&gt; reasons. For their own devious reasons, someone can always delete a system test that would have broken with your code change. You can always write your system test steps poorly, resulting in incorrect (though passing) behavior.&lt;/p&gt;
+
+&lt;p&gt;The best reason for writing system tests is &lt;strong&gt;to find out what you&amp;rsquo;ve accomplished&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sometimes when I finish coding a new feature, I ask myself &amp;ldquo;MY GOD WHAT HAVE I DONE.&amp;rdquo; There are unit tests in place, and they have great names like &lt;code&gt;SetsIsValidToTrue&lt;/code&gt; and &lt;code&gt;ReturnsSomethingThatsNotNull&lt;/code&gt; and &lt;code&gt;DoesntCrashTheSystem&lt;/code&gt;, but they fail to tell me what just happened. So I switch context to the system tests. In writing a system test, I bring up the whole system, run through my Happy Path™ and my edge cases, and &lt;strong&gt;I can see precisely what I&amp;rsquo;ve done&lt;/strong&gt;. I can watch my work succeed or fail. I can see when it takes way too many complicated page clicks to perform a task. I can see that when I click something too quickly the page fails to load. I can see that the URL is just plain &lt;em&gt;weird&lt;/em&gt;. Most importantly, I can sit back and &lt;strong&gt;see&lt;/strong&gt; it happening.&lt;/p&gt;
+
+&lt;p&gt;So I push my system test to the build server and it works fine until a few dozen other changesets go through on the same page and eventually the system test becomes flaky.&lt;/p&gt;
+
+&lt;p&gt;Where did we go wrong?&lt;/p&gt;
+
+&lt;p&gt;I have an idea on how to deal with this, but you&amp;rsquo;re probably not going to like it.&lt;/p&gt;
+
+&lt;p&gt;As soon as I push a system test, it becomes legacy. You are no longer allowed to edit this system test. If you are updating that feature, you are responsible to &lt;em&gt;delete&lt;/em&gt; and potentially &lt;em&gt;rewrite&lt;/em&gt; each relevant test. In doing this, you are now required to think about the way the whole system fits together every time you push a feature. System tests will become a picture frozen in time of the way the feature worked the last time it was worked on. System tests will no longer be &lt;em&gt;a rolling history of what the system did&lt;/em&gt;, but &lt;em&gt;an exact specification of what the system does&lt;/em&gt;. They become a piece of the development process to demonstrate the intended functionality of the feature.&lt;/p&gt;
+
+&lt;p&gt;In following this practice, we technically lose out on reusable system test code. I say good riddance, as testing code is the quickest part of any system to become bloated and convoluted. The loss in test creation speed could be worth the gain in developer knowledge of the intricacies of the system.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The wisdom of Confucius - now available in an API</title>
+      <link>http://localhost:1313/blog/2014-10-14-the-wisdom-of-confucius-now-available-in-an-api/</link>
+      <pubDate>Tue, 14 Oct 2014 06:03:16 -0400</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014-10-14-the-wisdom-of-confucius-now-available-in-an-api/</guid>
+      <description>&lt;p&gt;I make a lot of silly things while learning new technology. In this case I have tapped into the almighty power of &lt;a href=&#34;https://en.wikipedia.org/wiki/Confucius&#34;&gt;Confucius&lt;/a&gt;, a Chinese philosopher from 2500 years ago credited for writing or editing many Chinese classic texts. Growing up as an American child, I associated Confucius with proverbs, and I associated proverbs with that classic after-Chinese-dinner dessert &lt;a href=&#34;https://en.wikipedia.org/wiki/Fortune_cookie&#34;&gt;the fortune cookie&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Fortune cookies are a pure delight: a message in a bottle from the restaurant&amp;rsquo;s proprietors for you to enjoy as you kindly vacate the facility.&lt;/p&gt;
+
+&lt;p&gt;Most fortune cookies that I&amp;rsquo;ve opened recently have three parts: a fortune (generally a proverb), a lesson in simplified Chinese, and a lottery number. So many secrets wrapped up in such a small, golden treasure.&lt;/p&gt;
+
+&lt;p&gt;Ever left a Chinese restaurant, gotten in your car, and felt the need to break something only to realize you left your precious fortune cookie on the table? I have built a solution.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://fortunecookieapi.com/&#34;&gt;The Fortune Cookie API&lt;/a&gt; is a simple, RESTful API built to generate fortune cookie data. The root URL shows documentation built using &lt;a href=&#34;https://apiary.io/&#34;&gt;Apiary.io&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;How does it work? I need fortunes now!&lt;/p&gt;
+
+&lt;p&gt;There are options. You can get &lt;code&gt;fortunes&lt;/code&gt; from the &lt;a href=&#34;http://fortunecookieapi.com/v1/fortunes&#34;&gt;/v1/fortunes&lt;/a&gt; endpoint, &lt;code&gt;lessons&lt;/code&gt; from the &lt;a href=&#34;http://fortunecookieapi.com/v1/lessons&#34;&gt;/v1/lessons&lt;/a&gt; endpoint, and lottery numbers from the &lt;a href=&#34;http://fortunecookieapi.com/v1/lottos&#34;&gt;/v1/lottos&lt;/a&gt; endpoint. By default you get 100 of any model, but all endpoints include a &lt;code&gt;limit&lt;/code&gt; (max 1000), &lt;code&gt;skip&lt;/code&gt;, and &lt;code&gt;page&lt;/code&gt; parameter to facilitate getting all the lessons and fortunes. For lottery numbers, we approximately build &lt;a href=&#34;https://en.wikipedia.org/wiki/Powerball&#34;&gt;Powerball&lt;/a&gt; numbers except we currently ignore the rule for red balls, which means there are something ike 42 billion different possibilities. Due to the high number of potential lottery numbers, the &lt;code&gt;lottos&lt;/code&gt; endpoint also includes a &lt;code&gt;firstId&lt;/code&gt; parameter that lets you start from anywhere.&lt;/p&gt;
+
+&lt;p&gt;But there&amp;rsquo;s no need to get the individual models (unless you&amp;rsquo;re into that kind of thing)! I also created a &lt;a href=&#34;http://fortunecookieapi.com/v1/cookie&#34;&gt;/v1/cookie&lt;/a&gt; endpoint to retrieve a random fortune, lesson, and lottery number as a single object. Woohoo! You can specify the number of cookies (max 100) with the &lt;code&gt;limit&lt;/code&gt; parameter.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET http://fortunecookieapi.com/v1/cookie
+
+{
+  &amp;quot;fortune&amp;quot;: {
+    &amp;quot;id&amp;quot;: &amp;quot;53ffcf1d4ea4f76d1b8f223e&amp;quot;,
+    &amp;quot;message&amp;quot;: &amp;quot;This fortune intentionally left blank&amp;quot;
+  },
+  &amp;quot;lotto&amp;quot;: {
+    &amp;quot;id&amp;quot;: &amp;quot;001000200030004000500006&amp;quot;,
+    &amp;quot;numbers&amp;quot;: [10,20,30,40,50,6]
+  },
+  &amp;quot;lesson&amp;quot;: {
+    &amp;quot;id&amp;quot;: &amp;quot;53ffcf1d4ea4f76d1b8f2241&amp;quot;,
+    &amp;quot;chinese&amp;quot;: &amp;quot;因特网&amp;quot;,
+    &amp;quot;pronunciation&amp;quot;: &amp;quot;yintewang&amp;quot;,
+    &amp;quot;english&amp;quot;: &amp;quot;internet&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you can fill that hole in your heart where the fortune cookies are missing. If you&amp;rsquo;re interested in the code, you can &lt;a href=&#34;https://github.com/larryprice/fortune-cookie-api&#34;&gt;check it out on Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;UPDATE: I&amp;rsquo;ve registered the domain &lt;a href=&#34;http://fortunecookieapi.com&#34;&gt;fortunecookieapi.com&lt;/a&gt; for the love of fortune cookies. Enjoy.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fetching Random Mongoose Objects the Simple Way</title>
+      <link>http://localhost:1313/blog/2014-09-15-fetching-random-mongoose-objects-the-simple-way/</link>
+      <pubDate>Mon, 15 Sep 2014 20:11:13 -0400</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014-09-15-fetching-random-mongoose-objects-the-simple-way/</guid>
+      <description>&lt;p&gt;As I venture through the land of &lt;a href=&#34;http://nodejs.org/&#34;&gt;NodeJS&lt;/a&gt;, I&amp;rsquo;ve found the wonder and magic of &lt;a href=&#34;http://npmjs.org/&#34;&gt;NPM&lt;/a&gt;, a package management tool for Javscript similar to &lt;a href=&#34;https://www.ruby-lang.org/&#34;&gt;ruby&lt;/a&gt;&amp;rsquo;s gems. Although there are nearly 100,000 packages on the main npmjs site (94,553 at time-of-writing), it seems there are still niches to be filled.&lt;/p&gt;
+
+&lt;p&gt;Recently, while working on a &lt;strong&gt;top secret side-project&lt;/strong&gt;, I wanted to grab a random object from a &lt;a href=&#34;https://www.mongodb.org/&#34;&gt;MongoDB&lt;/a&gt; collection. I used the highly-extensible &lt;a href=&#34;http://mongoosejs.com/&#34;&gt;mongoose&lt;/a&gt; to set up my models and just needed to find a package somewhere with the desired functionality. I found such a package called &lt;a href=&#34;https://github.com/matomesc/mongoose-random&#34;&gt;mongoose-random&lt;/a&gt;, but, unfortunately, I was never able to get this plugin to work correctly. The plugin in question also needed to insert new columns on your tables, which I didn&amp;rsquo;t really want. So I decided to create a new package.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.npmjs.org/package/mongoose-simple-random&#34;&gt;mongoose-simple-random&lt;/a&gt; is an incredibly easy way to include a random accessor on your mongoose models. All that&amp;rsquo;s required is adding the plugin to the schema before compiling the model:&lt;/p&gt;
+
+&lt;p&gt;``` javascript test.js
+var random = require(&amp;lsquo;mongoose-simple-random&amp;rsquo;);&lt;/p&gt;
+
+&lt;p&gt;var s = new Schema({
+  message: String
+});
+s.plugin(random);&lt;/p&gt;
+
+&lt;p&gt;Test = mongoose.model(&amp;lsquo;Test&amp;rsquo;, s);&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+Now I can ask the model for a single random element of the `Test` model with a single call to `findOneRandom`:
+
+``` javascript find_one.js
+var Test = require(&#39;./test&#39;);
+
+Test.findOneRandom(function(err, element) {
+  if (err) console.log(err);
+  else console.log(element);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Need to find more than one? Use &lt;code&gt;findRandom&lt;/code&gt; to get an array:&lt;/p&gt;
+
+&lt;p&gt;``` javascript find_five.js
+var Test = require(&amp;lsquo;./test&amp;rsquo;);&lt;/p&gt;
+
+&lt;p&gt;Test.findRandom({}, {}, {count: 5}, function(err, results) {
+  if (err) console.log(err);
+  else console.log(results);
+});&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+Zowee! Just like the default `find` methods, you can pass in optional filters, fields, and options:
+
+``` javascript find_five_with_optionals.js
+var Test = require(&#39;./test&#39;);
+
+var filter = { type: { $in: [&#39;education&#39;, &#39;engineering&#39;] } };
+var fields = { name: 1, description: 0 };
+var options = { skip: 10, limit: 10, count: 5 };
+Test.findRandom(filter, fields, options, function(err, results) {
+  if (err) console.log(err);
+  else console.log(results);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Given 1000s of objects, performance is excellent. I haven&amp;rsquo;t tested it on larger-scale databases, but I wouldn&amp;rsquo;t mind seeing some performance tests in the future.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The (Honest) Truth About Dishonesty</title>
+      <link>http://localhost:1313/blog/2014-08-31-the-honest-truth-about-dishonesty/</link>
+      <pubDate>Sun, 31 Aug 2014 13:35:40 -0400</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014-08-31-the-honest-truth-about-dishonesty/</guid>
+      <description>&lt;p&gt;###The Idea&lt;/p&gt;
+
+&lt;p&gt;Everyone lies. Everyone cheats. From Marcy down the street cheating on her diet to Bernie Madoff committing massive finanical fraud, we&amp;rsquo;re all a little dishonest from time to time. With the power of experimentats and research, Dan Ariely seeks to learn what leads humans to act dishonestly in &lt;em&gt;&lt;a href=&#34;http://amzn.to/1qsOgTy&#34;&gt;The (Honest) Truth About Dishonesty&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;###The Gooey Center&lt;/p&gt;
+
+&lt;p&gt;Since reading &lt;em&gt;&lt;a href=&#34;http://amzn.to/VYzVTZ&#34;&gt;Predictably Irrational&lt;/a&gt;&lt;/em&gt; earlier this year, I&amp;rsquo;ve really liked reading Dan Ariely; his writing style is familiar yet authoritative, making for highly readable books filled with high-quality experiments and meaningful insights. &lt;em&gt;The (Honest) Truth About Dishonesty&lt;/em&gt; is a similar read to &lt;em&gt;Predictably Irrational&lt;/em&gt;, but with a tight focus on what drives the common man to lie and cheat.&lt;/p&gt;
+
+&lt;p&gt;The main takeaway is, given the chance, most people will cheat just a little given the opportunity. Ariely&amp;rsquo;s experiments found that very few people cheated heavily, even in situations where the likelihood of being caught is minimal. Rounding up your billable hours on a timesheet is easy to do without a shred of guilt, and the likelihood of getting caught is approximately nil. On the other hand, fudging an hour or two in a single day is not something anyone I know would take lightly. Unfortunately, if you round up billable hours by 10 minutes a day for a whole week, you&amp;rsquo;ve fudged nearly an hour of billable work (without the guilt).&lt;/p&gt;
+
+&lt;p&gt;Day-to-day living makes us less honest. If you&amp;rsquo;ve had a long day at work, you&amp;rsquo;re more likely to cheat on your diet when you get home because your defenses have been torn down. You&amp;rsquo;re more likely to put things off in favor of sitting around watching television.&lt;/p&gt;
+
+&lt;p&gt;Ariely finds that collaboration also leads to more dishonesty: as humans, we are more willing to bend the rules if it will benefit someone else, especially if we have befriended that someone else.&lt;/p&gt;
+
+&lt;p&gt;###Who Would Like This&lt;/p&gt;
+
+&lt;p&gt;Those interested in behavioral economics should get a kick out of this book, especially if they enjoyed Ariely&amp;rsquo;s other works. Reading this book can also make you think more critically about some of the &amp;ldquo;little white lies&amp;rdquo; you tell yourself and others throught the day.&lt;/p&gt;
 </description>
     </item>
     

@@ -8,11 +8,11 @@ categories: write-ups
 
 > Visual supervision is a joke for development workers. Visual supervision is for prisoners.
 
-### The Gist
+###The Gist
 
 [Peopleware](http://amzn.to/1JzYT3i), originally published in 1987, is the most relevant book ever written for managing software teams and organizations. DeMarco and Lister give a light-hearted take on all the wrong ways to manage IT projects and give helpful shoves towards some better alternatives.
 
-### My Opinion
+###My Opinion
 
 I knew this book would be a good fit for me, but I had no idea just how much I would like it. This book connects a lot of pain points I've had so far in my (relatively) short career, so much so that I cannot believe we still have these problems nearly thirty years since its inception.
 
@@ -34,6 +34,6 @@ There is also a lot of content in this book about managing people, especially th
 
 All in all, this book was incredibly useful for me and made me feel a little less alien. I read the second edition of this book, though I have come to learn there has recently been a third edition released.
 
-### Who Would Like This
+###Who Would Like This
 
 Software developers and anyone who thinks they have direct control over software developers should stop whatever they are doing right now and read this book. Did you read this book twenty years ago? _Read it again_.

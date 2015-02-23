@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> RVM Quick Start &middot; Larry Price </title>
+
+  
+  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>Larry Price</h1>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+<div class="post">
+  <h1>RVM Quick Start</h1>
+  <span class="post-date">Tue, Oct 8, 2013</span>
+      <p>When I was working on a few different projects at once, I started running into issues where my Ruby gem versions would start to mismatch. How did I fix that issue? Naively. I adjusted the versions as necessary so my gems were always the same version. That was&hellip; pretty dumb. To make up for my past ignorance, I&rsquo;ve been exploring ways to manage my Ruby versions and my gems intelligently. Enter <a href="https://rvm.io/">RVM</a>.</p>
+
+<p>RVM is a simple tool to solve just problems. And it works pretty well. I hit some kinks along the way, but my installation pleases me well enough. Getting RVM is not for the faint of heart. Maybe there are better ways to do it, but the website says to execute the following:</p>
+
+<p>``` bash /home/lrp/my_project
+&gt; curl -L <a href="https://get.rvm.io">https://get.rvm.io</a> | bash -s stable</p>
+
+<pre><code>
+This command uses curl to fetch the data that lives at `https://get.rvm.io`, which happens to be a big bash script. It executes the bash script with the args `-s stable`. 'Stable' means the latest stable release of RVM. I could just as easily give it 'dev' and get the latest developer release instead, but I really don't want that. So that command does a lot of stuff and may give you some further instructions to run before you can continue. Use that big head of yours and follow the instructions. You may also need to restart a terminal to get RVM to be recognized as a command. Since I was using `gnome-terminal`, I had to follow these [instructions](https://rvm.io/integration/gnome-terminal).
+
+Now I want RVM to know about some Ruby versions. For a full list of possible Ruby versions to install, run `rvm list known`. I just want 1.9.3. I found that I needed to do this even though I had 1.9.3 installed on my system previously.
+
+``` bash /home/lrp/my_project
+&gt; rvm install ruby-1.9.3
+</code></pre>
+
+<p>In Ubuntu 13.04, this command installs ruby-1.9.3 in <code>~/.rvm/rubies/ruby-1.9.3-p448/bin/ruby</code>. I&rsquo;ve found that this also sets my default Ruby to the RVM version of Ruby, which I don&rsquo;t want. To verify and undo this, I executed the following commands outside of my project directory.</p>
+
+<p>``` bash /home/lrp
+&gt; which ruby
+/home/lrp/.rvm/rubies/ruby-1.9.3-p448/bin/ruby
+&gt; echo &ldquo;D&rsquo;oh&rdquo;
+D&rsquo;oh
+&gt; rvm use system
+Now using system ruby.
+&gt; which ruby
+/usr/bin/ruby
+&gt;</p>
+
+<pre><code>
+Now that that's settled, I want to tell RVM to use the local version of Ruby for my project and to install any gems in a special location.
+
+``` bash /home/lrp/my_project
+&gt; rvm 1.9.3@my-project --create --ruby-version
+</code></pre>
+
+<p>This creates a gemset and ruby-version file (<code>.ruby-gemset</code> and <code>.ruby-version</code> files) using the Ruby installation 1.9.3 created above. I specifiy to use <code>--ruby-version</code> instead of <code>--rvmrc</code> because RVM told me that I should. After some research, the <code>.ruby-version</code> file is used by several other tools, so this will keep my potential number of config files low. Now I check that all my Ruby versions are okay.</p>
+
+<p><code>bash /home/lrp/my_project
+&gt; which ruby
+/home/lrp/.rvm/rubies/ruby-1.9.3-p448/bin/ruby
+&gt; cd ..
+&gt; which ruby
+/usr/bin/ruby
+&gt;
+</code></p>
+
+<p>When in my project directory, all the gems I install will be installed to my specified gemset, which means they are no longer cluttering my global gemspace, even when I install them using Bundler. It also means that I can use ruby-1.9.3 for this project and 2.0 for another project with minimal mental overhead. This makes me a happy developer.</p>
+
+<p>I only glazed over the installation process and documentation for RVM. Go to <a href="https://rvm.io/">the web site</a> for more.</p>
+
+</div>
+</div>
+
+  <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

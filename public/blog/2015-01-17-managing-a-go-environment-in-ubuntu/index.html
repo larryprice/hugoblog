@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Managing a Go Environment in Ubuntu &middot; Larry Price </title>
+
+  
+  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>Larry Price</h1>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+<div class="post">
+  <h1>Managing a Go Environment in Ubuntu</h1>
+  <span class="post-date">Sun, Jan 18, 2015</span>
+      <p>Many moons ago, I wrote about <a href="/blog/2013/12/15/setting-up-a-go-environment-in-ubuntu-12-dot-04">setting up a Go environment in Ubuntu</a>. After writing that post, I dropped Go development for nearly a year. Today I run the <a href="http://www.meetup.com/Indy-Golang/events/219612982/">Indy Golang meetup</a>, and soon I&rsquo;ll be starting a new work project where I&rsquo;ll be recommending a Go-based tech stack. I&rsquo;ve learned a thing or two about Go and managing its dependencies since I wrote that initial blog post, and I intend to give a short presentation to my meetup about my recent findings. Before I do, I thought I&rsquo;d write a preliminary blog post detailing the tools I use to keep my Go environment sane.</p>
+
+<p>###Installing Go###</p>
+
+<p>The easiest way to install Go in Ubuntu is through <code>aptitude</code>. However, the default version in the Ubuntu repos gets stale fast. I found a tool similar to <code>rvm</code> for downloading and installing local versions of Go called <a href="https://github.com/moovweb/gvm">gvm</a>. For better or worse, <code>gvm</code> is installed through a bash script. Fortunately, it doesn&rsquo;t require sudo:</p>
+
+<pre><code class="language-bash">$ bash &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+</code></pre>
+
+<p>At this point I removed all my previous finaglig with <code>$GOROOT</code> and <code>$GOPATH</code> from my dot files. You can use <code>gvm listall</code> to see all available versions of Go. As of the writing of this blog post, <code>go1.4.1</code> is the latest release; however, <code>go1.4</code> is the most recent release available with <code>gvm</code>. I&rsquo;m not sure when the list is updated, but I have confidence that it is fairly regular. To install a Go and set it as the default Go:</p>
+
+<pre><code class="language-bash">$ gvm install go1.4 --default
+$ which go
+/home/lrp/.gvm/gos/go1.4/bin/go
+</code></pre>
+
+<p>###Managing Packages###</p>
+
+<p>This is where I come to a fork in the road: <code>gvm</code>, the tool we used to install the desired version of Go, has a concept of pkgset similar to <code>rvm gemset</code>. However, I find the syntax for using a pkgset tiresome every time I come into a directory. I prefer something more automatic. As an additional pain, <code>gvm</code> does not provide a mechanism for installing dependencies from a list of known dependencies. I sought out other tools to address these pains and found <a href="https://github.com/pote/gpm">gpm</a> and <a href="https://github.com/pote/gvp">gvp</a>.</p>
+
+<p><code>gpm</code> is a tool used to manage Go packages. It reads in a file called <code>Godeps</code> which contains a list of packages with versions and can install them from their individual sources. I&rsquo;m currently infatuated with <code>gpm</code> as it addresses a lot of concerns I had when initially learning Go: shared local dependencies, unclear versioning, and installing dependencies from a fresh clone. Install <code>gvm</code> and <code>gvp</code>:</p>
+
+<pre><code class="language-bash">$ pushd /tmp
+$ git clone https://github.com/pote/gvp.git &amp;&amp; cd gvp
+$ ./configure &amp;&amp; sudo make install
+$ cd /tmp
+$ git clone https://github.com/pote/gpm.git &amp;&amp; cd gpm
+$ ./configure &amp;&amp; sudo make install
+$ popd
+</code></pre>
+
+<p>We can follow two paths here: using <code>gvm pkgset</code> or using a local <code>.godeps</code> directory to store our dependencies discretely. For these examples, I&rsquo;ll create a directory called <code>gotest</code> with a single file in it:</p>
+
+<p>``` go hello.go
+package main</p>
+
+<p>import &ldquo;github.com/go-martini/martini&rdquo;</p>
+
+<p>func main() {
+    server := martini.Classic()
+    server.Get(&ldquo;/&rdquo;, func() string {
+        return &ldquo;<h1>Hello, world!</h1>&ldquo;
+    })</p>
+
+<pre><code>server.Run()
+</code></pre>
+
+<p>}</p>
+
+<pre><code>
+####Method 1: gvm pkgset alongside gpm####
+
+Create and start using a new pkgset:
+
+``` bash
+$ gvm pkgset create gotest
+$ echo $GOPATH
+/home/lrp/.gvm/pkgsets/go1.4/global
+$ gvm pkgset use gotest
+$ echo $GOPATH
+/home/lrp/.gvm/pkgsets/go1.4/gotest:/home/lrp/.gvm/pkgsets/go1.4/global
+</code></pre>
+
+<p>What this means is that we are now using our <code>gotest</code> pkgset as default, but the global pkgset will be used to dig up any missing packages. In order to install any dependencies, we need to create a <code>Godeps</code> file for <code>gpm</code> to consume. Our application from above has a dependency on <code>go-martini</code>, so let&rsquo;s add a dependency to <code>v1.0</code> in our Godeps file:</p>
+
+<p>``` text Godeps
+github.com/go-martini/martini v1.0</p>
+
+<pre><code>
+After you run `go build` to verify that the dependencies aren't installed, run `gpm install` to pull the required packages into your specified pkgset. Run `go build` again and revel in your own brilliance.
+
+That was pretty great, right? The only issue is remembering to type `gvm pkgset use gotest` every time you restart your terminal or switch projects. Otherwise, `gvm` is practically a replacement for one of my favorite ruby tools `rvm`.
+
+####Method 2: gpm and gvp####
+
+`gpm` is intended to be similar to `npm`, a package management tool for NodeJS. The author suggests using a tool called `gvp` to set the `GOPATH` without much thought. If we start a fresh terminal in our example directory, we can use `gvp` to set up our `GOPATH`:
+
+``` bash
+$ echo $GOPATH
+/home/lrp/.gvm/pkgsets/go1.4/global
+$ source gvp
+$ echo $GOPATH
+/home/lrp/Projects/2015/gotest/.godeps:/home/lrp/Projects/2015/gotest
+</code></pre>
+
+<p>You can note the difference in our <code>GOPATH</code> here relative to <code>gvm</code>: we will be using our current directory as a source of code in addition to a local <code>.godeps</code> directory. Go ahead and add <code>.godeps</code> to your <code>.gitignore</code> file or equivalent. We can use the same <code>Godeps</code> file as before:</p>
+
+<p><code>text Godeps
+github.com/go-martini/martini v1.0
+</code></p>
+
+<p>We run <code>gpm install</code> to install the dependencies to our local <code>.godeps</code> directory.</p>
+
+<p>I prefer this method to using pkgsets. I&rsquo;ve had better luck building projects with complicated structures, and it&rsquo;s a lot easier for me to run <code>source gvp</code> than it is to remember the name of my pkgset. Both methods work pretty well and give me warm fuzzies about managing my dependencies. I&rsquo;m certain that as Go continues to mature more solutions will come available. I&rsquo;ve also been researching using Docker with gpm only, which requires very little tweaking to what I&rsquo;ve already discussed here.</p>
+
+</div>
+</div>
+
+  <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> An Example Use Case for Docker &middot; Larry Price </title>
+
+  
+  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>Larry Price</h1>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+<div class="post">
+  <h1>An Example Use Case for Docker</h1>
+  <span class="post-date">Sun, Jan 11, 2015</span>
+      <p>I spent a lot of time last week asking questions about Docker. <a href="#whatdocker">What</a> is Docker? How could Docker help me <a href="#whydocker">day-to-day</a>? How easy is Docker to <a href="#howdocker">use</a>? How does Docker like its eggs cooked? Isn&rsquo;t Docker a brand of sneakers?</p>
+
+<p>###<a name="whatdocker"></a>What is Docker?###</p>
+
+<p><a href="https://www.docker.com/">Docker</a> is a utility for maintaining system environments. Docker capitalizes on <a href="https://en.wikipedia.org/wiki/LXC">Linux containers</a>, a method of operating system virtualization which isolates multiple process groups on a single host.</p>
+
+<p>Through a series of commands, Docker pulls up a base system image and applies changes to create a custom image. Docker provides the means to access any of these step-level containers for further manipulation. Docker uses a unique layered system such that sibling layers can utilize the same base images, in contrast to a virtual machine which would require multiple copies of things like operating systems, shared libraries, and shared binaries. The image below is an excellent visualization of the difference between a virtual machine and a Docker container.</p>
+
+<p><img src="https://i.imgur.com/Lps6K6y.png?1" alt="VM vs LXC" />
+</p>
+
+<p>###<a name="whydocker"></a>Why use Docker?###</p>
+
+<p>Docker&rsquo;s primary job is to take in a series of commands and spit out a clean environment with those settings. This is especially useful in deployment. I can take the Docker <code>ubuntu</code> image, download and install all my dependencies, copy over my application code, and run my application given some environment variables.</p>
+
+<p>All of that should sound somewhat familiar if you&rsquo;ve ever used <a href="https://heroku.com">heroku</a>. Heroku performs very similar tasks to get your application up and running: take a Linux image, download base tools for ruby/python/nodejs/whatever, install application-specific dependencies (through bundler, flask, npm, etc.), and run your application given some environment. Docker gives you the power of heroku at the development level. &hellip;Sort of.</p>
+
+<p>If I can create a Docker container for my application to run in, I can set up a build server to use a container to run my tests. I can use that same container to build a <em>clean</em> staging environment. I can use the staging container to build an <em>identically clean</em> production environment. With that knowledge in hand, I know the exact state of the production environment every time I deploy and I can reproduce it locally.</p>
+
+<p>Theoretically, I can even use Docker for setting up a development environment, although after a few days of attempting this I still think you&rsquo;re better off running natively.</p>
+
+<p>Of course, Docker keeps <a href="https://www.docker.com/resources/usecases/">a big list of examples</a> from big-name company use-cases if you&rsquo;re interested.</p>
+
+<p>###<a name="howdocker"></a>Example Usage###</p>
+
+<p>Brass. Tacks. Let us get down to them, compadre.</p>
+
+<p>You probably want to <a href="https://docs.docker.com/installation/#installation">install Docker</a> first. If you&rsquo;re not using Linux, have fun installing <a href="https://github.com/boot2docker/boot2docker">boot2docker</a>, the rest of us are going to get started without you.</p>
+
+<p>I started by trying to bootstrap my environment for <a href="https://ollertapp.com">Ollert</a> with Docker. Ollert uses ruby-2.2, QtWebkit (in test), and MongoDB. It uses bundler to install any required ruby gems. Not too complicated, but I&rsquo;ve noticed it&rsquo;s never easy to get a new developer&rsquo;s environment quite right.</p>
+
+<p>We start out with the official <a href="https://registry.hub.docker.com/_/ruby/">ruby:2.2.0</a> image from the Docker Hub:</p>
+
+<pre><code class="language-bash">$ docker run ruby:2.2.0 echo &quot;B-b-b-b-brass t-t-t-t-tacks!&quot;
+</code></pre>
+
+<p>OMG that step will take forever if you&rsquo;ve never downloaded the base <code>debian</code> image. It downloads and sets up quite a few layers. If you&rsquo;re interested in what it&rsquo;s doing behind the scenes and you can read Dockerfiles, <a href="https://github.com/docker-library/ruby/blob/b7fefd2fa79882da90feb0718430680c77c5fa8b/2.2/Dockerfile">this file</a> is what&rsquo;s being executed. Anyway, when it&rsquo;s done you should see a friendly reminder about what we&rsquo;ve gotten down to. We use <code>docker run</code> to run (download first if necessary) an image; in this case, the <code>ruby:2.2.0</code> image. Everything after the image name is the command to run. Now that we&rsquo;ve downloaded some base images, you can check out your available images using <code>docker images</code>.</p>
+
+<p>Now I need to install my system-level dependencies:</p>
+
+<pre><code class="language-bash">$ docker run ruby:2.2.0 apt-get update
+</code></pre>
+
+<p>Note how this time the base image was already found in your local repository, resulting in a command that ran pretty quickly (based on your internet speeds (sorry Comcast customers!)). But what have we really done so far? We&rsquo;ve created two separate containers: one with our initial echo command (useless) and one with all our updates. To see these containers, use <code>docker ps -a</code>. This will give you output similar to the following:</p>
+
+<pre><code class="language-bash">$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS             NAMES
+ad5ddd55f2c2        ruby:2.2.0        &quot;apt-get update&quot;         2 seconds ago       Exited (0) 2 seconds ago                        mad_curie
+10cbaac4488c        ruby:2.2.0        &quot;echo 'B-b-b-b-brass&quot;    15 minutes ago      Exited (0) 15 minutes ago                       mad_perlman
+</code></pre>
+
+<p>These are now the containers available. We can create a new image from the first container using <code>docker commit ad5 rubyapp</code>, which will allow us to use it to create further containers. However, if we were to do this for every command we wanted to execute, we might be here for a while. We could go into <code>bash</code> on the base image and do all of our steps:</p>
+
+<pre><code class="language-bash">$ docker run -it ruby:2.2.0 /bin/bash
+root@1be43510341e:/# apt-get update
+...
+root@1be43510341e:/# apt-get auto-remove
+...
+root@1be43510341e:/# apt-get install -y --force-yes libqtwebkit-dev mongodb
+...
+</code></pre>
+
+<p>We could then use this image to run our app - however, this is also tedious and a bad solution. We want something that we can see on a granular level and reproduce every time for a base image. Fortunately, Docker provides us an easy way to do this using a DSL. Introducing the <code>Dockerfile</code>:</p>
+
+<pre><code class="language-Dockerfile"># base image
+FROM ruby:2.2.0
+
+#install system-level dependencies
+RUN apt-get update &amp;&amp; apt-get autoremove -y &amp;&amp; apt-get install -y --force-yes libqtwebkit-dev mongodb
+
+# install gems from /tmp such that bundling is CACHED
+WORKDIR /tmp
+ADD Gemfile Gemfile
+ADD Gemfile.lock Gemfile.lock
+ADD .env .env
+RUN bundle install
+
+# load application source
+ADD . /usr/src/app
+WORKDIR /usr/src/app
+
+# port where application is served
+EXPOSE 5000
+</code></pre>
+
+<p>The syntax is a little different, but all we&rsquo;re doing is telling Docker our base image, issuing commands, and copying files. The <code>ADD</code> command allows us to copy files from our host system. In this case, I copy over <code>.</code> to <code>/usr/src/app</code> in the container. I also copy over my Gemfile separately to <a href="http://ilikestuffblog.com/2014/01/06/how-to-skip-bundle-install-when-deploying-a-rails-app-to-docker/">cache the bundle so it does not install every time</a>. I then expose the port I want my application to use. Run this file as such:</p>
+
+<pre><code class="language-bash">$ docker build -t rubyapp .
+</code></pre>
+
+<p>This creates an image called <code>rubyapp</code> and a container for every line of the Dockerfile that is run. Although your first build may take a moment, subsequent builds will be cached and should be significantly faster. Now, if we want to run my application:</p>
+
+<pre><code class="language-bash">$ docker run -d --name rubyappinstance rubyapp foreman start -d /usr/src/app
+</code></pre>
+
+<p>I use <code>foreman</code> to start my application from the given directory. I tell Docker that the application will be daemonized using the <code>-d</code> flag. If I check my running containers with <code>docker ps</code>, I&rsquo;ll see my application running. If I want to stop it, I just run <code>docker stop rubyappinstance</code>.</p>
+
+<p>I&rsquo;m going to stop there for now. In order to get Ollert working properly, I also need to <a href="http://docs.docker.com/userguide/dockerlinks/">link a Mongo database</a> and change some environment variables in my application, but those are relatively easy tasks.</p>
+
+<p>###Is it worth it?###</p>
+
+<p>The only conclusion is a definite maybe. Docker is definitely pretty cool. It may be able to help you deploy custom applications easier; for Ollert, it feels like overkill. There is a lot of overhead in downloading core versions of different operating systems, and I already find myself itching to clean up all the leftover Docker images/containers on my machine I used once and never again. After getting the Docker development out of the way (building and testing a Dockerfile), you may save yourself some time in the future if you have to change hosting services or CI environments. Try it out! It&rsquo;s a pretty neat concept and definitely worth your attention in 2015.</p>
+
+</div>
+</div>
+
+  <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Convincing rvm to let you use ruby 2.1.0 &middot; Larry Price </title>
+
+  
+  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>Larry Price</h1>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+<div class="post">
+  <h1>Convincing rvm to let you use ruby 2.1.0</h1>
+  <span class="post-date">Sat, Feb 22, 2014</span>
+      
+
+<p><a href="//ruby-lang.org/en/news/2013/12/25/ruby-2-1-0-is-released/">Ruby 2.1.0 went stable</a> a few months ago, and <a href="//ruby-lang.org/en/news/2014/01/10/ruby-1-9-3-will-end-on-2015/">Ruby 1.9.3 support</a> will end in a just over a year.</p>
+
+<p>You know what that means: Warplanes in the sky falling to the ground, dogs and cats getting along like old pals, and people wandering aimlessly through the streets trying to remember the last time they saw a green build.</p>
+
+<p>Believe it or not, all of these things can be prevented. Once upon a time, I wrote about <a href="/blog/2013/10/08/rvm-quick-start/">configuring and using rvm</a> to control individual ruby environments for each of your projects. If it&rsquo;s been a while since you installed your copy of <a href="//rvm.io/">rvm</a>, you might have some trouble installing and using newer version of ruby. Lucky for us, those clever rvm developers made it easy to get around this.</p>
+
+<p>In my case, I want to upgrade a project to use <code>ruby 2.1.0</code>. The first time I tried to run <code>rvm install ruby-2.1.0</code>, I ended up installing <code>ruby-2.1.0-preview1</code>. I realized that I had installed rvm on this machine around October 2013, and <code>ruby 2.1.0</code> was released in December 2013, so rvm had no idea that <code>ruby 2.1.0</code> was stable. Updating rvm (in the root of the project directory):</p>
+
+<p>``` bash /home/lrp/Projects/2014/projNeedingRuby210
+$ rvm get stable</p>
+
+<pre><code>
+There will be some amount of text on the screen if your system needs to be updated. Note that you must be connected to the internet if you want rvm to update. Now we do the install of our brand new ruby:
+
+``` bash /home/lrp/Projects/2014/projNeedingRuby210
+$ rvm install ruby-2.1.0
+</code></pre>
+
+<p>Again, text on the screen from fetching of data from the internet. But hopefully you see something that tells you the operation was successful. You can also verify which rubies you have installed using the <code>list</code> command:</p>
+
+<p>``` bash /home/lrp/Projects/2014/projNeedingRuby210
+$ rvm list rubies
+   ruby-1.9.3-p448 [ x86_64 ]
+=&gt; ruby-2.0.0-p247 [ x86_64 ]
+ * ruby-2.1.0 [ x86_64 ]</p>
+
+<h1 id="current:48edce78deba1629795925e6d06bbb9a">=&gt; - current</h1>
+
+<h1 id="current-default:48edce78deba1629795925e6d06bbb9a">=* - current &amp;&amp; default</h1>
+
+<h1 id="default:48edce78deba1629795925e6d06bbb9a">* - default</h1>
+
+<pre><code>
+Now we tell our current project to use `ruby 2.1.0`:
+
+``` bash /home/lrp/Projects/2014/projNeedingRuby210
+$ rm .ruby-version .ruby-gemset
+$ rvm 2.1.0@projNeedingRuby210 --create --ruby-version
+ruby-2.1.0 - #gemset created /home/lrp/.rvm/gems/ruby-2.1.0@projNeedingRuby210
+ruby-2.1.0 - #generating projNeedingRuby210 wrappers.
+$ rvm gemset copy 2.0.0-p247@projNeedingRuby210 2.1.0@projNeedingRuby210
+Copying gemset from 2.0.0-p247@projNeedingRuby210 to 2.1.0@projNeedingRuby210
+Generating gemset wrappers ruby-2.1.0@projNeedingRuby210.
+Making gemset 2.1.0@projNeedingRuby210 pristine.
+$ which ruby
+/home/lrp/.rvm/rubies/ruby-2.1.0/bin/ruby
+</code></pre>
+
+<p>Alright! Crisis averted. If you&rsquo;re using <a href="//bundler.io/">bundler</a> with this project, be sure to change your ruby version (usually located near the top of the <code>Gemfile</code>).</p>
+
+<p>What about setting up a new project using <code>ruby 2.1.0</code>? Easy! Switch to the project directory and:</p>
+
+<p><code>bash /home/lrp/Projects/2014/newRubyProject
+$ rvm 2.1.0@newRubyProject --create --ruby-version
+</code></p>
+
+<p>Oh, rvm, you make life <em>too</em> easy sometimes.</p>
+
+</div>
+</div>
+
+  <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

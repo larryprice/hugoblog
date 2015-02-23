@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Using sqlite on Heroku &middot; Larry Price </title>
+
+  
+  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>Larry Price</h1>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+<div class="post">
+  <h1>Using sqlite on Heroku</h1>
+  <span class="post-date">Sat, Mar 29, 2014</span>
+      <p>Or rather, &ldquo;Not Using sqlite on Heroku.&rdquo;</p>
+
+<p><a href="//heroku.com">Heroku</a> does not support <a href="//sqlite.org">sqlite</a>. That doesn&rsquo;t mean we have to stop using sqlite in development, but it does mean we need to put in some workarounds to support our deployment environment. The rest of this article will use <a href="//ruby-lang.org">ruby</a> and <a href="//sinatrarb.com">Sinatra</a>.</p>
+
+<p>Assuming you have a heroku app deployed and you have sqlite already working locally, this only takes a few steps. First we need to add a SQL database to our heroku app. From the project directory, we&rsquo;ll add the <a href="//addons.heroku.com/heroku-postgresql">heroku-postgresql</a> addon to our app.</p>
+
+<pre><code class="language-bash">$ heroku addons:add heroku-postgresql:dev
+</code></pre>
+
+<p>The <code>dev</code> piece of this command tells heroku we want the small, free database. This database supports up to 10,000 rows and has a 99.5% uptime. Best of all: it&rsquo;s free. Other options have you pay $9/mo for 10,000,000 rows or $50+ for Unlimited usage. I recommend you start small.</p>
+
+<p>Hopefully you got some success statements after adding heroku-postgresql. They should have included some new environment variables, which are links to your new Postgres database. Record these; we&rsquo;ll use them a little later.</p>
+
+<p>Now we need to set up the back-end to be able to access a Postgres database when necessary. Hopefully you&rsquo;re using a decent abstraction library in your app that can access any SQL database. For ruby, I find <a href="//www.sequel.rubyforge.org/">Sequel</a> to be sufficient.</p>
+
+<p>In our Gemfile, we&rsquo;ve probably already included the sqlite gem for use in our local environment. We can go ahead and move that into a <code>development</code> block, and we need to add the <code>pg</code> gem to either <code>production</code> or the global block.</p>
+
+<p>``` ruby Gemfile
+source &ldquo;<a href="https://rubygems.org&quot;">https://rubygems.org&quot;</a></p>
+
+<p>ruby &lsquo;2.1.0&rsquo;</p>
+
+<p>gem &lsquo;bundler&rsquo;
+gem &lsquo;rake&rsquo;
+gem &lsquo;sinatra&rsquo;
+gem &lsquo;haml&rsquo;
+gem &lsquo;sequel&rsquo;</p>
+
+<p>group :production do
+  gem &lsquo;pg&rsquo;
+end</p>
+
+<p>group :development do
+  gem &lsquo;sqlite3&rsquo;
+end</p>
+
+<pre><code>
+Heroku sets `ENV['RACK_ENV']` to &quot;production&quot; for us, which means that the pg gem should get picked up the next time we deploy. Now we need to tell our app which database to use in which situation.
+
+One of the easiest places to make this decision is in Sinatra's `configure` block. I keep my local db in an environment variable called `LOCAL_DATABASE_URL`. This is where you use the environment variable heroku set for you when you set up your Postgres database; mine was called `HEROKU_POSTGRESQL_MAROON_URL`.
+
+``` ruby web.rb
+class App &lt; Sinatra::Base
+  configure :production do
+    Sequel.connect ENV['HEROKU_POSTGRESQL_MAROON_URL']
+  end
+
+  configure :development do
+    Sequel.connect ENV['LOCAL_DATABASE_URL']
+  end
+end
+</code></pre>
+
+<p>This works because the default environment is &ldquo;development.&rdquo; Test locally, and then we can deploy.</p>
+
+<pre><code class="language-bash">$ git push heroku master
+</code></pre>
+
+<p>And enjoy.</p>
+
+</div>
+</div>
+
+  <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

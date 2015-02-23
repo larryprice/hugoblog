@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Better testing in Go with gocheck &middot; Larry Price </title>
+
+  
+  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>Larry Price</h1>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+<div class="post">
+  <h1>Better testing in Go with gocheck</h1>
+  <span class="post-date">Tue, May 13, 2014</span>
+      <p>As a quick reminder, <a href="//golang.org/">golang</a> is a really fun programming language to use. It even includes <a href="//golang.org/doc/code.html#Testing">testing out of the box</a>! Unfortunately, this out-of-the-box testing framework isn&rsquo;t all that great. It lacks the syntactic sugar of mature frameworks like <a href="//rspec.info">rspec</a> or <a href="//code.google.com/p/googletest/">gtest</a>.</p>
+
+<p>Of course, there are alternatives. I found an open-source library (licensed with Simplified BSD) called <a href="//labix.org/gocheck">gocheck</a>.</p>
+
+<p>Gocheck, how do I love thee? Let me count the ways:</p>
+
+<ul>
+<li>Test fixtures</li>
+<li>Improved assertions</li>
+<li>Improved test output</li>
+<li>Sugar-coated syntax</li>
+<li>Test skipping</li>
+<li>Oh my</li>
+</ul>
+
+<p>As usual, it&rsquo;s time to guide you through a contrived example. Start by installing the package:</p>
+
+<pre><code class="language-bash">$ go get gopkg.in/check.v1
+</code></pre>
+
+<p>Let&rsquo;s see, what should we make&hellip; how about a tip calculating library? We should start by testing, because we&rsquo;re obsessed with TDD.</p>
+
+<p>Test #1: Returns 0 for free meal</p>
+
+<p>``` go calculator_test.go
+package cheapskate</p>
+
+<p>import (
+  &ldquo;testing&rdquo;
+  . &ldquo;gopkg.in/check.v1&rdquo;
+)</p>
+
+<p>// Hook up gocheck into the &ldquo;go test&rdquo; runner.
+func Test(t *testing.T) { TestingT(t) }</p>
+
+<p>type MySuite struct{}</p>
+
+<p>var _ = Suite(&amp;MySuite{})</p>
+
+<p>func (s *MySuite) TestReturns0ForFreeMeal(c *C) {
+  c.Assert(calculateTip(0.0), Equals, 0.0)
+}</p>
+
+<pre><code>
+Not quite as obvious as the internal testing framework. First we hook up gocheck into the &quot;go test&quot; runner. Then we create a test suite; ours is empty for now and called `MySuite`. We call `Suite` to intialize the test runner with our custom suite. We then write our first test to assert that calculating the tip returns a value equal to 0. All tests must be prefixed with the word &quot;Test&quot;. Now I'll write the implementation:
+
+``` go calculator.go
+package cheapskate
+
+func calculateTip(bill float64) float64 {
+  return 0.0
+}
+</code></pre>
+
+<p>Running the tests&hellip;</p>
+
+<pre><code class="language-bash">$ go test
+OK: 1 passed
+PASS
+ok    _/home/lrp/Projects/2014/gocheck-quick  0.003s
+</code></pre>
+
+<p>Woohoo! All passed. What happens if we write a failing test?</p>
+
+<p>``` go calculator_test.go
+&hellip;
+func (s *MySuite) TestReturns15PercentByDefault(c *C) {
+  c.Assert(calculateTip(100.0), Equals, 15.0)
+}</p>
+
+<pre><code>
+Results:
+
+``` bash
+lrp@cilantro:~/Projects/2014/gocheck-quick$ go test
+
+----------------------------------------------------------------------
+FAIL: calculator_test.go:19: MySuite.TestReturns15PercentByDefault
+
+calculator_test.go:20:
+    c.Assert(calculateTip(100.0), Equals, 15.0)
+... obtained float64 = 0
+... expected float64 = 15
+
+OOPS: 1 passed, 1 FAILED
+--- FAIL: Test (0.00 seconds)
+FAIL
+exit status 1
+FAIL  _/home/lrp/Projects/2014/gocheck-quick  0.003s
+</code></pre>
+
+<p>A nasty failure that one. I&rsquo;ll fix it and continue:</p>
+
+<p>``` go calculator.go
+package cheapskate</p>
+
+<p>func calculateTip(bill float64) float64 {
+  return .15 * bill
+}</p>
+
+<pre><code>
+I want to create a Setup method for my entire suite. I'll store some silly information there for information's sake. The minBill and maxBill variables will only be set when I first load the suite.
+
+``` go calculator_test.go
+package cheapskate
+
+import (
+  &quot;testing&quot;
+  . &quot;gopkg.in/check.v1&quot;
+)
+
+// Hook up gocheck into the &quot;go test&quot; runner.
+func Test(t *testing.T) { TestingT(t) }
+
+type MySuite struct{
+  minBill float64
+  maxBill float64
+}
+
+func (s *MySuite) SetUpSuite(c *C) {
+  s.minBill = 0
+  s.maxBill = 100
+}
+
+var _ = Suite(&amp;MySuite{})
+
+func (s *MySuite) TestReturns0ForFreeMeal(c *C) {
+  c.Assert(calculateTip(s.minBill), Equals, 0.0)
+}
+
+func (s *MySuite) TestReturns15PercentByDefault(c *C) {
+  c.Assert(calculateTip(s.maxBill), Equals, 15.0)
+}
+</code></pre>
+
+<p>What if I wanted to set some information at the start of each test? I&rsquo;ll log the current test number on the suite, updating it every time I run a test:</p>
+
+<p>``` go calculator_test.go
+package cheapskate</p>
+
+<p>import (
+  &ldquo;testing&rdquo;
+  . &ldquo;gopkg.in/check.v1&rdquo;</p>
+
+<p>&ldquo;fmt&rdquo;
+)</p>
+
+<p>// Hook up gocheck into the &ldquo;go test&rdquo; runner.
+func Test(t *testing.T) { TestingT(t) }</p>
+
+<p>type MySuite struct{
+  testNumber int
+}</p>
+
+<p>func (s *MySuite) SetUpTest(c *C) {
+  fmt.Println(s.testNumber)
+  s.testNumber += 1
+}
+&hellip;</p>
+
+<pre><code>
+Result:
+
+``` bash
+$ go test
+0
+1
+OK: 2 passed
+PASS
+ok    _/home/lrp/Projects/2014/gocheck-quick  0.004s
+</code></pre>
+
+<p>You can create tear down methods for suites and tests in the same manner, replacing the appropriate words above.</p>
+
+<p>There&rsquo;s loads of other cool stuff gocheck can do, I&rsquo;ve barely scratched the surface with what little experience I&rsquo;ve had using it. Like any testing framework, I&rsquo;m sure it has its advantages and disadvantages, but it sure beats the pants off the off-the-shelf framework Google includes with golang.</p>
+
+</div>
+</div>
+
+  <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

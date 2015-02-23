@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Moving from the MongoDB Ruby Driver to Mongoid &middot; Larry Price </title>
+
+  
+  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>Larry Price</h1>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+<div class="post">
+  <h1>Moving from the MongoDB Ruby Driver to Mongoid</h1>
+  <span class="post-date">Sat, Jan 5, 2013</span>
+      <p>This is Part 2 in a multi-part series to detail the creation of a &ldquo;simple&rdquo; project combining <a href="http://www.ruby-lang.org/">Ruby</a>, <a href="http://www.mongodb.org/">MongoDB</a>, <a href="http://rspec.info/">RSpec</a>, <a href="http://www.sinatrarb.com/">Sinatra</a>, and <a href="https://github.com/jnicklas/capybara">Capybara</a> in preperation for a larger-scale side project set to begin January 2013. For more in this series, see the <a href="/blog/categories/pokephile">Pokephile category</a>. Part 2 details refactoring code using the MongoDB Ruby driver to use Mongoid. The code for this side-project is located <a href="https://github.com/larryprice/Pokephile">on Github</a>.</p>
+
+<p>###What I&rsquo;ve Done</p>
+
+<p>In a <a href="/blog/2013/01/05/schemaless-databases-with-ruby-and-mongodb/">previous post</a>, I described creating a class that would populate a database with data scraped from the internet. I used the MongoDB Ruby driver to accomplish this. However, using the driver can be laborious and there are simpler ways. In this post, I&rsquo;m going to refactor the Populater class to use Mongoid.</p>
+
+<p>###Mongoid###</p>
+
+<p><a href="http://http://mongoid.org/en/mongoid/index.html">Mongoid</a> (pronounced mann-goyd) is an Object-Document Wrapper for Ruby. Using mongoid abstracts some of the database operations that must be performed when using the MongoDB Ruby driver. It comes in handy when using models in an MVC application. To install the Mongoid gem:</p>
+
+<pre><code>sudo gem install mongoid
+</code></pre>
+
+<p>###Refactoring###</p>
+
+<p>In populater.rb, we only inserted one structure of document into our &ldquo;pokemons&rdquo; collection. That makes this a great opportunity to use Mongoid. We remember that there were four fields in our document: number (string), name (string), image link (string), and types (array). Knowing this, we can create a model for this data:</p>
+
+<p>``` ruby project/pokemon.rb
+require &lsquo;mongoid&rsquo;</p>
+
+<p>class Pokemon
+    include Mongoid::Document</p>
+
+<pre><code>field :number, type: String
+field :name, type: String
+field :types, type: Array
+field :image, type: String
+</code></pre>
+
+<p>end</p>
+
+<pre><code>
+And that's it for our model. Although we specified the types in this case, it's not necessary if we want a looser definition of our model. Here's how we change our implementation file:
+
+``` ruby project/tools/populate/populater.rb
+#require 'mongo' #deleted
+require_relative '../../pokemon' #added
+require 'nokogiri'
+require 'open-uri'
+
+class Populater
+	#def initialize(db_name) #removed
+  def initialize #added
+      #@col = Mongo::Connection.new.db(db_name)[&quot;pokemons&quot;] #deleted
+      #@col.remove #deleted
+      Pokemon.delete_all #added
+      @data = Nokogiri::HTML(open(&quot;http://pokemon.wikia.com/wiki/List_of_Pok%C3%A9mon&quot;))
+  end
+
+  def add_pokemon(num_to_add)
+    @data.xpath(&quot;//table[@class='wikitable sortable']/tr&quot;).each do |row|
+        break if num_to_add &lt;= 0
+        dex_num = row.at_xpath('td/text()').to_s.strip
+        next if dex_num.nil? || dex_num.empty?
+        dex_name = row.at_xpath('td[2]/a/text()').to_s.strip
+
+        unless dex_num == &quot;000&quot;
+            type_1 = row.at_xpath('td[4]/a/span/text()').to_s.strip
+            type_2 = row.at_xpath('td[5]/a/span/text()').to_s.strip || row.at_xpath('td[5]/text()').to_s.strip
+            image_link = &quot;http://img.pokemondb.net/artwork/#{dex_name.downcase}.jpg&quot;
+        else
+            type_1 = row.at_xpath('td[4]/text()').to_s.strip
+            type_2 = row.at_xpath('td[5]/text()').to_s.strip
+            image_link = &quot;images/missingo.png&quot;
+        end
+
+        types = Array.new
+        types &lt;&lt; type_1 unless type_1.nil? || type_1.empty?
+        types &lt;&lt; type_2 unless type_2.nil? || type_2.empty?
+
+        #@col.insert({:number =&gt; dex_num, :name =&gt; dex_name, :types =&gt; types, :image =&gt; image_link}) #deleted
+        Pokemon.create {:number =&gt; dex_num, :name =&gt; dex_name, :types =&gt; types, :image =&gt; image_link} #added
+
+        num_to_add -= 1
+    end
+  end
+end
+</code></pre>
+
+<p>That one&rsquo;s easy. We deleted four lines and added 3. However, now you can see that the Populater does not have to deal with connecting to the database, it only has to know what model it wants to modify. So we&rsquo;ve removed some complexity from this file by no longer requiring the database name on initialization. However, that means that someone else has to be in charge of setting up the initial connection. In the overlying project, we want that someone else to be a controller. In our tests, we want that someone else to be our test file. So let&rsquo;s do it. We&rsquo;re going to start by adding a config section in our before:all block.</p>
+
+<p>``` ruby project/tools/test/spec/populater_spec.rb
+require_relative &lsquo;../../populate/populater&rsquo;
+#require &lsquo;mongo&rsquo; #removed
+require &lsquo;mongoid&rsquo; #added
+require_relative &lsquo;../../../pokemon&rsquo;</p>
+
+<p>describe Populater do
+    before:all do
+        Mongoid.configure do |config| #added
+            config.connect_to &lsquo;test&rsquo; #added
+        end # added
+        #@col = Mongo::Connection.new.db(&lsquo;test&rsquo;)[&ldquo;pokemons&rdquo;] # removed
+    end
+    &hellip;
+end</p>
+
+<pre><code>
+In doing this, we've set up any of our document models to use the 'test' database. Now we go through each test and replace the Mongo Ruby Driver syntax with Mongoid syntax, which is similar to Ruby's Array syntax.
+
+``` ruby project/tools/test/spec/populater_spec.rb
+...
+
+describe Populater do
+	...
+	before:each do
+		#@populater = Populater.new('test') #removed
+		@populater = Populater.new #added
+	end
+
+	describe &quot;#new&quot; do
+		it &quot;does not throw when creating instance&quot; do
+			#expect {Populater.new('test')}.to_not raise_error #removed
+			expect {Populater.new}.to_not raise_error #added
+		end
+
+		it &quot;takes one param and returns a Populater instance&quot; do
+			@populater.should be_an_instance_of Populater
+		end
+
+		it &quot;empties pokemon collection&quot; do
+			#@col.insert({:test =&gt; &quot;hi there&quot;}) #removed
+			#@col.find.count.should_not eql 0 #removed
+			#Populater.new('test') #removed
+			#@col.find.count.should eql 0 #removed
+			Pokemon.create #added
+			Pokemon.count.should eql 1 #added
+			Populater.new #added
+			Pokemon.count.should eql 0 #added
+		end
+	end
+	...
+end
+</code></pre>
+
+<p>The &lsquo;new&rsquo; tests are straightforward. We remove the usage of an input parameter to the Populater initializer. The only significant change we make is to the &ldquo;empties pokemon collection&rdquo; test. Here we replace the Mongo Ruby Driver syntax of inserting into a collection with Mongoid syntax of creating a Pokemon document. The &lsquo;create&rsquo; method inserts a document into the collection with the given values, or defaults if none are given. We also see that we can remove the &ldquo;find&rdquo; syntax completely and just use a &ldquo;count&rdquo; method on the document type.</p>
+
+<p>``` ruby project/tools/test/spec/populater_spec.rb
+&hellip;
+describe Populater do
+    &hellip;
+    describe &ldquo;#add_pokemon&rdquo; do
+        it &ldquo;adds 0 pokemon given 0&rdquo; do
+            @populater.add_pokemon 0
+            #@col.find.count.should eql 0 #removed
+            Pokemon.count.should eql 0 #added
+        end
+        &hellip;
+        it &ldquo;adds pokemon with a number&rdquo; do
+            @populater.add_pokemon 1
+            #@col.find.count.should eql 1 #removed
+            #@col.find.first[&lsquo;number&rsquo;].should_not be_nil #removed
+            Pokemon.count.should eql 1 #added
+            Pokemon.first[&lsquo;number&rsquo;].should_not be_nil #added
+    end
+      &hellip;
+    end
+end</p>
+
+<pre><code>
+The tests for adding 0, 1, and 2 documents to the collection are all very similar. The only change is to replace the Mongo Ruby Driver &quot;find.count&quot; syntax with the Mongoid &quot;count.&quot; The &quot;adds pokemon with a ____&quot; tests all undergo the same changes. I replace the &quot;.find.first&quot; statement with a simple &quot;.first&quot; to get the same meaning. So our Populater has been converted to use Mongoid instead of the Mongo Ruby Driver. Bully for us.
+
+There's one more change that would be nice to make before we hang up our hats. Configuring Mongoid using the .config syntax is okay, but it would be a lot nicer to keep all of our configuration in a file. We can create such a file called &quot;mongoid.yml&quot; and put some configuration information in it:
+
+``` yml project/mongoid.yml
+test:
+  sessions:
+    default:
+      database: test
+      hosts:
+        - localhost
+</code></pre>
+
+<p>This syntax is valid in Mongoid 3.x. This is a very simply configuration for our test environment. Now we can go back into our test file and change the &lsquo;before:all&rsquo; block:</p>
+
+<p><code>ruby project/tools/test/spec/populater_spec.rb
+...
+describe Populater do
+    before:all do
+        #Mongoid.configure do |config| #removed
+        #   config.connect_to 'test' #removed
+        #end # removed
+        Mongoid.load! '../../../mongoid.yml', 'test' #added
+    end
+    ...
+end
+</code></p>
+
+<p>The second parameter can be a string or a symbol. Now there&rsquo;s only one file to modify the environment configurations, and we&rsquo;re better off for it.</p>
+
+</div>
+</div>
+
+  <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

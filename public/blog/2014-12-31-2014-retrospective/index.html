@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> 2014 Retrospective &middot; Larry Price </title>
+
+  
+  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>Larry Price</h1>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+<div class="post">
+  <h1>2014 Retrospective</h1>
+  <span class="post-date">Wed, Dec 31, 2014</span>
+      <p>Happy New Year, dear reader.</p>
+
+<p>2014 was a fairly good year for me. I wrote a lot of code, read a lot of books, and published a lot of blog posts.</p>
+
+<p>###Things I got paid to do###</p>
+
+<p>2014 was a reaffirmation of career goals alongside the opportunities to work with several very different clients. In addition to working on cool stuff, I was promoted to Software Engineer 2. During the tail end of the year, I had the chance to work from home part of the week, which was a great experience. A sampling of my professional works this year:</p>
+
+<ul>
+<li>I wrapped up my time writing Qt/C++ for a touch-screen automated-guidance system embedded in heavy machinery. I spent the first two months of the year playing Tech Lead for a small team of misfits leaving the project during an organizational restructure. I had the opportunity to work directly with a project architect to redesign features and guide my fellow developers through the implementation.</li>
+<li>I worked on <a href="https://h2w.cc">Health2Wealth</a>, a ruby application created by some work friends to track Fitbit data and allow an administrator to award monetary rewards for reaching goals.</li>
+<li>I pitched, designed, and implemented a product called <a href="https://ollertapp.com">Ollert</a>, a Trello analysis tool written in ruby. Built during a 48-hour <a href="http://www.sep.com/labs/startupweekend/">SEP Startup Weekend</a>, I led a team of 6 to bring the project to fruition. SEP has fully embraced the product and I continue to work on <a href="/blog/2014/12/02/ollert-6-months-later/">improving it</a> when not on project work. We currently get about 300 sessions a month, and I frequently get emails from users thanking me, reporting bugs, or submitting feature requests.</li>
+<li>I became part of a team of developers working on a modern asset-tracking tool to replace an existing Microsoft Access tool. This was my introduction to C# programming with ASP.NET MVC. The project was short-lived for my team, but sparked my interests in RESTful APIs and Javascript.</li>
+<li>I worked on a rewrite of a huge WebForms e-commerce site. We created a hybrid site running some pages in the WebForms engine and all of our new pages in fresh MVC. We worked with a high-fidelity prototype created by an outside company, which proved at times invaluable and at other times a thorn in our sides. We worked directly with members of the client on-site, who were able to provide us with great insights into the legacy system and helped us work out unclear requirements.</li>
+<li>In December, I had some fun working on a solo proof-of-concept with a new client. This client is planning to do a rewrite of a large application in 2015 and wanted to do some investigation into rules engines, particularly those using Java. I worked through a few libraries and landed on JBoss Drools, an open-source rules engine with an integrated frontend called KIE Workbench. It&rsquo;s been a while since I wrote any Java code, and I&rsquo;d certainly never deployed any Java web applications. After two weeks of work, I was able to launch a web application using Spring MVC and integrate a KIE Workbench instance running on the same Azure virtual machine. The application is able to pick up rule changes from the Workbench automatically, without recompilation or redeployment.</li>
+</ul>
+
+<p>###Of my own volition###</p>
+
+<p>I had a lot of fun coding ideas this year, most of them lost to the raptures of time. A few items of note:</p>
+
+<ul>
+<li>BYO Game of Life (<a href="http://byo-game-of-life.herokuapp.com">http://byo-game-of-life.herokuapp.com</a>)
+
+<ul>
+<li>My most recent release - a frontend web client allowing the user to give a URL pointing to a Game of Life backend. I created a <a href="https://github.com/larryprice/game-of-life-impl">Go implementation</a> as part of my presentation for the inaugural <a href="http://www.meetup.com/Indy-Golang/events/219199103/">Indy Golang meetup</a>.</li>
+</ul></li>
+<li>3rd Day Organics
+
+<ul>
+<li>We finally finished version 1.0 of 3DO, a custom e-commerce website for a co-worker&rsquo;s spouse&rsquo;s cooperative food program. We built the whole application from scratch; in hindsight, we should have set something up using <a href="https://spreecommerce.com">spree</a> or another commerce framework.</li>
+</ul></li>
+<li>Fortune Cookie API (<a href="http://fortunecookieapi.com">http://fortunecookieapi.com</a>)
+
+<ul>
+<li>A fairly silly API written using NodeJS to get data associated with fortune cookies: fortunes, lessons in Chinese, and lottery numbers. I implemented a simple application to access the data at <a href="http://demo.fortunecookieapi.com">http://demo.fortunecookieapi.com</a>.</li>
+</ul></li>
+<li>mongoose-simple-random (<a href="https://www.npmjs.com/package/mongoose-simple-random">https://www.npmjs.com/package/mongoose-simple-random</a>)
+
+<ul>
+<li>My foray into NodeJS packages - this is a plugin which adds <code>findRandom</code> and <code>findOneRandom</code> methods to any mongoose schema. Used extensively in the Fortune Cookie API.</li>
+</ul></li>
+<li>Ollert (<a href="https://ollertapp.com">https://ollertapp.com</a>)
+
+<ul>
+<li>I know I listed it under a paid project, but I was putting over 8 hours a week into Ollert between the time it was originally built and the time I was paid to work on it. It&rsquo;s my big pet project, and I&rsquo;m proud of the things that it and I have accomplished. Trello has noted our accomplishments, validating all the hard work and long hours I&rsquo;d sunk into it.</li>
+</ul></li>
+</ul>
+
+<p>###Book It - Where&rsquo;s my free pizza?###</p>
+
+<p>I think that I read 11 books this year. See my <a href="/blog/books">books section</a> for a quick check of which books you should be reading. Some of my favorites:</p>
+
+<ul>
+<li><a href="http://amzn.to/14coDAd">Rework</a> and <a href="http://amzn.to/1rzTsZH">Remote</a> by Jason Fried</li>
+<li><a href="http://amzn.to/14coIUG">Punished by Rewards</a> by Alfie Kohn</li>
+<li><a href="http://amzn.to/1tAMWU0">The XX Factor</a> by Alison Wolf</li>
+<li><a href="http://amzn.to/1Ai3mBk">The Lean Startup</a> by Eric Ries</li>
+<li><a href="http://amzn.to/1x4jaXh">Made to Stick</a> by Chip Heath</li>
+</ul>
+
+<p>###This blog o&rsquo; mine###</p>
+
+<p>In reality, I put quite a bit of work into this blog.</p>
+
+<p>I published <strong>24 blog posts in 2013</strong>; I published <strong>37 in 2014</strong> (including this one).</p>
+
+<p>I had <strong>1700 sessions and 2420 pageviews in 2013</strong>. I did almost that well in a single month at the end of 2014. I had <strong>10,194 sessions and 12,997 pageviews in 2014</strong> (as of 10:46AM EST <sup>12</sup>&frasl;<sub>31</sub>/2014).</p>
+
+<p>In February, I set up a custom domain at &ldquo;larry-price.com&rdquo;. Since then, <a href="/blog/2014/12/14/migrating-an-octopress-blog-from-github-pages-to-openshift/">I moved from Github Pages to OpenShift</a> and added SSL.</p>
+
+<p>I integrated Google AdSense this summer. Full disclosure: I&rsquo;ve &ldquo;earned&rdquo; $3.78 in the past 6 months. From my perspective, these ads are simply an experiment to see how I could potentially monetize this blog. Another experiment was posting Amazon Associate links with my <a href="/blog/categories/write-ups">write-up posts</a>; I&rsquo;ve gotten 4 clicks and 0 buys.</p>
+
+<p>In an attempt to keep people on the site &ldquo;longer&rdquo;, I added a Related Posts section above the Comments - it makes the blog take forever to generate and has had negligible results. It turns out users are more likely to click the related tags than the related posts. I intend to remove the Related Posts section soon (it may not be there when you read this).</p>
+
+<p>###Hello, 2015###</p>
+
+<p>As I enter the new year, I want to be able to look back next year at a set of naïve goals and wonder why I ever thought they were practical. So here they are:</p>
+
+<ul>
+<li>Contribute meaningful code to several open source projects not created by me</li>
+<li>Read at least 1 book per month</li>
+<li>Attend more meetups
+
+<ul>
+<li>As a note, I am in fact <em>starting</em> a <a href="http://www.meetup.com/Indy-Golang">meetup for Google Go in Indianapolis</a> starting on January 6, 2015. This goal may actually be attainable!</li>
+</ul></li>
+<li>&gt;3000 sessions/month on this blog (currently ~1400)</li>
+<li>Become pro at using chopsticks
+
+<ul>
+<li>I&rsquo;m already pretty good, but by the end of 2015 I will be eating pizza with chopsticks</li>
+</ul></li>
+<li>More effectively conceal emotions when working with peers and clients
+
+<ul>
+<li>Use this energy and passion to put the situation in my control instead</li>
+</ul></li>
+<li>Work remotely more and better</li>
+<li>Obtain more technical leadership roles on projects
+
+<ul>
+<li>Not entirely in my control, I know, but I&rsquo;m hoping that 2015 is a year where I&rsquo;m able to demonstrate both my technical skills and proclivity to command</li>
+</ul></li>
+</ul>
+
+<p>###Goodbye, 2014###</p>
+
+<p>Thanks for reading. Have you thought about doing one of these yourself? You really should! There&rsquo;s lots of help out there if you need it - you can even reach out to me, if you like.</p>
+
+<p>As always, may your compile times be short and your error messages meaningful.</p>
+
+</div>
+</div>
+
+  <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
