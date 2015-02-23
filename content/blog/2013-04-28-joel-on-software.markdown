@@ -13,11 +13,11 @@ categories: write-ups
 >
 > -- Joel Spolsky, "Things you Should Never Do, Part I"
 
-###The Gist
+### The Gist
 
 [_Joel On Software_](http://www.amazon.com/gp/product/1590593898/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1590593898&linkCode=as2&tag=larpriandthee-20) is a collection of blog posts by the great [Joel Spolsky](http://www.joelonsoftware.com/). He has risen to Internet Fame after his experience working for Microsoft and eventually starting his own company. The "chapters" (blog posts) provide insight into picking a language for your codebase, recruiting engineers, managing programmers, fixing bugs, paper prototyping, and how Microsoft works.
 
-###My Opinion
+### My Opinion
 
 Joel Spolsky is a god sent down from Mount Olympus to calmly explain to us why we are sometimes terrible people and then goes on to tell us it's okay and we should learn from our past. I loved this book, especially since I read it at the same time as some really terrible books (namely [The Inmates are Running the Asylum](http://www.amazon.com/gp/product/0672326140/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0672326140&linkCode=as2&tag=larpriandthee-20) and [Enterprise Games](http://www.amazon.com/gp/product/1491017082/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1491017082&linkCode=as2&tag=larpriandthee-20); I do not recommend these books).
 
@@ -29,7 +29,7 @@ Spolsky talks about the commodity market of software/hardware. To sum it up, the
 
 Some of the weaker parts of the book are when Spolsky talks about .NET. I'm not going to go into detail, but when he wrote these posts, .NET was just entering the market. Spolsky starts by bashing .NET for making all the old Windows API code unusable, but in later blog posts falls hard for .NET and starts thinking about ways to rewrite his entire life in .NET.
 
-###Who Would Like This
+### Who Would Like This
 
 I believe that programmers are the main audience for this book, and I am a programmer who loved reading it. Spolsky does not talk down to the reader, nor does he dumb down the nitty-gritty technical blog posts.
 

@@ -6,7 +6,7 @@ comments: true
 categories: golang web
 ---
 
-###A golang web app tutorial
+### A golang web app tutorial
 
 I did some work with [Google Go](http://golang.org/) recently and had the chance to follow their great tutorial _[Writing Web Applications](http://golang.org/doc/articles/wiki/)_. The tutorial is pretty simple: use the Go http library to create a very simple wiki-style site. I like this tutorial a lot because there's not too much hand-holding, but they do eventually hand you the [final code listing](http://golang.org/doc/articles/wiki/final.go). Then the good people at Google give you the tall task of completing the following 'Other tasks' without solutions:
 
@@ -18,7 +18,7 @@ I did some work with [Google Go](http://golang.org/) recently and had the chance
 
 This is what I'd like to go over. I scoured the web and didn't have much luck finding solutions to these issues. That would be okay if they were all trivial, but the final step is not straightforward. I'm going to assume you've already gone over the tutorial. You can see [my repository on Github](https://github.com/larryprice/gowiki/), and I have included links to the appropriate commits in the code sections of this blog post.
 
-####Store templates in tmpl/ and page data in data/
+#### Store templates in tmpl/ and page data in data/
 
 The tutorial originally has the developer store all pages in the project directory. Every time a user made a new wiki page, a new file would creep into the project directory. All HTML templates were also stored in the project directory.
 
@@ -41,7 +41,7 @@ func (p *Page) save() error {
 }
 ```
 
-####Add a handler to make the web root redirect to /view/FrontPage
+#### Add a handler to make the web root redirect to /view/FrontPage
 
 All we're going to do is create a simple handler called `rootHandler` that redirects to a new page called `FrontPage`. We then add it in the `main` function. The tutorial had us wrap out handlers in a function call to take some special actions, but that wrapper would mess up our handler in its current form. So I just `Redirect` to the `view` handler, which will then decide whether to view or create the FrontPage.
 
@@ -59,7 +59,7 @@ func main() {
   http.HandleFunc("/save/", makeHandler(saveHandler))
 ```
 
-####Spruce up the page templates by making them valid HTML and adding some CSS rules.
+#### Spruce up the page templates by making them valid HTML and adding some CSS rules.
 
 I took my old `.html` files and put them through [a validator](http://validator.w3.org/#validate_by_input). Making them valid only involved adding `DOCTYPE`, `html`, and `head` tags. The `head` tag needed `meta`, and `title` tags and we were valid. I've shown `view.html` below.
 
@@ -78,7 +78,7 @@ I took my old `.html` files and put them through [a validator](http://validator.
 +</html>
 ```
 
-####Implement inter-page linking by converting instances of \[PageName\]
+#### Implement inter-page linking by converting instances of \[PageName\]
 
 Converting [PageName] to a hyperlink was a bit more complicated than expected. I originally just tried to run the string through `ReplaceAllFunc` and replace all instance of [PageName] with an equivalent hyperlink. This does not work because we use Go's `ExecuteTemplate` method to render our template. `ExecuteTemplate` escapes any HTML that we give it to prevent us from displaying unwanted HTML. Getting around this was the fun part, because I want the benefit of escaped HTML while still having the ability to substitute my own HTML.
 

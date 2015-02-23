@@ -14,13 +14,13 @@ __Chad Fowler__
 
 ------
 
-###The Gist###
+### The Gist###
 
 This book tells the story of Chad Fowler (no relation to [Martin Fowler][mf]). Fowler got himself into a software development slump and was able to turn it around and rejuvinate his passion for his career. Much of the book revolves around how to keep oneself engaged with one's work and how to determine when it's time to shake things up.
 
 [mf]: http://martinfowler.com/
 
-###My Feelings###
+### My Feelings###
 
 I read this book in Summer 2012 and did a mediocre write-up on my old blog, so I've decided to quickly redo the write-up from scratch using my new format.
 
@@ -34,6 +34,6 @@ Fowler also talks about moving jobs if you're unhappy, noting that the new world
 
 The coolest parts of the book were the personal stories of several high-tech big-wigs. The silliest parts were the 'Act On It' sections. The 'Act On It' sections described how to implement some of the methods detailed in the book, but they often seemed obvious and unnecessary to me.
 
-###Who Would Like This###
+### Who Would Like This###
 
 This book can offer a lot to someone who wants to revitalize their career after getting in a rut. It may also be able to serve as a guide to preventing yourself from getting in a rut. As a recent college grad with many of my dreams still alive, I only found a moderate amount of honey in this beehive. An interesting read, but maybe not entirely relevant to fresh faces.

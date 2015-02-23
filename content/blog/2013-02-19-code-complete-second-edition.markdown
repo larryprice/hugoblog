@@ -9,13 +9,13 @@ categories: write-ups non-technical
 > Design is a process of carefully planning small mistakes in order to avoid making big ones.
 > -- Steve McConnell
 
-###The Gist
+### The Gist
 
 _[Code Complete Second Edition][cc]_ by Steve McConnell is the ultimate programmer's handbook, though certainly not a pocket guide considering its massive 850+ page size. This book contains a seemingly endless amount of information regarding the state of programming circa 2004. Topics range from extremely technical, such as making code readable above making it clever, to office politics, such as dealing with non-technical managers.
 
 [cc]: http://www.amazon.com/gp/product/0735619670/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0735619670&linkCode=as2&tag=larpriandthee-20
 
-###My Opinion
+### My Opinion
 
 McConnell has written an encyclopedia for software development. In doing so, the book sometimes suffers from the "wide as an ocean, shallow as a puddle" complex. Nonetheless, the book holds an incredible amount of information that I found refreshing to see in print.
 
@@ -36,6 +36,6 @@ This is where I will note that _Code Complete Second Edition_ is a book publishe
 [pypl]: https://sites.google.com/site/pydatalog/pypl/PyPL-PopularitY-of-Programming-Language
 [mp]: http://en.wikipedia.org/wiki/Microsoft_Press
 
-###Who Would Like This
+### Who Would Like This
 
 This book would be nice required reading for students. Given the length and technical depth, it's practically a textbook. Developers a few years out of university would still enjoy this text, but some topics are so obvious or overdone that many readers may start skipping chapters. If a developer knew of precisely the area he or she wanted to improve, then said developer could likely benefit from perusing a chapter of this book covering that topic.

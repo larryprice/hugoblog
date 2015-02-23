@@ -1,100 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>On the Futility of Man and Trying to Divide a Sinatra App into Separate Controllers &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> On the Futility of Man and Trying to Divide a Sinatra App into Separate Controllers &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">26 Aug 2013, 22:35</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>On the Futility of Man and Trying to Divide a Sinatra App into Separate Controllers</h1>
-  <span class="post-date">Mon, Aug 26, 2013</span>
-      <p>Oh, <a href="http://www.sinatrarb.com/">Sinatra</a>. You&rsquo;re oh-so-very dear to me. You made it so easy for me to write my <a href="http://capitalpunishment.herokuapp.com">first</a> <a href="http://pokephile.herokuapp.com">web</a> apps. All I had to do was write a couple routes and throw together a few HTML-like files and I had a web app. I used pattern matching to reduce the web-facing code for <a href="https://github.com/larryprice/CapitalPunishment">Capital Punishment</a> from ~500 lines of code to &lt;100 lines of code. You are perfect for writing small-time web applications.</p>
+                        <a href="http://localhost:1313/blog/2013-08-26-on-the-futility-of-man-and-trying-to-divide-a-sinatra-app-into-separate-controllers/" class="post-title">On the Futility of Man and Trying to Divide a Sinatra App into Separate Controllers</a>
 
-<p>But what about large web applications? What about a web app that has normal users and admin users, makes lots of database reads and writes (my previous apps only did reads from a user-facing perspective), and has to be able to show the history of everything, forever, to the authorized users who request it?</p>
-
-<p>You see, Sinatra is kind of an <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC framework</a>, but not exactly. In Sinatra, you have Views (your HTML inter-mixed with Ruby code in your desired DSL) and you have Controllers (each of your routes). When a database is involved, you can use something like <a href="https://github.com/bmizerany/sinatra-activerecord">ActiveRecord</a> or <a href="http://mongoid.org/en/mongoid/index.html">Mongoid</a> or <a href="http://datamapper.org/">DataMapper</a> and you have yourself Models.</p>
-
-<p>So every route is kind of a Controller. Every. Route. In Capital Punishment, there were once 8 routes (there are now 7). In the project I&rsquo;ve been working on recently, there are currently 56 routes. 56 routes in the language described above means I kind of have 56 controllers.</p>
-
-<p>That&rsquo;s been pretty overwhelming, especially since the traditional way of creating routes in Sinatra is to shove them all in the same file. There are a few ways I could think of to address this. The way we chose six months ago (for better or worse) was found <a href="http://stackoverflow.com/questions/5877000/what-is-a-controller-in-sinatra">on StackOverflow</a>, and involves creating a bunch of different files where you shove all related routes. So you get this situation:</p>
-
-<p>``` ruby app.rb
-class App &lt; Sinatra::Base
-end</p>
-
-<p>require_relative &lsquo;controllers/helpers&rsquo;</p>
-
-<p>Dir.glob(&ldquo;#{File.dirname(<strong>FILE</strong>)}/controllers/*.rb&rdquo;).each do |file|
-  require file.chomp(File.extname(file))
-end</p>
-
-<p>class App
-  get &lsquo;/&rsquo; do
-    erb :home
-  end
-end</p>
-
-<pre><code>
-``` ruby controllers/reports_controller.rb
-class App
-  get '/reports/user_bills' do
-    erb :user_bills_report
-  end
-  ...
-end
-</code></pre>
-
-<p>And so on and so forth. This works fine for a while, but we&rsquo;ve ended up with 13 &ldquo;controller&rdquo; files, many of which are not trivial. This also makes the App class quite large since its controllers handle most of the logic for the app. This also doesn&rsquo;t enforce any kind of URL-naming logic, so if a developer is working hard (s)he may create both <code>/reports/user_bills</code> and <code>user_info_reports</code> without realizing the inconsistency (s)he just injected into the system.</p>
-
-<p>In hindsight, this method is not perfect. I think that the Rails method of individual controllers is significantly better for large apps. Some people have been using other methods for trying to make Sinatra more MVC, such as <a href="https://github.com/jorrizza/sinatra-mvc">sinatra-mvc</a>. To be frank, sinatra-mvc pretty much does the same thing we&rsquo;ve done, but with more structure.</p>
-
-<p>I think what I&rsquo;ve learned is that you should use a tool for its intended purpose. Sinatra was written to quickly create web apps in Ruby with minimal effort. Once you have more than 10-15 routes, you should reconsider whether your app can still be called &ldquo;minimal effort.&rdquo; Sinatra may fly you to the moon, but you&rsquo;re unlikely to see what spring is like on Jupiter or Mars.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

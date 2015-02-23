@@ -1,90 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Code Complete Second Edition &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> Code Complete Second Edition &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">19 Feb 2013, 22:38</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>Code Complete Second Edition</h1>
-  <span class="post-date">Tue, Feb 19, 2013</span>
-      <blockquote>
-<p>Design is a process of carefully planning small mistakes in order to avoid making big ones.
-&ndash; Steve McConnell</p>
-</blockquote>
+                        <a href="http://localhost:1313/blog/2013-02-19-code-complete-second-edition/" class="post-title">Code Complete Second Edition</a>
 
-<p>###The Gist</p>
-
-<p><em><a href="http://www.amazon.com/gp/product/0735619670/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0735619670&amp;linkCode=as2&amp;tag=larpriandthee-20">Code Complete Second Edition</a></em> by Steve McConnell is the ultimate programmer&rsquo;s handbook, though certainly not a pocket guide considering its massive 850+ page size. This book contains a seemingly endless amount of information regarding the state of programming circa 2004. Topics range from extremely technical, such as making code readable above making it clever, to office politics, such as dealing with non-technical managers.</p>
-
-<p>###My Opinion</p>
-
-<p>McConnell has written an encyclopedia for software development. In doing so, the book sometimes suffers from the &ldquo;wide as an ocean, shallow as a puddle&rdquo; complex. Nonetheless, the book holds an incredible amount of information that I found refreshing to see in print.</p>
-
-<p>The use of the term &ldquo;construction&rdquo; to refer to coding throughout the book is an apt analogy for McConnell&rsquo;s views on the world of software development. Before beginning construction, a team should have a plan. Construction requires a solid base. While constructing a project, individuals should ensure that anyone else could look at their part of the project and figure out what&rsquo;s happening. Working with a partner often improves quality. People doing construction should test their work to ensure the integrity of their product. Redoing lower levels causes a lot of pain. The team is unlikely to hit the original due date. Etc, etc.</p>
-
-<p>Many things in this book go directly against what I was taught in at university. McConnell recites a quote several times in the book:</p>
-
-<blockquote>
-<p>Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.
-&ndash; Brian Kernighan</p>
-</blockquote>
-
-<p>At university, we&rsquo;re taught all the secrets of writing clever code: pointer manipulation, recursion, inappropriate variable reuse, and others. We were also never taught to plan ahead (&hellip;besides flowcharts, which were never required) or test, both of which McConnell highly recommends as necessary steps in software development. It&rsquo;s no wonder my programs took so long to debug! Of course, I&rsquo;ve learned to perform these tasks naturally while working as a Real Life Programmer. Reading this book is likely more helpful than taking the first few semesters of programming at university.</p>
-
-<p>A small issue I had was a wishy-washy attitude towards comments. In one chapter, McConnell describes having minimal comments in a code and keeping it mostly self-documenting. He then goes on to show all kinds of different, horrifying comments and justifies why they are sometimes okay.</p>
-
-<p>This is where I will note that <em>Code Complete Second Edition</em> is a book published by <a href="http://en.wikipedia.org/wiki/Microsoft_Press">Microsoft Press</a>. I was often surprised by McConnell&rsquo;s adamance that Visual Basic is the most popular programming language at the time of publishing. Even circa 2004 (the year this book was published), the <a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html">Tiobe index</a> shows VB behind Java, C, and C++. The <a href="https://sites.google.com/site/pydatalog/pypl/PyPL-PopularitY-of-Programming-Language">PyPl index</a> also shows VB behind Java, PHP, C, and C++ in 2004. For the record, VB is a silly language.</p>
-
-<p>###Who Would Like This</p>
-
-<p>This book would be nice required reading for students. Given the length and technical depth, it&rsquo;s practically a textbook. Developers a few years out of university would still enjoy this text, but some topics are so obvious or overdone that many readers may start skipping chapters. If a developer knew of precisely the area he or she wanted to improve, then said developer could likely benefit from perusing a chapter of this book covering that topic.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

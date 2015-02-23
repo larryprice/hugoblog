@@ -20,7 +20,7 @@ A short list of my favorite things from this year's AgileIndy:
 
 Good times. Personally, I found the first half of the day to be superior to the afternoon. I'm not sure if it was the speakers or if I'm just a morning person, but I'm much more interested in discussing what the morning speakers had to say.
 
-###The Dude
+### The Dude
 
 > We've got hard problems to solve, we don't need aphorisms, we don't need truisms.
 > -- David Hussman
@@ -31,7 +31,7 @@ Hussman talked about "process mass," or the weight that you carry as you gain mo
 
 Speaking of ScrumMasters (and Product Owners and Tech Leads for that matter), the Dude wants us to think critically about these roles. Why are Scrum Masters and Tech Leads in meetings all day? A Tech Lead mosies into standup in the morning just to say, "Yesterday I was in meetings all day, today I'm in meetings all day, no blockers." "Somehow [we've] bonded the process to the people," using process to hold team members hostage. We've found ourselves turning Agile into a bloated mess, and we're in need of people to relieve the pressure.
 
-###Estimation
+### Estimation
 
 During the first break-out session, [Steve Vance](//vance.com/) talked about estimation, one of my favorite topics to complain about.
 
@@ -41,7 +41,7 @@ I mentioned hours in the above paragraph as a unit of estimation. This is a part
 
 T-shirt sizing or story points should be able to alleviate these problems, but we have to be vigilant not to concretely define these terms. Estimates should always be relative to yesterday's weather and not based on real time frames. Once you've defined a 5-point story as taking exactly 5 days, you've destroyed the whole system and you might as well start estimating in hours again.
 
-###Anti-fragility
+### Anti-fragility
 
 [Si Alhir](//salhir.wordpress.com) discussed the principles of "anti-fragility" during the pre-lunch session. Anti-fragility is a post-Agile concept. That's right: _post-Agile_. I know you were just getting used to Agile, but it seems that we've created a monster that's getting harder and harder to control. Teams find themselves saying "They're not Agile, we're Agile" when describing the pitfalls of other teams.
 
@@ -51,7 +51,7 @@ So what is anti-fragility? It's easier to define in relative terms. Traditional 
 
 "The most fragile thing in the Agile world is teams," Si insists. "Consistent, co-located teams." Teams should be able to be disbanded and created at-will or "just in time" as the need arises. Teams are created to attack "focal points," or areas that need attention right away. This is an especially hard pill to swallow, since many of us like the familial feeling that comes with long-term teams. Not to mention the nightmares of billing if you're a consulting company.
 
-###Conclusion
+### Conclusion
 
 There were a few other speakers at the conference, but none hit quite as close to home as the three I've discussed. Overall a very interesting conference and a very fun experience. I'm excited to think about these ideas and I'd like to attempt to use some of them to make my teams more efficient and maybe even a little happier. It looks like the general flow is to move away from massive amounts of process, working more like Lean Startup or Anti-fragile teams.
 

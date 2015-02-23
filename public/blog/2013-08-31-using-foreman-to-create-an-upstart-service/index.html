@@ -1,107 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Using Foreman to Create an Upstart Service &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> Using Foreman to Create an Upstart Service &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">31 Aug 2013, 17:05</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>Using Foreman to Create an Upstart Service</h1>
-  <span class="post-date">Sat, Aug 31, 2013</span>
-      <p>I just finished my first attempt at deploying a web app to run automatically in the background on a friend&rsquo;s server. Pretty easy, really. The first thing I did was install <a href="https://github.com/ddollar/foreman">foreman</a>. Assuming you have ruby and rubygems installed:</p>
+                        <a href="http://localhost:1313/blog/2013-08-31-using-foreman-to-create-an-upstart-service/" class="post-title">Using Foreman to Create an Upstart Service</a>
 
-<pre><code class="language-bash">$ sudo gem install foreman
-</code></pre>
-
-<p>Next I needed to give foreman the commands to start my app. I created a file in the root of my project directory called &lsquo;Procfile&rsquo; and gave it the steps I would run to start my app manually. For the sake of simplicity, let&rsquo;s say I run my app pretty barebones:</p>
-
-<p>``` bash Procfile
-web: bundle exec rackup</p>
-
-<pre><code>
-Now when I run `foreman start`, foreman will use [Bundler](http://bundler.io/) to execute rackup with the correct gems in my Gemfile. Now exporting upstart config files is pretty easy.
-
-``` bash
-$ sudo foreman export upstart --app=MyApp --user=root /etc/init
-</code></pre>
-
-<p>That command creates the .conf files needed for upstart to control the service called &lsquo;MyApp&rsquo; as the user &lsquo;root.&rsquo; It puts all the .conf files in <code>/etc/init</code> (which is where Ubuntu puts such things) and will create a default log directory in <code>/var/log/MyApp</code>. Now I can control my service by running <code>service MyApp start</code>, <code>service MyApp stop</code>, <code>service MyApp restart</code>, and <code>service MyApp status</code>. Hooray for me.</p>
-
-<p>But I need to run my app in two ways: in dev mode on a local port with my dev database, and I need to run it in production mode using port 80 and the production database. I&rsquo;ve also heard that using <a href="https://en.wikipedia.org/wiki/WEBrick">webrick</a> (the default server installed with rackup) is great for develpment, but I should be using something else for my production server. So I made some config files for foreman:</p>
-
-<p>``` bash development.env
-RACK_ENV=development
-PORT=9292
-SERVER=rackup</p>
-
-<pre><code>
-``` bash production.env
-RACK_ENV=production
-PORT=80
-SERVER=unicorn
-</code></pre>
-
-<p>And I change my Procfile to:</p>
-
-<p>``` bash Procfile
-web: bundle exec $SERVER -p $PORT -E $RACK_ENV</p>
-
-<pre><code>
-Ridiculously configured. Now when I run `foreman start`, it will error out. I need to specify my environment file:
-
-``` bash
-$ foreman start -e production.env
-</code></pre>
-
-<p>Now foreman will use Bundler to startup the server specified in <code>$SERVER</code>, run the app on port <code>$PORT</code> (-p), and will pass through the environment listed as <code>$RACK_ENV</code> to my application (-E), allowing my app to do whatever configuration it does given the current environment. Power to the people.</p>
-
-<p><a href="http://michaelvanrooijen.com/articles/2011/06/08-managing-and-monitoring-your-ruby-application-with-foreman-and-upstart/">I found that this guy</a> does a lot more complicated stuff with Foreman, if you need more.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

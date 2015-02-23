@@ -111,6 +111,6 @@ I use `foreman` to start my application from the given directory. I tell Docker 
 
 I'm going to stop there for now. In order to get Ollert working properly, I also need to [link a Mongo database](http://docs.docker.com/userguide/dockerlinks/) and change some environment variables in my application, but those are relatively easy tasks.
 
-###Is it worth it?###
+### Is it worth it?###
 
 The only conclusion is a definite maybe. Docker is definitely pretty cool. It may be able to help you deploy custom applications easier; for Ollert, it feels like overkill. There is a lot of overhead in downloading core versions of different operating systems, and I already find myself itching to clean up all the leftover Docker images/containers on my machine I used once and never again. After getting the Docker development out of the way (building and testing a Dockerfile), you may save yourself some time in the future if you have to change hosting services or CI environments. Try it out! It's a pretty neat concept and definitely worth your attention in 2015.

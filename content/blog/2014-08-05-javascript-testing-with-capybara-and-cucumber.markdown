@@ -10,7 +10,7 @@ In the past, I had written off testing the Javascript in my [Sinatra](http://www
 
 For this post, I assume you already have a capybara-cucumber project set up. If you need help setting up your first tests, consider checking out [some of my other blog posts](/blog/categories/capybara/) on the subject.
 
-####Selenium
+#### Selenium
 
 Selenium is the default Javascript driver for capybara. To install either run `gem install selenium-webdriver` or toss `selenium-webdriver` into your `Gemfile` and run `bundle install`.
 
@@ -79,7 +79,7 @@ Scenario: Correct text is displayed with Javascript enabled
 
 Assuming there is some Javascript activated by clicking "Where are they?!" that displays the text "I'm Batman.", both of the above scenarios will pass. This is because none of the Javascript will run in the first scenario, so the text will not be displayed. In the second scenario, Capybara knows to use the webdriver we set up previously when it sees the `@javascript` tag.
 
-####Poltergeist
+#### Poltergeist
 
 [Poltergeist](https://github.com/teampoltergeist/poltergeist) is the first "headless" web driver I tried. Usage is mostly identical to usage for Selenium, so I'll focus on installation here.
 
@@ -110,7 +110,7 @@ end
 
 Now your Javascript tests should be running using the Poltergeist webdriver. Since Poltergeist is truly headless, your tests will run much faster than they did while using Selenium, but you won't be able to see what's going on while your tests run. There are some slight syntactic differences between the way Poltergeist and Selenium handles separate windows, but other than that they are extremely similar.
 
-####Webkit
+#### Webkit
 
 [Capybara-webkit](https://github.com/thoughtbot/capybara-webkit) is where I eventually landed for running my own tests, after having issues accessing other windows with Poltergeist. Capybara-webkit is also headless and relies on `QtWebKit` to render pages. So, for starters, you're going to have to install `qtwebkit`. This has a varied degree of difficulty depending on which operating system you're using, but I didn't have too many problems in Ubuntu once I figured out which library I needed. For help, check [the guide](https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit). On my machine:
 

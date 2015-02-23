@@ -1,198 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Javascript testing with Capybara and Cucumber &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> Javascript testing with Capybara and Cucumber &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">05 Aug 2014, 06:40</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>Javascript testing with Capybara and Cucumber</h1>
-  <span class="post-date">Tue, Aug 5, 2014</span>
-      
+                        <a href="http://localhost:1313/blog/2014-08-05-javascript-testing-with-capybara-and-cucumber/" class="post-title">Javascript testing with Capybara and Cucumber</a>
 
-<p>In the past, I had written off testing the Javascript in my <a href="http://www.sinatrarb.com/">Sinatra</a> apps as being not worth the pain of setting up. That was pretty naïve of me, as setting up web drivers in <a href="https://github.com/jnicklas/capybara">Capybara</a> is actually pretty easy.</p>
-
-<p>For this post, I assume you already have a capybara-cucumber project set up. If you need help setting up your first tests, consider checking out <a href="/blog/categories/capybara/">some of my other blog posts</a> on the subject.</p>
-
-<p>####Selenium</p>
-
-<p>Selenium is the default Javascript driver for capybara. To install either run <code>gem install selenium-webdriver</code> or toss <code>selenium-webdriver</code> into your <code>Gemfile</code> and run <code>bundle install</code>.</p>
-
-<p>If you want to run all of your tests with Javascript enabled, you can change the default driver in your <code>env.rb</code> file. For example:</p>
-
-<p>``` ruby env.rb
-ENV[&lsquo;RACK_ENV&rsquo;] = &lsquo;test&rsquo;</p>
-
-<p>require_relative &lsquo;../../../web&rsquo;</p>
-
-<p>require &lsquo;selenium-webdriver&rsquo;
-require &lsquo;capybara/cucumber&rsquo;
-require &lsquo;rspec&rsquo;</p>
-
-<p>Capybara.app = Ollert
-Capybara.default_wait_time = 10</p>
-
-<h1 id="run-all-tests-using-javascript:d5ab1fc6ad4c6740d71e80746a960e70">run all tests using Javascript</h1>
-
-<p>Capybara.default_driver = :selenium</p>
-
-<p>World do
-  Ollert.new
-  Mongoid.purge!
-end</p>
-
-<pre><code>
-Using Selenium means that your tests will be running using Firefox. Unfortunately, this makes them much, much slower than when you were running the tests using rspec. What I recommend is to limit yourself to only use the Javascript driver when you need to. To accomplish this, we change our `env.rb` file as such:
-
-``` ruby env.rb
-ENV['RACK_ENV'] = 'test'
-
-require_relative '../../../web'
-
-require 'selenium-webdriver'
-require 'capybara/cucumber'
-require 'rspec'
-
-Capybara.app = Ollert
-Capybara.default_wait_time = 10
-
-# use the following web driver to run tests
-Capybara.javascript_driver = :selenium
-
-World do
-  Ollert.new
-  Mongoid.purge!
-end
-</code></pre>
-
-<p>And add the <code>@javascript</code> tag to our Cucumber feature files. I&rsquo;ve written <a href="/blog/2013/04/15/tags-in-c-plus-plus-cucumber-tests/">about using tags in the past</a>, and they are incredibly useful. For example:</p>
-
-<p>``` cucumber DoStuff.feature
-Feature: Do Stuff</p>
-
-<p>Scenario: Nothing happens with Javascript disbaled
-  Given I visit the home page
-  When I click &ldquo;Where are they?!&rdquo;
-  Then I should not see &ldquo;I&rsquo;m Batman.&rdquo;</p>
-
-<p>@javascript
-Scenario: Correct text is displayed with Javascript enabled
-  Given I visit the home page
-  When I click &ldquo;Where are they?!&rdquo;
-  Then I should see &ldquo;I&rsquo;m Batman.&rdquo;</p>
-
-<pre><code>
-Assuming there is some Javascript activated by clicking &quot;Where are they?!&quot; that displays the text &quot;I'm Batman.&quot;, both of the above scenarios will pass. This is because none of the Javascript will run in the first scenario, so the text will not be displayed. In the second scenario, Capybara knows to use the webdriver we set up previously when it sees the `@javascript` tag.
-
-####Poltergeist
-
-[Poltergeist](https://github.com/teampoltergeist/poltergeist) is the first &quot;headless&quot; web driver I tried. Usage is mostly identical to usage for Selenium, so I'll focus on installation here.
-
-Poltergeist uses [PhantomJS](http://phantomjs.org/), so we need to start by downloading the binary ([32-bit](https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-i686.tar.bz2) or [64-bit](https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-x86_64.tar.bz2)) and putting it in our path. On my Linux machine, I extracted the contents of the download and copied `bin/phantomjs` to my `/usr/local/bin` directory, which I already have in my path. You can also copy it directly to `/usr/bin` if you like.
-
-On the ruby side, we do that same old song and dance: either do `gem install poltergeist` or add `poltergeist` to your `Gemfile` and run `bundle install`. Edit your `env.rb`:
-
-``` cucumber env.rb
-ENV['RACK_ENV'] = 'test'
-
-require_relative '../../../web'
-
-require 'capybara/poltergeist'
-require 'capybara/cucumber'
-require 'rspec'
-
-Capybara.app = Ollert
-Capybara.default_wait_time = 10
-
-# use the following web driver to run tests
-Capybara.javascript_driver = :poltergeist
-
-World do
-  Ollert.new
-  Mongoid.purge!
-end
-</code></pre>
-
-<p>Now your Javascript tests should be running using the Poltergeist webdriver. Since Poltergeist is truly headless, your tests will run much faster than they did while using Selenium, but you won&rsquo;t be able to see what&rsquo;s going on while your tests run. There are some slight syntactic differences between the way Poltergeist and Selenium handles separate windows, but other than that they are extremely similar.</p>
-
-<p>####Webkit</p>
-
-<p><a href="https://github.com/thoughtbot/capybara-webkit">Capybara-webkit</a> is where I eventually landed for running my own tests, after having issues accessing other windows with Poltergeist. Capybara-webkit is also headless and relies on <code>QtWebKit</code> to render pages. So, for starters, you&rsquo;re going to have to install <code>qtwebkit</code>. This has a varied degree of difficulty depending on which operating system you&rsquo;re using, but I didn&rsquo;t have too many problems in Ubuntu once I figured out which library I needed. For help, check <a href="https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit">the guide</a>. On my machine:</p>
-
-<pre><code class="language-bash">$ sudo apt-get install libqtwebkit-dev
-</code></pre>
-
-<p>Once more: either do <code>gem install capybara-webkit</code> or add <code>capybara-webkit</code> to your <code>Gemfile</code> and run <code>bundle install</code>. Edit your <code>env.rb</code>:</p>
-
-<p>``` cucumber env.rb
-ENV[&lsquo;RACK_ENV&rsquo;] = &lsquo;test&rsquo;</p>
-
-<p>require_relative &lsquo;../../../web&rsquo;</p>
-
-<p>require &lsquo;capybara/cucumber&rsquo;
-require &lsquo;capybara/webkit&rsquo;
-require &lsquo;rspec&rsquo;</p>
-
-<p>Capybara.app = Ollert
-Capybara.default_wait_time = 10</p>
-
-<h1 id="use-the-following-web-driver-to-run-tests:d5ab1fc6ad4c6740d71e80746a960e70">use the following web driver to run tests</h1>
-
-<p>Capybara.javascript_driver = :webkit</p>
-
-<p>World do
-  Ollert.new
-  Mongoid.purge!
-end
-```</p>
-
-<p>Again, you won&rsquo;t be able to see your tests run, but they should be pretty snappy. I was able to use capybara-webkit to tackle some window issues I was having, but (as of this writing) capybara-webkit has not caught up with more modern capybara window-switching syntax. Other than that, the syntax is identical to the other drivers I&rsquo;ve discussed for common cases. If you&rsquo;re running capybara-webkit on a CI server, see <a href="http://blog.55minutes.com/2013/09/running-capybara-webkit-specs-with-jenkins-ci/">this post about using Xvfb</a>.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

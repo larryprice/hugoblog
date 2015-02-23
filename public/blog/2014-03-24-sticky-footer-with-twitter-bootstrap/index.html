@@ -1,112 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Sticky footer with Twitter Bootstrap &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> Sticky footer with Twitter Bootstrap &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">24 Mar 2014, 20:12</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>Sticky footer with Twitter Bootstrap</h1>
-  <span class="post-date">Mon, Mar 24, 2014</span>
-      <p>Sometimes CSS is a total pain.</p>
+                        <a href="http://localhost:1313/blog/2014-03-24-sticky-footer-with-twitter-bootstrap/" class="post-title">Sticky footer with Twitter Bootstrap</a>
 
-<p>We encountered a major CSS problem while working on our incredible startup weekend project <a href="//ollert.herokuapp.com">Ollert</a>. We had created a footer that we wanted below all of our content. We threw together some quick HTML and got a footer below all of the main content, and it looked really good when our main content filled up the entire screen.</p>
-
-<p>What about when there was very little data on the screen? Well, then the footer just floated in the middle of the page, staring at us like some kind of psychotic hummingbird, waiting to slice you up when you&rsquo;re not looking. We searched online and found lots of different solutions; None of them worked. The footer just floated there, taunting us; Telling us to cry home to mommy. So we gave up on the prospect for the rest of the afternoon.</p>
-
-<p>A few days after startup weekend, I found the real solution from the good folks at <a href="//getbootstrap.com/2.3.2/examples/sticky-footer.html">Twitter Bootstrap</a> themselves. It&rsquo;s pretty simple, really. Hooray for the internet!</p>
-
-<p>Below is the HTML to create this effect with all the CSS styles embedded. Marked up with plenty of comments.</p>
-
-<p>``` html index.html
-&lt;!DOCTYPE html&gt;
-<html lang="en" style="height: 100%;">
-  <head>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  </head>
-  <body style="height: 100%;">
-    <div id="wrap" style="min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -50px;">
-      &lt;!&ndash; All your content goes inside wrap. &ndash;&gt;
-      &lt;!&ndash; The bottom margin must be negative the footer min-height &ndash;&gt;
-      &lt;!&ndash; Footer min-height is set to 50px in this case &ndash;&gt;
-      <div class="container">
-        <div class="row">
-          <div class="h1">
-            All Your Content
-          </div>
-        </div>
-        <div class="row">
-          All your content will go inside the &lsquo;wrap&rsquo; div.
-        </div>
-      </div>
-      <div id="push" style="min-height: 50px;">
-        &lt;!&ndash; This push node should be inside wrap and empty &ndash;&gt;
-        &lt;!&ndash; Min-height is equal to the min-height of the footer &ndash;&gt;
-      </div>
-    </div>
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-  <div id="footer" style="min-height: 50px;">
-    &lt;!&ndash; Some sweet footer content &ndash;&gt;
-    <div class="container">
-      <div class="small">
-        Zowee, I&rsquo;ve got a footer stuck to the bottom!
-      </div>
-    </div>
-  </div>
-</html></p>
-
-<p>```</p>
-
-<p>Div tag ids such as &ldquo;wrap&rdquo;, &ldquo;push&rdquo;, and &ldquo;footer&rdquo; can be whatever you want. The height of the footer can be adjusted to fit whatever content you want; I found that using <code>min-height</code> instead of <code>height</code> allowed my content to resize appropriately when wrapped. Styles should definitely be moved to a css file.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

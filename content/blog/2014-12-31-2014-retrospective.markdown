@@ -10,7 +10,7 @@ Happy New Year, dear reader.
 
 2014 was a fairly good year for me. I wrote a lot of code, read a lot of books, and published a lot of blog posts.
 
-###Things I got paid to do###
+### Things I got paid to do###
 
 2014 was a reaffirmation of career goals alongside the opportunities to work with several very different clients. In addition to working on cool stuff, I was promoted to Software Engineer 2. During the tail end of the year, I had the chance to work from home part of the week, which was a great experience. A sampling of my professional works this year:
 
@@ -21,7 +21,7 @@ Happy New Year, dear reader.
 * I worked on a rewrite of a huge WebForms e-commerce site. We created a hybrid site running some pages in the WebForms engine and all of our new pages in fresh MVC. We worked with a high-fidelity prototype created by an outside company, which proved at times invaluable and at other times a thorn in our sides. We worked directly with members of the client on-site, who were able to provide us with great insights into the legacy system and helped us work out unclear requirements.
 * In December, I had some fun working on a solo proof-of-concept with a new client. This client is planning to do a rewrite of a large application in 2015 and wanted to do some investigation into rules engines, particularly those using Java. I worked through a few libraries and landed on JBoss Drools, an open-source rules engine with an integrated frontend called KIE Workbench. It's been a while since I wrote any Java code, and I'd certainly never deployed any Java web applications. After two weeks of work, I was able to launch a web application using Spring MVC and integrate a KIE Workbench instance running on the same Azure virtual machine. The application is able to pick up rule changes from the Workbench automatically, without recompilation or redeployment.
 
-###Of my own volition###
+### Of my own volition###
 
 I had a lot of fun coding ideas this year, most of them lost to the raptures of time. A few items of note:
 
@@ -36,7 +36,7 @@ I had a lot of fun coding ideas this year, most of them lost to the raptures of 
 * Ollert (https://ollertapp.com)
   * I know I listed it under a paid project, but I was putting over 8 hours a week into Ollert between the time it was originally built and the time I was paid to work on it. It's my big pet project, and I'm proud of the things that it and I have accomplished. Trello has noted our accomplishments, validating all the hard work and long hours I'd sunk into it.
 
-###Book It - Where's my free pizza?###
+### Book It - Where's my free pizza?###
 
 I think that I read 11 books this year. See my [books section](/blog/books) for a quick check of which books you should be reading. Some of my favorites:
 
@@ -46,7 +46,7 @@ I think that I read 11 books this year. See my [books section](/blog/books) for 
 * [The Lean Startup](http://amzn.to/1Ai3mBk) by Eric Ries
 * [Made to Stick](http://amzn.to/1x4jaXh) by Chip Heath
 
-###This blog o' mine###
+### This blog o' mine###
 
 In reality, I put quite a bit of work into this blog.
 
@@ -60,7 +60,7 @@ I integrated Google AdSense this summer. Full disclosure: I've "earned" $3.78 in
 
 In an attempt to keep people on the site "longer", I added a Related Posts section above the Comments - it makes the blog take forever to generate and has had negligible results. It turns out users are more likely to click the related tags than the related posts. I intend to remove the Related Posts section soon (it may not be there when you read this).
 
-###Hello, 2015###
+### Hello, 2015###
 
 As I enter the new year, I want to be able to look back next year at a set of naïve goals and wonder why I ever thought they were practical. So here they are:
 
@@ -77,7 +77,7 @@ As I enter the new year, I want to be able to look back next year at a set of na
 * Obtain more technical leadership roles on projects
   * Not entirely in my control, I know, but I'm hoping that 2015 is a year where I'm able to demonstrate both my technical skills and proclivity to command
 
-###Goodbye, 2014###
+### Goodbye, 2014###
 
 Thanks for reading. Have you thought about doing one of these yourself? You really should! There's lots of help out there if you need it - you can even reach out to me, if you like.
 

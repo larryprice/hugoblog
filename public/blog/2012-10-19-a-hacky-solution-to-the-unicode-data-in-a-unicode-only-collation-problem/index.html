@@ -1,54 +1,64 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>A Hacky Solution to the Unicode data in a Unicode-only collation problem &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> A Hacky Solution to the Unicode data in a Unicode-only collation problem &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">19 Oct 2012, 17:23</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>A Hacky Solution to the Unicode data in a Unicode-only collation problem</h1>
-  <span class="post-date">Fri, Oct 19, 2012</span>
-      
+                        <a href="http://localhost:1313/blog/2012-10-19-a-hacky-solution-to-the-unicode-data-in-a-unicode-only-collation-problem/" class="post-title">A Hacky Solution to the Unicode data in a Unicode-only collation problem</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                <a class="post-category post-category-ruby" href="/categories/ruby">ruby</a><a class="post-category post-category-rails" href="/categories/rails">rails</a><a class="post-category post-category-hacks" href="/categories/hacks">hacks</a><a class="post-category post-category-database" href="/categories/database">database</a><a class="post-category post-category-web" href="/categories/web">web</a>
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
 
 <h2 id="the-issue-rises-a-id-problem-a:a2aad8e9f521de4be9814af43014a140">The Issue Rises <a id="problem"></a></h2>
 
@@ -108,10 +118,23 @@ class ChangeNarrativeColumnToVarChar &lt; ActiveRecord::Migration
 
 <p>There&rsquo;s a part of me that likes sensible, clean code. This code did not come from that part of me. If you really want, you can do a select and get all the columns of your model, and then case the field in question, but what if your columns change? I didn&rsquo;t want to be responsible for that, especially after I hand this code off to someone else in the coming weeks.</p>
 
-</div>
+                    </div>
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="http://hugo.spf13.com/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
 </div>
 
-  <script>document.write('<script src="http://'
+        </div>
+    </div>
+</div>
+
+
+<script>document.write('<script src="http://'
         + (location.host || 'localhost').split(':')[0]
 		+ ':1313/livereload.js?mindelay=10"></'
         + 'script>')</script></body>

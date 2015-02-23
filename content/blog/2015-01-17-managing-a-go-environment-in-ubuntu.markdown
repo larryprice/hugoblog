@@ -8,7 +8,7 @@ categories: golang linux
 
 Many moons ago, I wrote about [setting up a Go environment in Ubuntu](/blog/2013/12/15/setting-up-a-go-environment-in-ubuntu-12-dot-04). After writing that post, I dropped Go development for nearly a year. Today I run the [Indy Golang meetup](http://www.meetup.com/Indy-Golang/events/219612982/), and soon I'll be starting a new work project where I'll be recommending a Go-based tech stack. I've learned a thing or two about Go and managing its dependencies since I wrote that initial blog post, and I intend to give a short presentation to my meetup about my recent findings. Before I do, I thought I'd write a preliminary blog post detailing the tools I use to keep my Go environment sane.
 
-###Installing Go###
+### Installing Go###
 
 The easiest way to install Go in Ubuntu is through `aptitude`. However, the default version in the Ubuntu repos gets stale fast. I found a tool similar to `rvm` for downloading and installing local versions of Go called [gvm](https://github.com/moovweb/gvm). For better or worse, `gvm` is installed through a bash script. Fortunately, it doesn't require sudo:
 
@@ -24,7 +24,7 @@ $ which go
 /home/lrp/.gvm/gos/go1.4/bin/go
 ```
 
-###Managing Packages###
+### Managing Packages###
 
 This is where I come to a fork in the road: `gvm`, the tool we used to install the desired version of Go, has a concept of pkgset similar to `rvm gemset`. However, I find the syntax for using a pkgset tiresome every time I come into a directory. I prefer something more automatic. As an additional pain, `gvm` does not provide a mechanism for installing dependencies from a list of known dependencies. I sought out other tools to address these pains and found [gpm](https://github.com/pote/gpm) and [gvp](https://github.com/pote/gvp).
 
@@ -57,7 +57,7 @@ func main() {
 }
 ```
 
-####Method 1: gvm pkgset alongside gpm####
+#### Method 1: gvm pkgset alongside gpm####
 
 Create and start using a new pkgset:
 
@@ -80,7 +80,7 @@ After you run `go build` to verify that the dependencies aren't installed, run `
 
 That was pretty great, right? The only issue is remembering to type `gvm pkgset use gotest` every time you restart your terminal or switch projects. Otherwise, `gvm` is practically a replacement for one of my favorite ruby tools `rvm`.
 
-####Method 2: gpm and gvp####
+#### Method 2: gpm and gvp####
 
 `gpm` is intended to be similar to `npm`, a package management tool for NodeJS. The author suggests using a tool called `gvp` to set the `GOPATH` without much thought. If we start a fresh terminal in our example directory, we can use `gvp` to set up our `GOPATH`:
 

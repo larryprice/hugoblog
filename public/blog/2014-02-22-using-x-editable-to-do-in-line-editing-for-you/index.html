@@ -1,153 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Using x-editable to do in-line editing for you &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> Using x-editable to do in-line editing for you &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">22 Feb 2014, 19:15</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>Using x-editable to do in-line editing for you</h1>
-  <span class="post-date">Sat, Feb 22, 2014</span>
-      <p>In-line editing is traditionally difficult. Taking a static HTML node and turning it into an editable text field and then sending that data off somewhere is a little bit more Javascript than I like to write. My team and I came up against a very difficult UX problem which I spent over a week trying to understand. After building and discussing several solutions, we eventually decided to narrow the scope of what the user should be able to change. We would present the user with a table where one of the columns would be editable.</p>
+                        <a href="http://localhost:1313/blog/2014-02-22-using-x-editable-to-do-in-line-editing-for-you/" class="post-title">Using x-editable to do in-line editing for you</a>
 
-<p>Rather than showing a table with the third column always as a field for text entry, I used the Javascript library <a href="//vitalets.github.io/x-editable/">X-editable</a>. X-editable allows me to display my editable item as a link. When the user clicks the item, the link turns into a text field with a Save/Cancel button (and a &lsquo;clear&rsquo; button as a bonus). The &lsquo;Save&rsquo; button submits an AJAX &lsquo;POST&rsquo; or &lsquo;PUTS&rsquo;, where we are then allowed to validate and save the data. The &lsquo;Cancel&rsquo; button turns the text field back into a link with the original value.</p>
-
-<p>Hooray, someone else has already done the hard work for us! So, what I want to do is dynamically generate a table with objects and allow the user to edit one of the columns. In my case, only the end column is editable, but I could just as easily spread this availability to all my columns. I&rsquo;m using all my favorite tools to create this page, specifically <a href="//ruby-lang.org/en/">ruby</a>, <a href="//sinatrarb.com">Sinatra</a>, <a href="//getbootstrap.com">Twitter Bootstrap</a>, and <a href="//haml.info">HAML</a>.</p>
-
-<p>X-editable has implementations using Bootstrap, jQuery UI, and jQuery. Since I&rsquo;m already using Bootstrap in my app, I&rsquo;m going to go with that version. Note that there are Bootstrap 2 and Bootstrap 3 builds of X-editable, and I&rsquo;m using the Bootstrap 3 variety.</p>
-
-<p>First I include the necessary files at the top of my HAML document.</p>
-
-<p>``` haml /views/manage_data.haml
-%script{src: &ldquo;//code.jquery.com/jquery.js&rdquo;}
-%script{src: &ldquo;//getbootstrap.com/dist/js/bootstrap.min.js&rdquo;}
-%link{href: &ldquo;//getbootstrap.com/dist/css/bootstrap.min.css&rdquo;, rel: &ldquo;stylesheet&rdquo;}</p>
-
-<p>%link{href: &ldquo;//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css&rdquo;, rel: &ldquo;stylesheet&rdquo;}
-%script{src: &ldquo;//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js&rdquo;}</p>
-
-<pre><code>
-I'm going to dumb my page down so I only have to show the important parts. I'm going to create a table from an array of hashes called `@options`. Each hash has two important fields for this table: Points and Dollars. I will iterate over `@options`, displaying the `points` field as plain text and the `dollars` field as an X-editable link. Each hash also has a `value` field containing the primary key for the object to be edited.
-
-``` haml /views/manage_data.haml
-.container
-  .row
-    .col-md-6
-      %table{id: &quot;edit_points_goal&quot;, class: &quot;table table-responsive table-hover table-bordered&quot;}
-        %thead
-          %tr
-            %th{width: &quot;35%&quot;}
-              Points
-            %th{width: &quot;65%&quot;}
-              Dollars
-        %tbody
-          - @options.each do |option|
-            %tr
-              %td{style: &quot;height: 45px; padding: 4px 8px; vertical-align: middle;&quot;}
-                #{option[:points]}
-              %td{style: &quot;height: 45px; padding: 4px 8px; vertical-align: middle;&quot;}
-                %a{href:&quot;javascript:void(0)&quot;, &quot;data-type&quot;=&gt;&quot;text&quot;, &quot;data-pk&quot;=&gt;&quot;#{option[:value]}&quot;, &quot;data-url&quot;=&gt;&quot;/update&quot;, &quot;data-title&quot;=&gt;&quot;Enter dollar amount&quot;}
-                  #{option[:dollars]}
-</code></pre>
-
-<p>The important part is the <code>a</code> tag:</p>
-
-<ul>
-<li><code>href</code> goes nowhere.</li>
-<li><code>data-type</code> tells X-editable how it will edit the presented data. According to the docs, types include text, textarea, select, date, checklist and more.</li>
-<li><code>data-pk</code> is the primary key of our data in the database. In my case, that comes to me stored in the <code>value</code> field of the option hash.</li>
-<li><code>data-url</code> is the <code>post</code> method that will be used to interpret the data.</li>
-<li><code>data-title</code> is used to tell the user what to do.</li>
-</ul>
-
-<p>Our code won&rsquo;t do anything yet seeing as it&rsquo;s not connected. We need some Javascript to do that. I put the Javascript at the top of my file, underneath the included files. The first thing we need to do is tell X-editable what type of editing we&rsquo;ll be doing. The options are in-line editing or a pop-up. I want the in-line editing in this case. The second thing I want to do is to set the <code>editable</code> attribute on the appropriate DOM objects. Since I&rsquo;m using an array, I found the easiest way to do this was to start at the table&rsquo;s id (edit_points_goal) and trace down to the <code>a</code> tag.</p>
-
-<p>``` haml /views/manage_data.haml
-:javascript
-  $.fn.editable.defaults.mode = &lsquo;inline&rsquo;;</p>
-
-<p>$(document).ready(function() {
-    if (#{vm.editable}) {
-      $(&lsquo;#edit_points_goal tbody tr td a&rsquo;).editable();
-    }
-  });</p>
-
-<pre><code>
-Now we need to deal with the `post` request. If you're really impatient to see things work, you should be able to see your in-line editable code in action, but the `post` call will fail with a &quot;NoMethodError.&quot;
-
-Our `post` is going to be really simple. We verify that we have a non-negative integer and we either save and return 200 or we return 400 with an appropriate message. Our table in this example is just called `Data`, and we use `find` to get a value out of the database.
-
-``` ruby web.rb
-post &quot;/update&quot; do
-  data = Data.find(id: params[&quot;pk&quot;])
-
-  unless params[&quot;value&quot;].match(/[^0-9]/)
-    data = params[&quot;value&quot;].to_i
-    data.save
-    return 200
-  end
-
-  return {400, [], &quot;Please enter a valid non-negative number&quot;}
-end
-</code></pre>
-
-<p>Things should be working now. When you enter good data and click the &lsquo;Ok&rsquo; button, our <code>post</code> will be called and the text field will turn back into a link. When you enter bad data, you should see our error message below the text field box.</p>
-
-<p>Issues I encountered:</p>
-
-<ul>
-<li>Table column width shifting - Fixed by setting the widths explicitly, as seen above (35% and 65%).</li>
-<li>Table height shifting - Fixed by setting the style of the <code>td</code> as seen above to give a larger height, more padding, and aligning the inner objects explicitly. I would recommend moving this definition to a <code>.css</code> or <code>.scss</code> file.</li>
-<li>&ldquo;NoMethodError&rdquo; after clicking Go - Unfortunately, if you made any coding errors in your route, you won&rsquo;t be able to see the Sinatra error page but will instead you&rsquo;ll be presented with a giant wall of HTML below the text box. Try to parse this error, but if you struggle to find out what went wrong you can always substitute a form-post method in place of the <code>a</code> tag, which may allow you to more easily figure out the problem.</li>
-</ul>
-
-<p>The <a href="//vitalets.github.io/x-editable/docs.html">X-editable docs</a> are extremely helpful for beginners. There is even more detail on the X-editable site, including editing multiple items, editing dates, and using a pop-up to edit the data.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

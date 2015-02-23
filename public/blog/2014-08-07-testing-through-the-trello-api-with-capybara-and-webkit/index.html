@@ -1,171 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Testing through a Trello connection with Capybara and Webkit &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> Testing through a Trello connection with Capybara and Webkit &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">07 Aug 2014, 07:25</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>Testing through a Trello connection with Capybara and Webkit</h1>
-  <span class="post-date">Thu, Aug 7, 2014</span>
-      <p>During the hardening of <a href="https://ollertapp.com">Ollert</a>, a Trello data analysis tool I wrote, I started writing acceptance tests. I quickly ran into an issue where the meat of my application requires opening pop-up window, signing into Trello, and allowing my application access.</p>
+                        <a href="http://localhost:1313/blog/2014-08-07-testing-through-the-trello-api-with-capybara-and-webkit/" class="post-title">Testing through a Trello connection with Capybara and Webkit</a>
 
-<p>I created a test user on Trello with a few varied boards to allow for proper testing. In doing this, I store the user&rsquo;s login information in my .env file. For the most part, I can use the steps provided in <a href="https://gist.github.com/larryprice/546d6c029bb3074bd84c">this common web_steps.rb</a>.</p>
-
-<p>``` cucumber Connecting.feature
-Feature: Landing</p>
-
-<p>Background:
-  Given I am on the landing page</p>
-
-<p>@javascript
-Scenario: Deny connecting to Trello
-  Given I follow &ldquo;Connect to Get Started&rdquo;
-  And I press &ldquo;Deny&rdquo; on the Trello popup
-  Then I should be on the landing page</p>
-
-<p>@javascript
-Scenario: Allow connecting to Trello
-  Given I follow &ldquo;Connect to Get Started&rdquo;
-  When I authorize with Trello as the test user
-  Then I should not see &ldquo;Connecting&hellip;&rdquo;
-  And I should not see &ldquo;Redirecting&hellip;&rdquo;
-  And I should be on the boards page</p>
-
-<pre><code>
-When the Trello popup appears, we have to specify the window we're going to use. Since I'm using [capybara-webkit](https://github.com/thoughtbot/capybara-webkit), I'm going to go ahead and do all of my Trello popup activities in one step, which saves me from writing a lot of unnecessary steps.
-
-``` ruby trello_popup_steps.rb
-When /^I press &quot;(.*?)&quot; on the Trello popup$/ do |button|
-  trello_popup = windows.last
-  page.within_window trello_popup do
-    click_button button
-  end
-end
-
-When /^I authorize with Trello as the test user$/ do
-  trello_popup = windows.last
-  page.within_window trello_popup do
-    click_link &quot;Log in&quot;
-
-    fill_in &quot;user&quot;, with: ENV['TEST_USER_TRELLO_USERNAME']
-    fill_in &quot;password&quot;, with: ENV['TEST_USER_TRELLO_PASSWORD']
-    
-    click_button &quot;Log In&quot;
-    click_button &quot;Allow&quot;
-  end
-end
-</code></pre>
-
-<p>Straightforward so far. We grab the window handle and we click links, fill in fields, and press buttons within that window.</p>
-
-<p>Note that I&rsquo;m using capybara-webkit, a headless web driver, to run my Javascript. Although the first test (&ldquo;Deny&rdquo;) will pass, the &ldquo;Allow&rdquo; test fails ambiguously. This is because capybara-webkit is not recognized as a supported browser by the Trello popup.</p>
-
-<p>Anecdotally, I contacted Trello support about this and received the following response:</p>
-
-<blockquote>
-<p>Currently it is not possible to test this with a headless browser as you are looking to do without getting the unsupported browser message.</p>
-</blockquote>
-
-<p>So I guess we should just give up, right? &hellip;Or we could manipulate the headers we send to load the Trello popup such that Trello <em>thinks</em> we are Google Chromium.</p>
-
-<p>``` cucumber trello_popup_steps.rb
-When /^I authorize with Trello as the test user$/ do
-  trello_popup = windows.last
-  page.within_window trello_popup do
-    page.driver.header(
-      &ldquo;User-Agent&rdquo;,
-      &ldquo;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36&rdquo;
-    )</p>
-
-<pre><code>click_link &quot;Log in&quot;
-
-fill_in &quot;user&quot;, with: ENV['TEST_USER_TRELLO_USERNAME']
-fill_in &quot;password&quot;, with: ENV['TEST_USER_TRELLO_PASSWORD']
-
-click_button &quot;Log In&quot;
-click_button &quot;Allow&quot;
-</code></pre>
-
-<p>end
-end</p>
-
-<pre><code>
-Fantastic. Now my tests pass. I can't sleep at night, but my tests pass.
-
-Unfortunately, that won't be the case if I add more tests to this `.feature` file. Hidden somewhere deep in the browser's cache or cookies or somethings, Trello is remembering that we logged in sometimes. Sometimes it even remembers that someone else has logged in. The UI of the Trello popup changes based on whether it thinks you've already logged in. In order to keep things consistent, I like to add an if-statement to take care of this case.
-
-``` cucumber trello_popup_steps.rb
-When /^I authorize with Trello as the test user$/ do
-  trello_popup = windows.last
-  page.within_window trello_popup do
-    page.driver.header(
-      &quot;User-Agent&quot;,
-      &quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36&quot;
-    )
-
-    if page.has_content? &quot;Switch Accounts&quot;
-      click_link &quot;Switch Accounts&quot;
-    else
-      click_link &quot;Log in&quot;
-    end
-
-    fill_in &quot;user&quot;, with: ENV['TEST_USER_TRELLO_USERNAME']
-    fill_in &quot;password&quot;, with: ENV['TEST_USER_TRELLO_PASSWORD']
-    
-    click_button &quot;Log In&quot;
-    click_button &quot;Allow&quot;
-  end
-end
-</code></pre>
-
-<p>Edge cases addressed. Now I can make connections to Trello and test my application. Be warned, I&rsquo;ve already had these tests break once when Trello updated the UI behind the Trello popup. If Trello ever stops supporting Chromium 34.0, these tests are also likely to stop working. These tests are most useful during development, when we have the potential to break the Trello connection ourselves, and so I think they are well worth the pain of potential future maintenance.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

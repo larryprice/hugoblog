@@ -10,11 +10,11 @@ categories: write-ups
 
 > Excerpt from "Decisions are Progress" in _Rework_
 
-###The Gist
+### The Gist
 
 [_Rework_ by Jason Fried and David Heinemeier Hansson](http://www.amazon.com/gp/product/0307463745/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0307463745&linkCode=as2&tag=larpriandthee-20) is a business advice book for keeping small, focused teams without all the cruft of business.
 
-###My Opinion
+### My Opinion
 
 _Rework_ is my kind of book. It's best described as business advice for hippy programmers. It's amazing that this book describes the business practices of a real company that's modestly successful.
 

@@ -14,13 +14,13 @@ __Spencer Johnson__
 
 ------
 
-###The Gist###
+### The Gist###
 
 _Who Moved My Cheese?_ is a book about being prepared to lose your job. The book was written during times of rapid economic growth caused by the [dot-com bubble][dcb], which resulted in many companies emerging out of the primordial ooze and then falling back down into the tarpit after an extremely short time on the market. The author uses a cute analogy about cheese to convey that success is fleeting, and each day could be the day a company will shut down.
 
 [dcb]: http://en.wikipedia.org/wiki/Dot-com_boom
 
-###My Feelings###
+### My Feelings###
 
 This is another book I read during summer 2012 and wrote a mediocre write-up regarding. This write-up is fresh and in my new write-up style.
 
@@ -35,6 +35,6 @@ The use of a "maze" with two tiny people and two anthropomorphic mice is strange
 
 The primary author appended "MD" to his name on the front cover. Similarly, the "secondary" author appended a "PhD" to his name on the front cover. This bothered me as it is an obvious ploy to make people value the opinions held within the book more highly because they are written by "doctors."
 
-###Who Would Like This###
+### Who Would Like This###
 
 This is a book that tries to prepare people for the worst and to teach them not to just give up when the future looks grim. It could be an interesting book for anyone, especially after several years of an economic boom caused by a new technology. A person who is very content in their current position at a company could also benefit from this book, as it may give them some incentive to seek out change.

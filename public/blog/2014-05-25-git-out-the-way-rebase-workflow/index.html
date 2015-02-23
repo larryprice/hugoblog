@@ -1,95 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Git out the Way - Rebase Workflow &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> Git out the Way - Rebase Workflow &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">25 May 2014, 15:44</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>Git out the Way - Rebase Workflow</h1>
-  <span class="post-date">Sun, May 25, 2014</span>
-      <p>We use <a href="http://www.git-scm.com/">git</a> on my current project, and we used to always use remote branches. After doubling the number of developers touching the repo, we found that remote feature branches led to merge conflicts, stale branches, and hidden code. We&rsquo;ve switched away from using remote feature branches, favoring instead to commit directly to <code>origin/master</code>, making remote feature branches the exception. We do this using a simple method called <code>rebase</code>.</p>
+                        <a href="http://localhost:1313/blog/2014-05-25-git-out-the-way-rebase-workflow/" class="post-title">Git out the Way - Rebase Workflow</a>
 
-<p>What does it mean to <code>rebase</code>?</p>
-
-<p>When you rebase your local changes onto another branch, your changes become the head of that branch. For instance, say I start working off remote branch <code>master</code>, specifically changeset <code>M2</code>. I then make some changes and commit locally, which I&rsquo;ll note as changeset <code>L</code>. While I was making my changes, some other developer pushed to remote branch <code>master</code>, resulting in changeset <code>M3</code>.</p>
-
-<pre><code>M1 -&gt; M2 -&gt; M3
-        \
-         -&gt;L
-</code></pre>
-
-<p>This is where <code>rebase</code> comes in. I want to rebase my local commit on top of <code>M3</code>, which will make it the new head of <code>master</code>.</p>
-
-<pre><code>$ git rebase origin/master
-</code></pre>
-
-<pre><code>M1 -&gt; M2 -&gt; M3 -&gt; L
-</code></pre>
-
-<p>Now I can keep working locally. Until I push my local <code>master</code> to <code>origin</code>, every time I <code>rebase</code> will cause all of my commits to rebase on the head of <code>master</code>.</p>
-
-<p>I like to keep as close to <code>origin/master</code> as possible since we have a fairly active repository. If I want to make sure I have the bleeding edge of <code>master</code>, sometimes I don&rsquo;t have my local changes in working order when I want to rebase. Some people like to stash and unstash local changes, but that takes too much effort for me. I prefer just to use <code>git commit --amend</code> to constantly update the last changes I committed. You can only amend to an unpushed local commit, otherwise you&rsquo;d be changing history remotely (which is bad). Using the <code>amend</code> flag allows me to keep one solid local changeset around until I&rsquo;m comfortable with pushing it to <code>origin</code>. Also note that using <code>amend</code> also allows you to change the commit message of the last commit.</p>
-
-<p>What happens when you need to use a remote branch?</p>
-
-<p>Git&rsquo;s best-kept secret is <code>merge --squash</code>, a wonderful flag that gives you all the benefits of a <code>rebase</code> (linear history, fewer changesets), without all the hassle of a big fat rebase merge (rebasing infrequently can lead to merges that will haunt you in your sleep).</p>
-
-<pre><code>$ git branch
-* local-branch
-master
-$ git merge master
-$ git checkout master
-$ git merge local-branch --squash
-</code></pre>
-
-<p>This will give you a single changeset on the head of <code>master</code> containing all the changes you made in <code>local-branch</code>, including resolution of merge conflicts. <code>merge --squash</code> has eased a lot of the headaches my team had when stuck doing rebase merges previously.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

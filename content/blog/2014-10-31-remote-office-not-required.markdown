@@ -10,11 +10,11 @@ categories: write-ups non-technical remote
 
 > From the section titled "End of city monopoly"
 
-###The Gist
+### The Gist
 
 [__Remote__](http://www.amazon.com/gp/product/0804137501/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0804137501&linkCode=as2&tag=larpriandthee-20&linkId=6RSEPWJB4VV7ZUGR) by Jason Fried and David Hansson of [BaseCamp](https://basecamp.com/) (formerly 37signals), similarly to previous entry [__Rework__](http://www.amazon.com/gp/product/0307463745/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0307463745&linkCode=as2&tag=larpriandthee-20), is a book that will surely resonate with most working Americans who despise commuting and the constant distraction of the modern office. __Remote__ discusses the pros and cons of working remotely, with a bias towards the positive aspects.
 
-###My Opinion
+### My Opinion
 
 I read this book in a day. I don't mean a Saturday or a holiday of some kind (although it was Halloween, I suppose). I mean I read part of it in the morning, drove to the office, returned home in the afternoon, and finished it before dark. I love the authors' down-to-earth tone and I love the idea of telecommuting. There's also lots of pictures. Yea, pictures!
 
@@ -26,7 +26,7 @@ Co-working spaces are becoming much more prevalant in major cities across the US
 
 The biggest downside to remote work seems to be in isolation: socializing becomes more of a hobby than a requirement. There may be chats, emails, and the occasional phone call to respond to throughout the day, but none of those can make up for face-time with other humans. Some individuals will have families to socialize with, but you can't put all the burden on the people you love. Hobbies, meetups, and conferences would likely become much more important from a social perspective to an individual working remotely.
 
-###Who Would Like This
+### Who Would Like This
 
 The modern workforce will eat this up. There is no way that millenials will put up with the archaic concept of 9-5 in the office. They (I suppose _we_, though sometimes it pains me to admit it) never take the status quo as a satisfactory answer.
 

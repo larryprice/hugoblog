@@ -8,7 +8,7 @@ categories: octopress openshift ruby
 
 I'll detail how to take a new or existing GH Pages blog in Octopress and deploy it to OpenShift.
 
-###Why?
+### Why?
 
 I recently moved my blog from Github Pages to [OpenShift Online](https://www.openshift.com/). I did this because I wanted to utilize SSL with my custom domain - [a feature not currently available on Github Pages](https://github.com/isaacs/github/issues/156) (it's 12/14/2014 - let me know when this becomes possible!). OpenShift supports SSL with a free account, so I decided to make the switch. I wanted to use the existing architecture set up by [Octopress](https://github.com/imathis/octopress) that built my GH Pages blog. Hopefully you see a little lock icon in your address bar if you're reading this from [the site](/).
 
@@ -150,7 +150,7 @@ To ssh://548e1873e0b8cddccf000094@octopress-username.rhcloud.com/~/git/octopress
 cd -
 ```
 
-###Fin
+### Fin
 
 That's that. Treat it as any Octopress install. I'll see if the owners of the octopress repository would be interested in pulling in my customizations and update this blog post as necessary.
 

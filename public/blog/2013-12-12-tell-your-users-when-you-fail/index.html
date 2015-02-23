@@ -1,98 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Tell Your Users When You Fail &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> Tell Your Users When You Fail &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">12 Dec 2013, 19:41</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>Tell Your Users When You Fail</h1>
-  <span class="post-date">Thu, Dec 12, 2013</span>
-      <p>Your users put a lot of faith in you. They put up with your terrible design, your horrible taste in color scheme, and your ability to take up over 100% of their computer&rsquo;s memory. With that in mind, don&rsquo;t these poor people deserve a little bit of honesty?</p>
+                        <a href="http://localhost:1313/blog/2013-12-12-tell-your-users-when-you-fail/" class="post-title">Tell Your Users When You Fail</a>
 
-<p>I came across some code recently that irked me. This code asks for a handle to a database abstraction class and then runs a query on it. It looks kinda like this:</p>
-
-<p>``` ruby settings.rb
-def changeSettings(newSettings)
-  db = dbFactory.get(&ldquo;settings.db&rdquo;)
-  if !db.nil?
-    db.execute(buildSaveQuery(newSettings))
-  end
-end</p>
-
-<pre><code>
-How nice that `changeSettings` doesn't try to play with a `nil` database, right? But what about the user's data? It wasn't saved. And no one knows. _Not even you_. Now, maybe the user will happily continue what he's doing until he notices that his new settings aren't quite right. So he goes back to them again. Same result. Repeat ad infinitum.
-
-How I would initially approach this is to add an `else` statement that launches a dialog giving some useful data to the user. Whatever you do, for the love of code, DO NOT tell the user that you had database problems. For most applications, the user will have no idea what that means. It might look something like this:
-
-``` ruby settings.rb
-def changeSettings(newSettings)
-  db = dbFactory.get(&quot;settings.db&quot;)
-  if !db.nil?
-    db.execute(buildSaveQuery(newSettings))
-  else
-    showDialog(title=&quot;Save Failed!&quot;,
-               msg=&quot;I'm sorry, but your data could not be saved.&quot; +
-                   &quot;Press 'Try Again' to give it another go.&quot; +
-                   &quot;If the problem persists, restart the application&quot; +
-                   &quot; or contact system support.&quot;)
-  end
-end
-</code></pre>
-
-<p>This is not a bad solution. But what about all the other places in the code I get the database from the factory? I&rsquo;d have to update those as well. It would be better to be able to code the factory to launch a similar error dialog whenever this happens. Even better, let me hand the factory a reference to an appropriate dialog whenever I call <code>dbFactory.get</code>.</p>
-
-<p>Another much more frightening possibility is to skip the <code>nil</code> check. Can you guarantee that <code>dbFactory.get</code> will never be <code>nil</code>? In that case, this option is actually pretty good.</p>
-
-<p>Even if that&rsquo;s not a guarantee you can make, it may still be a valid solution. <a href="http://www.artima.com/intv/defenseP.html">Crash early before you do too much damage</a>. Now, if there&rsquo;s some kind of crash-handler or global exception-catcher in your application, then you can catch the impending crash and tell the user the application needs to be restarted&hellip; And the app probably needs to be restarted anyway! There&rsquo;s no need to keep running after you&rsquo;ve reached some horrible error state that needs to be addressed.</p>
-
-<p>Just do <em>something</em>! Your users (especially if that happens to include me) will appreciate your honesty, even if it&rsquo;s so brutal that they have to restart the application.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

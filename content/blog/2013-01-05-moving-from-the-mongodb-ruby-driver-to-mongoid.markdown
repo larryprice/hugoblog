@@ -16,13 +16,13 @@ This is Part 2 in a multi-part series to detail the creation of a "simple" proje
 [pokephile]: https://github.com/larryprice/Pokephile
 [series-tag]: /blog/categories/pokephile
 
-###What I've Done
+### What I've Done
 
 In a [previous post][prev], I described creating a class that would populate a database with data scraped from the internet. I used the MongoDB Ruby driver to accomplish this. However, using the driver can be laborious and there are simpler ways. In this post, I'm going to refactor the Populater class to use Mongoid.
 
 [prev]: /blog/2013/01/05/schemaless-databases-with-ruby-and-mongodb/
 
-###Mongoid###
+### Mongoid ###
 
 [Mongoid][mongoid] (pronounced mann-goyd) is an Object-Document Wrapper for Ruby. Using mongoid abstracts some of the database operations that must be performed when using the MongoDB Ruby driver. It comes in handy when using models in an MVC application. To install the Mongoid gem:
 
@@ -32,7 +32,7 @@ In a [previous post][prev], I described creating a class that would populate a d
 sudo gem install mongoid
 ```
 
-###Refactoring###
+### Refactoring ###
 
 In populater.rb, we only inserted one structure of document into our "pokemons" collection. That makes this a great opportunity to use Mongoid. We remember that there were four fields in our document: number (string), name (string), image link (string), and types (array). Knowing this, we can create a model for this data:
 

@@ -17,7 +17,7 @@ This is Part 1 in a multi-part series to detail the creation of a "simple" proje
 [pokephile]: https://github.com/larryprice/Pokephile
 [series-tag]: /blog/categories/pokephile
 
-###A little background###
+### A little background###
 
 NoSQL is a database service used when working with a large amount of data that doesn't fit a relational model (read: [wikipedia][wiki-nosql]). It allows for mass storage without the overhead of SQL relations. There are many types of schemaless database services ([here's a list][wiki-tax]), but in particular I've been looking into what's called "Document Store."
 
@@ -26,7 +26,7 @@ NoSQL is a database service used when working with a large amount of data that d
 
 Documents can be any number of key-value fields with a unique id. Document Store services usually encode data in a simple format such as XML, YAML, JSON, or BSON for storage purposes. MongoDB is a document store service which uses BSON to store documents. In Mongo, we connect to a specific database and then we can look through "collections," which are more-or-less equivalent to "tables" in relational databases.
 
-###What about MongoDB and the Ruby driver?###
+### What about MongoDB and the Ruby driver?###
 
 The first step is to get MongoDB working on your machine. Install MongoDB for your system -- on Ubuntu 12.10 I do this:
 
@@ -40,13 +40,13 @@ Then we start up the daemon:
 sudo service mongodb start
 ```
 
-###What's the concept?###
+### What's the concept?###
 
 The concept here is that we are going to have a database populated with [Pokemon][pokemon]. The user types a Pokemon's name into a search field and submits the form, which brings up an image of the Pokemon and some useful information.
 
 [pokemon]: http://www.pokemon.com/
 
-###Getting started###
+### Getting started###
 
 Since I would like to focus on MongoDB, we can start by populating our database with Pokemon. If you're not familiar with Pokemon, there are lots of them (~650 at the date of this blog post). For my purposes, I may want to only add the first ~150 Pokemon, or I may want to add every Pokemon imaginable. I want it to be easy to add more if any new ones are added. So I'm going to start this project by creating a Populater, and we're going to use TDD to help us create it.
 

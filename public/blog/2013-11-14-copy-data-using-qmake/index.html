@@ -1,113 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Copy Data Using qmake &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> Copy Data Using qmake &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">14 Nov 2013, 21:24</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>Copy Data Using qmake</h1>
-  <span class="post-date">Thu, Nov 14, 2013</span>
-      <p>I&rsquo;ll take things that should be really easy but are in fact impossible for $1000, Mr Trebek.</p>
+                        <a href="http://localhost:1313/blog/2013-11-14-copy-data-using-qmake/" class="post-title">Copy Data Using qmake</a>
 
-<p>I have a <a href="https://qt-project.org/wiki/Qt_5.0">Qt</a> desktop app that uses <a href="https://qt-project.org/doc/qt-4.8/qmake-manual.html">qmake</a>. I have tests. I have test data that I need to copy to my build directory. Not only that, but I want to copy a whole directory recursively. In Linux <em>and</em> Windows. You must be thinking to yourself, &lsquo;There&rsquo;s no way that&rsquo;s possible, leave me out of your crazy plans!&rsquo; Well to that I say nay. Nay indeed.</p>
-
-<p>I originally copied my test data using the <code>INSTALLS</code> variable. My data folder is just a directory sitting in the test source called &ldquo;TestData.&rdquo; This solution is fantastic because it works cross-platform.</p>
-
-<p>``` make MyBAProjectTest.pro
-install_it.path = $${OUT_PWD}
-install_it.files += TestData/</p>
-
-<p>INSTALLS += install_it</p>
-
-<pre><code>
-However, this means that if I ever have a clean directory, I have to run `make install` to install my test data. What a pain! Why bother! Why even write tests when life is this unjust!
-
-BUT WAIT! After combing the depths of the internets for much of the evening, I was able to find many halfway solutions to my original problem. The concept is to add commands to the `QMAKE_POST_LINK` variable.
-
-For Linux, I use `cp`:
-
-``` make MyBAProjectTest.pro
-QMAKE_POST_LINK += $$quote(cp -rf $${PWD}/TestData $${OUT_PWD})
-</code></pre>
-
-<p>For Windows, I use <code>xcopy</code>:</p>
-
-<p>``` make MyBAProjectTest.pro
-PWD_WIN = $${PWD}
-PWD_WIN ~= s,/,\,g</p>
-
-<p>QMAKE_POST_LINK += $$quote(mkdir DestFolder)
-QMAKE_POST_LINK += $$quote(xcopy $${PWD_WIN}\TestData $${OUT_PWD_WIN}\TestData /E)</p>
-
-<pre><code>
-I also want that directory to be deleted when I run `make clean`. Cleaning up just means adding some commands to the `QMAKE_CLEAN` directive. I also want to run the appropriate commands whether I'm on Unix or Windows without having to modify my `.pro` file. Wrapping the previous commands in what I call an &quot;OS-space&quot; will cause those commands to only run in the specified operating system.
-
-``` make MyBAProjectTest.pro
-win32 {
-    PWD_WIN = $${PWD}
-    PWD_WIN ~= s,/,\\,g
-
-    QMAKE_POST_LINK += $$quote(mkdir DestFolder)
-    QMAKE_POST_LINK += $$quote(xcopy $${PWD_WIN}\\TestData $${OUT_PWD_WIN}\\TestData /E)
-
-    QMAKE_CLEAN += /s /f /q TestData &amp;&amp; rd /s /q TestData
-}
-
-unix {
-    QMAKE_POST_LINK += $$quote(cp -rf $${PWD}/TestData $${OUT_PWD})
-
-    QMAKE_CLEAN += -r TestData
-}
-</code></pre>
-
-<p>Data copied, tests working again. Take that, Nokia; no matter how difficult you make your build-processing tool, I&rsquo;ll figure out how to contort it to my whims.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

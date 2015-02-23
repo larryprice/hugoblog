@@ -14,11 +14,11 @@ __Brian Ward__
 
 ------
 
-###The Gist###
+### The Gist###
 
 Linux is a complicated operating system which gives its users the freedom to do anything. This book details things that any Linux superuser should be aware of, including printing, networking, scripting, compiling source code, setting up users, and buying hardware.
 
-###My Feelings###
+### My Feelings###
 
 I've been running [Ubuntu][ubu] as the only operating system on my home computer since the 11.04 Natty Narwhal release in 2011, and I've been using Ubuntu in varying degrees since 9.04 Lucid Lynx. I've also recently ported my wife's computer over to Ubuntu after she finally got fed up with Linux. There is a course at Purdue called ECE364 that taught us lots of cool Linux commands which I had forgotten, so I've been looking for a good refresher. This book helped jog my memory of things like grep, sed, and awk. The book also provided lots of information on things that I'd been using for years without really realizing what I was doing.
 
@@ -33,6 +33,6 @@ This book was written in 2004, which was a long time ago in the computing world.
 
 Most of the book is still very relevant. As mentioned previously, I got a lot of benefit from reading the section on common commands. The section on setting up dot-files was also extremely useful for me. There was also a lot of interesting information about the Linux filesystem being databases that I had never really thought about before.
 
-###Who Would Like This###
+### Who Would Like This###
 
 Those new to Linux or those needing a refresher would benefit from scanning this book, at least the interesting sections. This book is not for people looking for bleeding-edge information on their new hardware or software. The reader can get a large amount of information that has aged well and will continue to be relevant for Linux users for years to come.

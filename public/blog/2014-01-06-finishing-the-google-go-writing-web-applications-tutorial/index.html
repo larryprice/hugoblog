@@ -1,175 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Finishing the Google Go Writing Web Applications Tutorial &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> Finishing the Google Go Writing Web Applications Tutorial &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">07 Jan 2014, 22:45</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>Finishing the Google Go Writing Web Applications Tutorial</h1>
-  <span class="post-date">Tue, Jan 7, 2014</span>
-      <p>###A golang web app tutorial</p>
+                        <a href="http://localhost:1313/blog/2014-01-06-finishing-the-google-go-writing-web-applications-tutorial/" class="post-title">Finishing the Google Go Writing Web Applications Tutorial</a>
 
-<p>I did some work with <a href="http://golang.org/">Google Go</a> recently and had the chance to follow their great tutorial <em><a href="http://golang.org/doc/articles/wiki/">Writing Web Applications</a></em>. The tutorial is pretty simple: use the Go http library to create a very simple wiki-style site. I like this tutorial a lot because there&rsquo;s not too much hand-holding, but they do eventually hand you the <a href="http://golang.org/doc/articles/wiki/final.go">final code listing</a>. Then the good people at Google give you the tall task of completing the following &lsquo;Other tasks&rsquo; without solutions:</p>
-
-<ul>
-<li>Store templates in tmpl/ and page data in data/.</li>
-<li>Add a handler to make the web root redirect to /view/FrontPage.</li>
-<li>Spruce up the page templates by making them valid HTML and adding some CSS rules.</li>
-<li>Implement inter-page linking by converting instances of [PageName] to
-<code>&amp;lt;a href=&quot;/view/PageName&quot;&amp;gt;PageName&amp;lt;/a&amp;gt;</code>. (hint: you could use regexp.ReplaceAllFunc to do this)</li>
-</ul>
-
-<p>This is what I&rsquo;d like to go over. I scoured the web and didn&rsquo;t have much luck finding solutions to these issues. That would be okay if they were all trivial, but the final step is not straightforward. I&rsquo;m going to assume you&rsquo;ve already gone over the tutorial. You can see <a href="https://github.com/larryprice/gowiki/">my repository on Github</a>, and I have included links to the appropriate commits in the code sections of this blog post.</p>
-
-<p>####Store templates in tmpl/ and page data in data/</p>
-
-<p>The tutorial originally has the developer store all pages in the project directory. Every time a user made a new wiki page, a new file would creep into the project directory. All HTML templates were also stored in the project directory.</p>
-
-<p>Moving templates is quite trivial. In the global scope:</p>
-
-<p>``` diff wiki.go <a href="https://github.com/larryprice/gowiki/commit/9994d11b5275bc5faee911e5db2c994bc91052e2">https://github.com/larryprice/gowiki/commit/9994d11b5275bc5faee911e5db2c994bc91052e2</a>
--var templates = template.Must(template.ParseFiles(&ldquo;edit.html&rdquo;, &ldquo;view.html&rdquo;))
-+var templates = template.Must(template.ParseFiles(&ldquo;tmpl/edit.html&rdquo;, &ldquo;tmpl/view.html&rdquo;))</p>
-
-<pre><code>
-I found moving the page data to `data/` was a little trickier, especially if the directory didn't already exist. You may not have the same issue, but I remedied this by creating the directory if it doesn't exist. My `save` function differences:
-
-``` diff wiki.go https://github.com/larryprice/gowiki/commit/e86a707d37b802b2d59b8ef261b3fdcab46d5870
-func (p *Page) save() error {
--    filename := p.Title + &quot;.txt&quot;
--    return ioutil.WriteFile(filename, p.Body, 0600)
-+  os.Mkdir(&quot;data&quot;, 0777)
-+  filename := &quot;data/&quot; + p.Title + &quot;.txt&quot;
-+  return ioutil.WriteFile(filename, p.Body, 0600)
-}
-</code></pre>
-
-<p>####Add a handler to make the web root redirect to /view/FrontPage</p>
-
-<p>All we&rsquo;re going to do is create a simple handler called <code>rootHandler</code> that redirects to a new page called <code>FrontPage</code>. We then add it in the <code>main</code> function. The tutorial had us wrap out handlers in a function call to take some special actions, but that wrapper would mess up our handler in its current form. So I just <code>Redirect</code> to the <code>view</code> handler, which will then decide whether to view or create the FrontPage.</p>
-
-<p>``` diff wiki.go <a href="https://github.com/larryprice/gowiki/commit/e41fccc2d244a3b0d62d600d94897a076c87d53d">https://github.com/larryprice/gowiki/commit/e41fccc2d244a3b0d62d600d94897a076c87d53d</a>
-+ func rootHandler(w http.ResponseWriter, r *http.Request) {
-+   http.Redirect(w, r, &ldquo;/view/FrontPage&rdquo;, http.StatusFound)
-+ }</p>
-
-<p>&hellip;</p>
-
-<p>func main() {
-+  http.HandleFunc(&ldquo;/&rdquo;, rootHandler)
-  http.HandleFunc(&ldquo;/view/&rdquo;, makeHandler(viewHandler))
-  http.HandleFunc(&ldquo;/edit/&rdquo;, makeHandler(editHandler))
-  http.HandleFunc(&ldquo;/save/&rdquo;, makeHandler(saveHandler))</p>
-
-<pre><code>
-####Spruce up the page templates by making them valid HTML and adding some CSS rules.
-
-I took my old `.html` files and put them through [a validator](http://validator.w3.org/#validate_by_input). Making them valid only involved adding `DOCTYPE`, `html`, and `head` tags. The `head` tag needed `meta`, and `title` tags and we were valid. I've shown `view.html` below.
-
-``` diff view.html https://github.com/larryprice/gowiki/commit/771b4ecc8a550ee438720dc5c3d3f47954a1e4ff
-+&lt;!DOCTYPE html&gt;
-+&lt;html&gt;
-+&lt;head&gt;
-+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
-+&lt;title&gt;Wiki made using Golang&lt;/title&gt;
-+&lt;/head&gt;
- &lt;h1&gt;{{.Title}}&lt;/h1&gt;
- 
- &lt;p&gt;[&lt;a href=&quot;/edit/{{.Title}}&quot;&gt;edit&lt;/a&gt;]&lt;/p&gt;
- 
- &lt;div&gt;{{printf &quot;%s&quot; .Body}}&lt;/div&gt;
-+&lt;/html&gt;
-</code></pre>
-
-<p>####Implement inter-page linking by converting instances of [PageName]</p>
-
-<p>Converting [PageName] to a hyperlink was a bit more complicated than expected. I originally just tried to run the string through <code>ReplaceAllFunc</code> and replace all instance of [PageName] with an equivalent hyperlink. This does not work because we use Go&rsquo;s <code>ExecuteTemplate</code> method to render our template. <code>ExecuteTemplate</code> escapes any HTML that we give it to prevent us from displaying unwanted HTML. Getting around this was the fun part, because I want the benefit of escaped HTML while still having the ability to substitute my own HTML.</p>
-
-<p>As it turns out, <code>ExecuteTemplate</code> will not escape variables of the type <code>template.HTML</code>. So I added another variable onto the <code>Page</code> struct called <code>DisplayBody</code>.</p>
-
-<p>``` diff wiki.go <a href="https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288">https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288</a>
-type Page struct {
-     Title string
-     Body  []byte
-+    DisplayBody template.HTML
-}</p>
-
-<pre><code>
-Next, I create a regular expression to find instances of \[PageName\] and I put the defintion above the `main` method.
-
-``` diff wiki.go https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288
-+var linkRegexp = regexp.MustCompile(&quot;\\[([a-zA-Z0-9]+)\\]&quot;)
-</code></pre>
-
-<p>In my <code>viewHandler</code>, I escape <code>Body</code> and then set <code>DisplayBody</code> to that escaped string with the links substituted.</p>
-
-<p>``` diff wiki.go <a href="https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288">https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288</a>
-+  escapedBody := []byte(template.HTMLEscapeString(string(p.Body)))
-+
-+  p.DisplayBody = template.HTML(linkRegexp.ReplaceAllFunc(escapedBody, func(str []byte) []byte {
-+      matched := linkRegexp.FindStringSubmatch(string(str))
-+      out := []byte(&rdquo;<a href=\"/view/"+matched[1]+"\">&rdquo;+matched[1]+&rdquo;</a>&rdquo;)
-+      return out
-+    }))
-  renderTemplate(w, &ldquo;view&rdquo;, p)
-}</p>
-
-<pre><code>
-To finish up, I modify the `view.html` to show `DisplayBody`. I don't use `printf`, because that would turn `DisplayBody` back into a `string` and `ExecuteTemplate` would escape it.
-
-``` diff wiki.go https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288
--&lt;div&gt;{{printf &quot;%s&quot; .Body}}&lt;/div&gt;
-+&lt;div&gt;{{.DisplayBody}}&lt;/div&gt;
-</code></pre>
-
-<p>And that completes the extra exercises for Google&rsquo;s <em>Writing Web Applications</em> tutorial. Hopefully one day this helps someone who gets stuck.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

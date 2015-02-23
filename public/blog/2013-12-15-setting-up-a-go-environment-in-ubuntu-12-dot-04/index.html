@@ -1,111 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Setting up a Go environment in Ubuntu &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> Setting up a Go environment in Ubuntu &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">15 Dec 2013, 18:40</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>Setting up a Go environment in Ubuntu</h1>
-  <span class="post-date">Sun, Dec 15, 2013</span>
-      <p><strong><em>Update Jan 17, 2015:</em></strong> <strong>It&rsquo;s 2015 and things are different. Check out my <a href="/blog/2015/01/18/managing-a-go-environment-in-ubuntu">updated post on managing Go dependencies</a> for a better solution.</strong></p>
+                        <a href="http://localhost:1313/blog/2013-12-15-setting-up-a-go-environment-in-ubuntu-12-dot-04/" class="post-title">Setting up a Go environment in Ubuntu</a>
 
-<p>Some very light cajoling led me to do some investigation into <a href="http://golang.org/">Google Go</a> (often called <strong>golang</strong> for ease of internet search). This is a brief recounting of how I got up and running on <a href="http://ubuntu.com">Ubuntu</a> (first 12.04 and then 13.10). Luckily, this has been made espcially easy for us with the introduction of a <a href="http://packages.ubuntu.com/precise/golang">golang package in the Ubuntu package repositories</a>. There are also <a href="http://golang.org/doc/install">official installation instructions</a> if you don&rsquo;t like mine.</p>
-
-<p>Open up a terminal and let loose:</p>
-
-<pre><code class="language-bash">$ sudo apt-get install golang
-</code></pre>
-
-<p>The download is pretty heavy, so this step may take some time. Eventually the installer for <code>golang-go</code> will ask you if you want to &ldquo;Report installation of public packages to Go Dashboard.&rdquo; I&rsquo;ve been choosing &ldquo;No&rdquo; to this question and have no complaints.</p>
-
-<p>Now comes the fun part. Serious Go development relies on having a &ldquo;workspace&rdquo; setup involving a specific directory structure including <code>bin/</code>, <code>pkg/</code>, and <code>src/</code> directories. Google&rsquo;s <a href="http://golang.org/doc/code.html">official set-up page</a> contains more information about these workspaces.</p>
-
-<p>I&rsquo;m not a big fan of putting a visible directory in <code>$HOME</code>, so I opted to make a hidden directory called <code>.go</code>. After creating the directory, the environment variable <code>$GOPATH</code> needs to be set and <code>$PATH</code> needs to be adjusted.</p>
-
-<pre><code class="language-bash">$ mkdir ~/.go
-$ echo &quot;GOPATH=$HOME/.go&quot; &gt;&gt; ~/.bashrc
-$ echo &quot;export GOPATH&quot; &gt;&gt; ~/.bashrc
-$ echo &quot;PATH=\$PATH:\$GOPATH/bin # Add GOPATH/bin to PATH for scripting&quot; &gt;&gt; ~/.bashrc
-$ source ~/.bashrc
-</code></pre>
-
-<p>Now I&rsquo;m going to create a go project and add a link to it in the workspace I just created.</p>
-
-<pre><code class="language-bash">$ mkdir -p $GOPATH/src/github.com/user
-$ mkdir ~/hello-go
-$ ln -s ~/hello-go ~/.go/src/github.com/user/hello-go
-</code></pre>
-
-<p>For some actual test code, I&rsquo;ll add a file in my <code>hello-go/</code> directory called <code>hello.go</code> with the following code:</p>
-
-<p>``` go hello.go
-package main</p>
-
-<p>import &ldquo;fmt&rdquo;</p>
-
-<p>func main() {
-  fmt.Println(&ldquo;Hello world&rdquo;)
-}</p>
-
-<pre><code>
-Now I'm going to install the binary created from compiling this code into my `$GOPATH` to verify that my workspace is set up correctly, then I'll run it to behold the fruit of my efforts.
-
-``` bash
-$ go install github.com/user/hello-go
-$ hello-go
-Hello world
-</code></pre>
-
-<p>Installing is not necessary every time I want to test that my code compiles; running <code>go build</code> in the source directory will create a local executable that can be executed for incremental testing.</p>
-
-<p>If you&rsquo;re interested in learning golang, I would recommend doing the <a href="http://tour.golang.org/">go tour</a>. It goes way beyond a trivial hello world program and gives you some insight into many coplex go concepts (I even posted <a href="https://gist.github.com/larryprice/7647808">my solutions as a gist</a>, if you&rsquo;re interested).</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                

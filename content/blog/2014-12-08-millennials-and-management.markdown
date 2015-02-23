@@ -6,11 +6,11 @@ comments: true
 categories: write-ups non-technical
 ---
 
-###The Gist
+### The Gist
 
 A generation that grew up with the internet has entered the workforce, and they've begun to make demands that some managers find uncomfortable. [Millennials & Management][the-book] addresses some of the generational disconnects between Baby Boomers/Generation X and the fresh faces of Generation Y.
 
-###My Opinion
+### My Opinion
 
 The most difficult part of this book is coming to terms with the word millennial; a vague term used to describe those of us born anywhere between the early 80s and early 00s ([Wikipedia agrees](https://en.wikipedia.org/wiki/Millennials)). The term encapsulates several distinct sets of young adults: those entering the workforce around the time the .com bubble burst; those entering the workforce post-9/11; and those still struggling to find jobs after entering the workforce in the currently receding recession. Fortunately, it does not generally include those whipper-snappers born with a cell phone in their hand.
 
@@ -22,7 +22,7 @@ There is advice in this book for managing millennials mostly revolving around be
 
 The author also includes advice for millennials dealing with superiors and co-workers. Some of this advice is common sense and good manners, sometimes making it sound like it's aimed towards snot-nosed kids; but generally the advice provided is valid and good to follow. I didn't pick up any one-liners after reading this book, but I certainly found it helpful (and interesting) to see inside the heads of individuals with a Generation X or Boomer mindset. I think it will help me empathize with my more mature peers when discussing my career and ideas that are important in my working life.
 
-###Who Would Like This
+### Who Would Like This
 
 It's in the title. Millennials should be able to scrape some empathy out of this book for more mature generations, and maybe even for other millennials. Managers can also get an eye-opening view into how Generation Y thinks, especially managers having trouble relating to younger generations. Parents just don't understand, after all. A good, short read for both sides of the equation.
 

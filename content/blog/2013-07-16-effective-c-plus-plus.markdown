@@ -6,11 +6,11 @@ comments: true
 categories: write-ups
 ---
 
-###The Gist
+### The Gist
 
 [_Effective C++_](http://www.amazon.com/gp/product/0321334876/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0321334876&linkCode=as2&tag=larpriandthee-20) is a list of ways to write not-your-average-bear C++ code. The author, [Scott Meyers](http://www.aristeia.com/), outlines 8 specific topics for improving code, and a few more miscellaneous tips.
 
-###My Opinion
+### My Opinion
 
 Lots of good can come from reading this book. I borrowed it from a more-experienced co-worker and noticed many of the interesting coding standards this co-worker used came directly from this book. And I agree with it. I've been actively trying to follow the lessons learned in this book from the moment I picked it up.
 
@@ -20,6 +20,6 @@ So this book showed me a lot of the why certain things in C++ are the way they a
 
 Admittedly, there are parts of the book that are hard to follow. I consider Chapter 7 (Templates and Generic Programming) and Chapter 8 (Customizing new and delete) to be extremely technical chapters not meant for the faint of heart, and the lessons learned in these chapters are not necessarily useful in day-to-day programming. Chapter 9 is simply called Miscellany, and it delivers no new information for improving one's C++ skills.
 
-###Who Would Like This
+### Who Would Like This
 
 C++ Programmers should have this book (at least the first 6 chapters) crammed down their throats and into their squishy pink brains. After learning all the "basic" concepts of C++, the lessons this book teaches in design and the nature of C++ should be taken into consideration.

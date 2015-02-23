@@ -8,11 +8,11 @@ categories: write-ups
 
 > Don't be a slave to history. Don't let existing code dictate future code. All code can be replaced if it is no longer appropriate
 
-###The Gist
+### The Gist
 
 [_The Pragmatic Programmer_](http://www.amazon.com/gp/product/020161622X/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=020161622X&linkCode=as2&tag=larpriandthee-20) written by Andrew Hunt and David Thomas is a book about being an above-average software developer.
 
-###My Opinion
+### My Opinion
 
 There are many good concepts in this book. However, I've been reading a bit much lately and found that most of the topics covered have been rehashed in other books. As it turns out, re-reading this kind of motivational book is less exciting when you've read similar texts earlier in the year.
 
@@ -22,7 +22,7 @@ One tip in this book is "Use one editor well." I've found that I love to use [Su
 
 The chapter introductions were largely worthless to me: long-winded summaries of EVERYTHING in the chapter. I eventually trained myself to automatically skip the chapter intros in favor of reading the details. It seems that I could have just as easily gone the other way and gotten away with only reading the intros, but that hardly seems like any fun.
 
-###Who Would Like This
+### Who Would Like This
 
 Fresh-outs should read this book. It's not too long and it's split into manageable chapters. Great for fresh-out book clubs, in which I probably should have participated.
 

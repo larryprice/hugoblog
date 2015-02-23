@@ -1,98 +1,55 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>The wisdom of Confucius - now available in an API &middot; Larry Price</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
 
-  <title> The wisdom of Confucius - now available in an API &middot; Larry Price </title>
-
-  
-  <link rel="stylesheet" href="http://localhost:1313//css/poole.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/syntax.css">
-  <link rel="stylesheet" href="http://localhost:1313//css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Larry Price" />
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>Larry Price</h1>
-      <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
-      </p>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313/">Larry Price</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+            </ul>
+        </nav>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="/">Home</a> </li>
-      
-    </ul>
-
-    <p>&copy; 2015. All rights reserved. </p>
-  </div>
 </div>
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">14 Oct 2014, 06:03</h1>
+                <section class="post">
+                    <header class="post-header">
 
-    <div class="content container">
-<div class="post">
-  <h1>The wisdom of Confucius - now available in an API</h1>
-  <span class="post-date">Tue, Oct 14, 2014</span>
-      <p>I make a lot of silly things while learning new technology. In this case I have tapped into the almighty power of <a href="https://en.wikipedia.org/wiki/Confucius">Confucius</a>, a Chinese philosopher from 2500 years ago credited for writing or editing many Chinese classic texts. Growing up as an American child, I associated Confucius with proverbs, and I associated proverbs with that classic after-Chinese-dinner dessert <a href="https://en.wikipedia.org/wiki/Fortune_cookie">the fortune cookie</a>.</p>
+                        <a href="http://localhost:1313/blog/2014-10-14-the-wisdom-of-confucius-now-available-in-an-api/" class="post-title">The wisdom of Confucius - now available in an API</a>
 
-<p>Fortune cookies are a pure delight: a message in a bottle from the restaurant&rsquo;s proprietors for you to enjoy as you kindly vacate the facility.</p>
-
-<p>Most fortune cookies that I&rsquo;ve opened recently have three parts: a fortune (generally a proverb), a lesson in simplified Chinese, and a lottery number. So many secrets wrapped up in such a small, golden treasure.</p>
-
-<p>Ever left a Chinese restaurant, gotten in your car, and felt the need to break something only to realize you left your precious fortune cookie on the table? I have built a solution.</p>
-
-<p><a href="http://fortunecookieapi.com/">The Fortune Cookie API</a> is a simple, RESTful API built to generate fortune cookie data. The root URL shows documentation built using <a href="https://apiary.io/">Apiary.io</a>.</p>
-
-<p>How does it work? I need fortunes now!</p>
-
-<p>There are options. You can get <code>fortunes</code> from the <a href="http://fortunecookieapi.com/v1/fortunes">/v1/fortunes</a> endpoint, <code>lessons</code> from the <a href="http://fortunecookieapi.com/v1/lessons">/v1/lessons</a> endpoint, and lottery numbers from the <a href="http://fortunecookieapi.com/v1/lottos">/v1/lottos</a> endpoint. By default you get 100 of any model, but all endpoints include a <code>limit</code> (max 1000), <code>skip</code>, and <code>page</code> parameter to facilitate getting all the lessons and fortunes. For lottery numbers, we approximately build <a href="https://en.wikipedia.org/wiki/Powerball">Powerball</a> numbers except we currently ignore the rule for red balls, which means there are something ike 42 billion different possibilities. Due to the high number of potential lottery numbers, the <code>lottos</code> endpoint also includes a <code>firstId</code> parameter that lets you start from anywhere.</p>
-
-<p>But there&rsquo;s no need to get the individual models (unless you&rsquo;re into that kind of thing)! I also created a <a href="http://fortunecookieapi.com/v1/cookie">/v1/cookie</a> endpoint to retrieve a random fortune, lesson, and lottery number as a single object. Woohoo! You can specify the number of cookies (max 100) with the <code>limit</code> parameter.</p>
-
-<pre><code>GET http://fortunecookieapi.com/v1/cookie
-
-{
-  &quot;fortune&quot;: {
-    &quot;id&quot;: &quot;53ffcf1d4ea4f76d1b8f223e&quot;,
-    &quot;message&quot;: &quot;This fortune intentionally left blank&quot;
-  },
-  &quot;lotto&quot;: {
-    &quot;id&quot;: &quot;001000200030004000500006&quot;,
-    &quot;numbers&quot;: [10,20,30,40,50,6]
-  },
-  &quot;lesson&quot;: {
-    &quot;id&quot;: &quot;53ffcf1d4ea4f76d1b8f2241&quot;,
-    &quot;chinese&quot;: &quot;因特网&quot;,
-    &quot;pronunciation&quot;: &quot;yintewang&quot;,
-    &quot;english&quot;: &quot;internet&quot;
-  }
-}
-</code></pre>
-
-<p>Now you can fill that hole in your heart where the fortune cookies are missing. If you&rsquo;re interested in the code, you can <a href="https://github.com/larryprice/fortune-cookie-api">check it out on Github</a>.</p>
-
-<p>UPDATE: I&rsquo;ve registered the domain <a href="http://fortunecookieapi.com">fortunecookieapi.com</a> for the love of fortune cookies. Enjoy.</p>
-
-</div>
-</div>
-
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
-</html>
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
