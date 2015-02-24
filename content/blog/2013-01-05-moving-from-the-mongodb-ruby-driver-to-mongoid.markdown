@@ -3,7 +3,7 @@ layout: post
 title: "Moving from the MongoDB Ruby Driver to Mongoid"
 date: "2013-01-05T20:04:00-05:00"
 comments: true
-categories: ruby mongodb mongoid database rspec nosql pokephile
+categories: [ruby, mongodb, mongoid, database, rspec, nosql, pokephile]
 ---
 
 This is Part 2 in a multi-part series to detail the creation of a "simple" project combining [Ruby][ruby], [MongoDB][mongodb], [RSpec][rspec], [Sinatra][sinatra], and [Capybara][capybara] in preperation for a larger-scale side project set to begin January 2013. For more in this series, see the [Pokephile category][series-tag]. Part 2 details refactoring code using the MongoDB Ruby driver to use Mongoid. The code for this side-project is located [on Github][pokephile].

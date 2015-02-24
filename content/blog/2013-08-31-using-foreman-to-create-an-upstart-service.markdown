@@ -3,7 +3,7 @@ layout: post
 title: "Using Foreman to Create an Upstart Service"
 date: "2013-08-31T17:05:00-05:00"
 comments: true
-categories: web ruby sinatra foreman upstart
+categories: [web, ruby, sinatra, foreman, upstart]
 ---
 
 I just finished my first attempt at deploying a web app to run automatically in the background on a friend's server. Pretty easy, really. The first thing I did was install [foreman](https://github.com/ddollar/foreman). Assuming you have ruby and rubygems installed:

@@ -3,7 +3,7 @@ layout: post
 title: "I Don't Have Time"
 date: "2012-10-24T22:35:00-05:00"
 comments: true
-categories: sep-blog-battle non-technical
+categories: [sep-blog-battle, non-technical]
 ---
 
 "Wanna go for a walk?" my wife asks over my shoulder.

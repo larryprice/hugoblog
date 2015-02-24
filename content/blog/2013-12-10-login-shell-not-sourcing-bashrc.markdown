@@ -3,7 +3,7 @@ layout: post
 title: "Login shell not sourcing .bashrc: A brief lesson in dot-files"
 date: "2013-12-10T19:45:00-05:00"
 comments: true
-categories: linux rvm
+categories: [linux, rvm]
 ---
 
 I have a confession: I've been avoiding using [rvm](https://rvm.io/) for the past few weeks for stupid reasons.

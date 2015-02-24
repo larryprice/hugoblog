@@ -3,7 +3,7 @@ layout: post
 title: "Setting up a Go environment in Ubuntu"
 date: "2013-12-15T18:40:00-05:00"
 comments: true
-categories: golang linux
+categories: [golang, linux]
 ---
 
 ___Update Jan 17, 2015:___ __It's 2015 and things are different. Check out my [updated post on managing Go dependencies](/blog/2015/01/18/managing-a-go-environment-in-ubuntu) for a better solution.__

@@ -3,7 +3,7 @@ layout: post
 title: "Testing through a Trello connection with Capybara and Webkit"
 date: 2014-08-07T07:25:11-04:00
 comments: true
-categories: trello ollert capybara ruby sinatra
+categories: [trello, ollert, capybara, ruby, sinatra]
 ---
 
 During the hardening of [Ollert](https://ollertapp.com), a Trello data analysis tool I wrote, I started writing acceptance tests. I quickly ran into an issue where the meat of my application requires opening pop-up window, signing into Trello, and allowing my application access.

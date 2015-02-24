@@ -3,7 +3,7 @@ layout: post
 title: "Finishing the Google Go Writing Web Applications Tutorial"
 date: 2014-01-07T22:45:03-05:00
 comments: true
-categories: golang web
+categories: [golang, web]
 ---
 
 ### A golang web app tutorial

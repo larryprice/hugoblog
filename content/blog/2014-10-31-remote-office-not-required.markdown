@@ -3,7 +3,7 @@ layout: post
 title: "Remote: Office Not Required"
 date: 2014-10-31T19:34:13-04:00
 comments: true
-categories: write-ups non-technical remote
+categories: [write-ups, non-technical, remote]
 ---
 
 > The city is the original talent hub. Traditionally, those who ran the engines of capitalism thought: "Let's gather a large numberof people in a small grographical are where they must live on top of each other in tight quarters, and we'll be able to find plenty of able bodies to man our factories." Most splendid, Sir Moneybags!

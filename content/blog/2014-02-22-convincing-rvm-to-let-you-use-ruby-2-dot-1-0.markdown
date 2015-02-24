@@ -3,7 +3,7 @@ layout: post
 title: "Convincing rvm to let you use ruby 2.1.0"
 date: 2014-02-22T16:46:00-05:00
 comments: true
-categories: ruby rvm linux
+categories: [ruby, rvm, linux]
 ---
 
 [Ruby 2.1.0 went stable](//ruby-lang.org/en/news/2013/12/25/ruby-2-1-0-is-released/) a few months ago, and [Ruby 1.9.3 support](//ruby-lang.org/en/news/2014/01/10/ruby-1-9-3-will-end-on-2015/) will end in a just over a year.

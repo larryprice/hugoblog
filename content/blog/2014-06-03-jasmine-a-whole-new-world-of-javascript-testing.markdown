@@ -3,7 +3,7 @@ layout: post
 title: "Jasmine - A Whole New World of Javascript Testing"
 date: 2014-06-04T6:19:43-04:00
 comments: true
-categories: javascript testing
+categories: [javascript, testing]
 ---
 
 [Jasmine](https://jasmine.github.io/): a headless Javascript testing library written entirely in Javascript. With similarities to [rspec](http://rspec.info), I've quickly grown attached to this framework and have been looking for opportunities to discuss it. [Version 2.0](https://jasmine.github.io/2.0/introduction.html) was recently released, so I'll be focusing on the standalone 2.0 concepts. To get started, download and uncompress [the standalone distribution](https://github.com/pivotal/jasmine/tree/master/dist).

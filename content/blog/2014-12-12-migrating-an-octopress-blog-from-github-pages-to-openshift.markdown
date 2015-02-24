@@ -3,7 +3,7 @@ layout: post
 title: "Deploying an Octopress site to Openshift"
 date: 2014-12-14T20:15:00-05:00
 comments: true
-categories: octopress openshift ruby
+categories: [octopress, openshift, ruby]
 ---
 
 I'll detail how to take a new or existing GH Pages blog in Octopress and deploy it to OpenShift.

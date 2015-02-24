@@ -3,7 +3,7 @@ layout: post
 title: "Rework"
 date: 2014-03-26T21:00:33-04:00
 comments: true
-categories: write-ups
+categories: [write-ups]
 ---
 
 > You want to get into the rhythm of making choices. When you get in that flow of making decision after decision, you build momentum and boost morale. Decisions are progress. Each one you make is a brick in your foundation. You can't build on top of "We'll decide later," but you _can_ build on top of "Done."

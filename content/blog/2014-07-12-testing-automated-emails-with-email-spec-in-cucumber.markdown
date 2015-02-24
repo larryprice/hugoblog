@@ -3,7 +3,7 @@ layout: post
 title: "Testing automated emails with email-spec in Cucumber"
 date: 2014-07-12T07:36:33-04:00
 comments: true
-categories: web ruby sinatra ollert
+categories: [web, ruby, sinatra, ollert]
 ---
 
 Now that [I send emails using Pony](/blog/2014/07/08/sending-emails-with-pony-and-sendgrid/), I want to be able to verify that the emails are being generated correctly. I also don't want to send real emails and have my tests check an inbox somewhere. I found a couple of solutions to do this, including [pony-test](https://github.com/johnmendonca/pony-test) and [email-spec](https://github.com/bmabey/email-spec). Although pony-test fits my needs perfectly, the last commit was December 27, 2011 (2.5 years ago at the time of this post), and thus was using an outdated version of [capybara](https://github.com/jnicklas/capybara) which I was unwilling to use. Fortunately, pony-spec is mostly just a fork of email-spec with all the non-Pony components ripped out.

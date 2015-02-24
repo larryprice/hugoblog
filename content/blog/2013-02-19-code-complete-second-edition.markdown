@@ -3,7 +3,7 @@ layout: post
 title: "Code Complete Second Edition"
 date: "2013-02-19T22:38:00-05:00"
 comments: true
-categories: write-ups non-technical
+categories: [write-ups, non-technical]
 ---
 
 > Design is a process of carefully planning small mistakes in order to avoid making big ones.

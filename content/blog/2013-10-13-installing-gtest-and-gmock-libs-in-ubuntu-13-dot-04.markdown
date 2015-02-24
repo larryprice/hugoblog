@@ -3,7 +3,7 @@ layout: post
 title: "Installing GTest and GMock Libs in Ubuntu 13.04"
 date: "2013-10-13T11:02:00-05:00"
 comments: true
-categories: ubuntu gtest gmock
+categories: [ubuntu, gtest, gmock]
 ---
 
 I started trying to work on an open-source project and found that I needed to install [googletest](https://code.google.com/p/googletest/) and [googlemock](https://code.google.com/p/googlemock/) on my home machine. Seemed easy enough, I found a package called `google-mock` in the [Raring](http://packages.ubuntu.com/raring/google-mock) repositories which depends on a package called `libgtest-dev`. So I install it:

@@ -3,7 +3,7 @@ layout: post
 title: "2014 Retrospective"
 date: 2014-12-31T11:40:00-05:00
 comments: true
-categories: non-technical retro
+categories: [non-technical, retro]
 ---
 
 Happy New Year, dear reader.

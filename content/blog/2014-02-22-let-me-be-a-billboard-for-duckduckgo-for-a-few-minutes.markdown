@@ -3,7 +3,7 @@ layout: post
 title: "Let me be a billboard for DuckDuckGo for a few minutes"
 date: 2014-02-22T17:47:00-05:00
 comments: true
-categories: non-technical internet
+categories: [non-technical, internet]
 ---
 
 I would describe my job as 10% cleverness, 10% tenacity, 30% historical knowledge, and 50% searching the internet.

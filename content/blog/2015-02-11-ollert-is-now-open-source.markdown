@@ -3,7 +3,7 @@ layout: post
 title: "Ollert is now open source"
 date: 2015-02-11T05:54:26-05:00
 comments: true
-categories: ollert foss
+categories: [ollert, foss]
 ---
 
 [Ollert](https://ollertapp.com), the Trello data analytics tool, has been open sourced under [GNU Affero GPL v3.0](https://github.com/sep/ollert/blob/master/LICENSE). The source code can be found [on Github](https://github.com/sep/ollert/) and I've already accepted several pull requests.

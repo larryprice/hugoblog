@@ -3,7 +3,7 @@ layout: post
 title: "To System Test or Not to System Test"
 date: 2014-10-28T17:42:06-04:00
 comments: true
-categories: non-technical testing
+categories: [non-technical, testing]
 ---
 
 System tests: a boon to product verification, but also time taken away from raw development. System-level testing means bringing up the whole system and running through a set of steps to verify that the system is working properly on all levels.

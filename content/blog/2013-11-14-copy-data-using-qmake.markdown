@@ -3,7 +3,7 @@ layout: post
 title: "Copy Data Using qmake"
 date: "2013-11-14T21:24:00-05:00"
 comments: true
-categories: qt qmake c++
+categories: [qt, qmake, c++]
 ---
 
 I'll take things that should be really easy but are in fact impossible for $1000, Mr Trebek.

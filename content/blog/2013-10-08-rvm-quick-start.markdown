@@ -3,7 +3,7 @@ layout: post
 title: "RVM Quick Start"
 date: "2013-10-08T22:10:00-05:00"
 comments: true
-categories: ruby rvm
+categories: [ruby, rvm]
 ---
 
 When I was working on a few different projects at once, I started running into issues where my Ruby gem versions would start to mismatch. How did I fix that issue? Naively. I adjusted the versions as necessary so my gems were always the same version. That was... pretty dumb. To make up for my past ignorance, I've been exploring ways to manage my Ruby versions and my gems intelligently. Enter [RVM](https://rvm.io/).

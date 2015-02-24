@@ -3,7 +3,7 @@ layout: post
 title: "Hooks in cucumber-cpp"
 date: "2013-11-22T20:40:00-05:00"
 comments: true
-categories: cucumber c++ testing foss
+categories: [cucumber, c++, testing, foss]
 ---
 
 A few months ago [I blogged about tags](/blog/2013/04/15/tags-in-c-plus-plus-cucumber-tests/) in [cucumber-c++](https://github.com/cucumber/cucumber-cpp). The scenario I presented involved using tags to call a `BEFORE` hook before the first scenario and an `AFTER` hook after the last scenario. The code looked a little bit like this:

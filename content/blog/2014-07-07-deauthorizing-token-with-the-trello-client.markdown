@@ -3,7 +3,7 @@ layout: post
 title: "Deauthorizing Token with the Trello Client"
 date: 2014-07-07T05:59:13-04:00
 comments: true
-categories: ollert trello javascript web
+categories: [ollert, trello, javascript, web]
 ---
 
 In my [application](https://ollertapp.com), a user can connect to Trello without logging in. Whenever this "anonymous" user hits the landing page, I attempt to force the [Trello client](https://trello.com/docs/gettingstarted/clientjs.html) to authorize the user again. By doing this, the user can return to the landing page whenever he or she likes to switch usernames. My authorize code looks like this:

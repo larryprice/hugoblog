@@ -3,7 +3,7 @@ layout: post
 title: "The (Honest) Truth About Dishonesty"
 date: 2014-08-31T13:35:40-04:00
 comments: true
-categories: write-ups non-technical
+categories: [write-ups, non-technical]
 ---
 
 ### The Idea

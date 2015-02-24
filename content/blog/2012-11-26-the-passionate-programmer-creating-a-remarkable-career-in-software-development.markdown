@@ -3,7 +3,7 @@ layout: post
 title: "The Passionate Programmer: Creating a Remarkable Career in Software Development"
 date: "2012-11-26T22:20:00-05:00"
 comments: true
-categories: write-ups non-technical
+categories: [write-ups, non-technical]
 ---
 
 <img src="http://www.inquisitivechap.com/wp-content/uploads/2010/11/ThePassionateProgrammerCover.png" style="border: 0" width="130px" title="The Passionate Programmer: Creating a Remarkable Career in Software Development" alt="Cover for The Passionate Programmer" />  

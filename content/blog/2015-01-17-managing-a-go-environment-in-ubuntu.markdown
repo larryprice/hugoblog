@@ -3,7 +3,7 @@ layout: post
 title: "Managing a Go Environment in Ubuntu"
 date: 2015-01-18T10:58:04-05:00
 comments: true
-categories: golang linux
+categories: [golang, linux]
 ---
 
 Many moons ago, I wrote about [setting up a Go environment in Ubuntu](/blog/2013/12/15/setting-up-a-go-environment-in-ubuntu-12-dot-04). After writing that post, I dropped Go development for nearly a year. Today I run the [Indy Golang meetup](http://www.meetup.com/Indy-Golang/events/219612982/), and soon I'll be starting a new work project where I'll be recommending a Go-based tech stack. I've learned a thing or two about Go and managing its dependencies since I wrote that initial blog post, and I intend to give a short presentation to my meetup about my recent findings. Before I do, I thought I'd write a preliminary blog post detailing the tools I use to keep my Go environment sane.

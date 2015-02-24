@@ -3,7 +3,7 @@ layout: post
 title: "Beware of Group Projects"
 date: "2013-08-22T21:22:00-05:00"
 comments: true
-categories: sep-blog-battle
+categories: [sep-blog-battle]
 ---
 
 Relying on other people is hard. I've always found it difficult to understand that other people aren't me. Don't get me wrong, working with others can be really rewarding. Maybe "Beware of Group Projects" is not the best title. More like "Be Wary that Working with Others is Not the Same as Working with Yourself." But that's a pretty long title, and reading (like working with others) is hard.

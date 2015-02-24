@@ -3,7 +3,7 @@ layout: post
 title: "On the Futility of Man and Trying to Divide a Sinatra App into Separate Controllers"
 date: "2013-08-26T22:35:00-05:00"
 comments: true
-categories: ruby sinatra web mvc retro
+categories: [ruby, sinatra, web, mvc, retro]
 ---
 
 Oh, [Sinatra](http://www.sinatrarb.com/). You're oh-so-very dear to me. You made it so easy for me to write my [first](http://capitalpunishment.herokuapp.com) [web](http://pokephile.herokuapp.com) apps. All I had to do was write a couple routes and throw together a few HTML-like files and I had a web app. I used pattern matching to reduce the web-facing code for [Capital Punishment](https://github.com/larryprice/CapitalPunishment) from ~500 lines of code to <100 lines of code. You are perfect for writing small-time web applications.

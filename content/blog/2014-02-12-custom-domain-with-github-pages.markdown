@@ -3,7 +3,7 @@ layout: post
 title: "Custom Domain with Github Pages"
 date: 2014-02-12T21:30:00-05:00
 comments: true
-categories: web
+categories: [web]
 ---
 
 As of today, I'm the proud owner of [larry-price.com](//larry-price.com). On the recommendation from a friend, I used [domainmonster.com](//domainmonster.com) for it's cost effectiveness and usable toolset. I wanted to link my Github Pages blog (this blog!) to my new site. In case I ever want to do this again, I've provided myself (and you!) with a step-by-step guide below. Note that Github [has a page that explains how to do this](//help.github.com/articles/setting-up-a-custom-domain-with-pages), but there's some fluff and ordering issues that turned me off from using those instructions as any more than a reference.

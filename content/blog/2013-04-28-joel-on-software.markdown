@@ -3,7 +3,7 @@ layout: post
 title: "Joel On Software"
 date: "2013-04-28T11:38:00-05:00"
 comments: true
-categories: write-ups
+categories: [write-ups]
 ---
 
 > We're programmers. Programmers are, in their hearts, architects, and the 

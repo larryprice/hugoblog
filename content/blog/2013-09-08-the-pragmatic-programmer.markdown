@@ -3,7 +3,7 @@ layout: post
 title: "The Pragmatic Programmer"
 date: "2013-09-08T12:00:00-05:00"
 comments: true
-categories: write-ups
+categories: [write-ups]
 ---
 
 > Don't be a slave to history. Don't let existing code dictate future code. All code can be replaced if it is no longer appropriate

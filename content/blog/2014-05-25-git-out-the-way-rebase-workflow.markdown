@@ -3,7 +3,7 @@ layout: post
 title: "Git out the Way - Rebase Workflow"
 date: 2014-05-25T15:44:55-04:00
 comments: true
-categories: git
+categories: [git]
 ---
 
 We use [git](http://www.git-scm.com/) on my current project, and we used to always use remote branches. After doubling the number of developers touching the repo, we found that remote feature branches led to merge conflicts, stale branches, and hidden code. We've switched away from using remote feature branches, favoring instead to commit directly to `origin/master`, making remote feature branches the exception. We do this using a simple method called `rebase`.

@@ -3,7 +3,7 @@ layout: post
 title: "Ollert - Reveal The Data Behind Your Trello Boards"
 date: 2014-07-13T17:15:00-04:00
 comments: true
-categories: ollert trello non-technical
+categories: [ollert, trello, non-technical]
 ---
 
 Introducing [Ollert](https://ollertapp.com), a tool to show you what your [Trello](//trello.com) boards can't tell you on their own.

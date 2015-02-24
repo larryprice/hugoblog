@@ -3,7 +3,7 @@ layout: post
 title: "Javascript testing with Capybara and Cucumber"
 date: 2014-08-05T06:40:40-04:00
 comments: true
-categories: ruby capybara cucumber sinatra testing javascript
+categories: [ruby, capybara, cucumber, sinatra, testing, javascript]
 ---
 
 In the past, I had written off testing the Javascript in my [Sinatra](http://www.sinatrarb.com/) apps as being not worth the pain of setting up. That was pretty naïve of me, as setting up web drivers in [Capybara](https://github.com/jnicklas/capybara) is actually pretty easy.

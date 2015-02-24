@@ -3,7 +3,7 @@ layout: post
 title: "Sticky footer with Twitter Bootstrap"
 date: 2014-03-24T20:12:50-04:00
 comments: true
-categories: twitter-bootstrap css html ollert
+categories: [twitter-bootstrap, css, html, ollert]
 ---
 
 Sometimes CSS is a total pain.

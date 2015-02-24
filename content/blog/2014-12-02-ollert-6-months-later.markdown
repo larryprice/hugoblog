@@ -3,7 +3,7 @@ layout: post
 title: "Ollert - 6 Months Later"
 date: 2014-12-02T18:54:12-05:00
 comments: true
-categories: ollert trello non-technical
+categories: [ollert, trello, non-technical]
 ---
 
 [Nine months ago](/blog/2014/03/17/sep-startup-weekend-ollert) I brought a team of 6 together to build a data analysis tool called [Ollert](https://ollertapp.com). [A few months later](/blog/2014/07/13/ollert-reveal-the-data-behind-your-trello-boards), I started working with [SEP](//sep.com) to find time to make Ollert better. Where do we stand today?

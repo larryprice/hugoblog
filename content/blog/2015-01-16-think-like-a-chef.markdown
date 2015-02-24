@@ -3,7 +3,7 @@ layout: post
 title: "Think Like a Chef"
 date: 2015-01-16T17:40:45-05:00
 comments: true
-categories: write-ups non-technical
+categories: [write-ups, non-technical]
 ---
 
 ### The Gist

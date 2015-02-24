@@ -3,7 +3,7 @@ layout: post
 title: "Tags in C++ Cucumber tests"
 date: "2013-04-15T22:10:00-05:00"
 comments: true
-categories: cucumber c++ testing
+categories: [cucumber, c++, testing]
 ---
 
 The project I'm working on is slowly adding [Cucumber](https://github.com/cucumber/cucumber-cpp) acceptance tests to our massive code base in order to replace aging [Robot tests](https://code.google.com/p/robotframework/). One would think that getting developers on our team to use Cucumber would be east, since it uses [googletest](https://code.google.com/p/googletest/) and [googlemock](https://code.google.com/p/googlemock/) which we use for our unit tests. Unfortunately, very few people on the team have been motivated to write integration tests using the new framework, so I have very few people to go to when I have problems writing my own integration tests.

@@ -3,7 +3,7 @@ layout: post
 title: "Changing Plans"
 date: "2013-04-09T21:45:00-05:00"
 comments: true
-categories: sep-blog-battle non-technical
+categories: [sep-blog-battle, non-technical]
 ---
 
 Your code is being sent to the dump.

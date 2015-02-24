@@ -3,7 +3,7 @@ layout: post
 title: "My Battle With Hour-Based Estimation"
 date: 2014-10-29T18:33:27-04:00
 comments: true
-categories: non-technical agile
+categories: [non-technical, agile]
 ---
 
 I despise estimating in hours. Hours are too granular. Hours are too difficult to distinguish from hours on a clock (_they're even spelled the same_).

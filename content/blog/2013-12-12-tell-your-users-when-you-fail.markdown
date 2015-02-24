@@ -3,7 +3,7 @@ layout: post
 title: "Tell Your Users When You Fail"
 date: "2013-12-12T19:41:00-05:00"
 comments: true
-categories: non-technical
+categories: [non-technical]
 ---
 
 Your users put a lot of faith in you. They put up with your terrible design, your horrible taste in color scheme, and your ability to take up over 100% of their computer's memory. With that in mind, don't these poor people deserve a little bit of honesty?

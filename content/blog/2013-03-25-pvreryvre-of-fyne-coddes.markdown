@@ -3,7 +3,7 @@ layout: post
 title: "Blog Battle: Pvreryvre of fyne coddes"
 date: "2013-03-25T22:09:00-05:00"
 comments: true
-categories: non-technical sep-blog-battle
+categories: [non-technical, sep-blog-battle]
 ---
 
 Ice pellets bounced off my head as I walked myself home late one night. The air was dreadfully cold, so I swooped into one of Carmel's seedy side alleys to take a shotcut. Out of the shadows crept a man wearing a long trenchcoat and thick-rimmed glasses. Hunched over, he brushed his unkempt hair out of his eyes. His coffee-stained breath rushed from beneath his pencil moustache as he asked, "Can I interest you in any of these fine iPhone apps?" I tried to cautiously back away. "How would you like a real BaZynga game, only ninety-nine cents, it's called Perturbed Birds with Pals?" I was briefly distracted by sirens in the distance; by the time I returned my glance to the man's last position he had disappeared, my virtual wallet was empty, and my phone was filled with bloatware and repetitive 'Ville-style games.

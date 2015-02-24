@@ -3,7 +3,7 @@ layout: post
 title: "Fetching Random Mongoose Objects the Simple Way"
 date: 2014-09-15T20:11:13-04:00
 comments: true
-categories: nodejs mongoose mongodb database javascript
+categories: [nodejs, mongoose, mongodb, database, javascript]
 ---
 
 As I venture through the land of [NodeJS](http://nodejs.org/), I've found the wonder and magic of [NPM](http://npmjs.org/), a package management tool for Javscript similar to [ruby](https://www.ruby-lang.org/)'s gems. Although there are nearly 100,000 packages on the main npmjs site (94,553 at time-of-writing), it seems there are still niches to be filled.

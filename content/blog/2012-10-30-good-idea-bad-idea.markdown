@@ -3,7 +3,7 @@ layout: post
 title: "Good Idea, Bad Idea"
 date: "2012-10-30T21:37:00-05:00"
 comments: true
-categories: sep-blog-battle non-technical
+categories: [sep-blog-battle, non-technical]
 ---
 
 There is a general, unnamed rule when coming up with ideas:

@@ -3,7 +3,7 @@ layout: post
 title: "Millennials &amp; Management"
 date: 2014-12-08T21:22:41-05:00
 comments: true
-categories: write-ups non-technical
+categories: [write-ups, non-technical]
 ---
 
 ### The Gist

@@ -3,7 +3,7 @@ layout: post
 title: "Testing a Sinatra App with Capybara"
 date: "2013-01-19T12:20:00-05:00"
 comments: true
-categories: pokephile ruby sinatra capybara cucumber haml mongoid database twitter-bootstrap
+categories: [pokephile, ruby, sinatra, capybara, cucumber, haml, mongoid, database, twitter-bootstrap]
 ---
 
 _This is Part 3 in a multi-part series to detail the creation of a "simple" project combining [Ruby][ruby], [MongoDB][mongodb], [RSpec][rspec], [Sinatra][sinatra], and [Capybara][capybara] in preperation for a larger-scale side project set to begin January 2013. For more in this series, see the [Pokephile category][series-tag]. Part 3 of this series describes using Capybara to test a Sinatra application. The code for this side-project is located [on Github][pokephile], and the final product can be found [here][app]._

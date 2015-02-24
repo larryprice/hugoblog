@@ -3,7 +3,7 @@ layout: post
 title: "Hotfixing a Bug in Trello's client.js"
 date: 2014-08-22T06:08:21-04:00
 comments: true
-categories: trello ollert javascript
+categories: [trello, ollert, javascript]
 ---
 
 I'm a huge fan of [Trello](https://trello.com), and I recently created an app to analyze Trello data called [Ollert](https://ollertapp.com). Ollert makes heavy use of the [Trello API](http://trello.com/docs). I've written previously about [using Trello's client.js to connect to the Trello API](/blog/2014/03/18/connecting-to-the-trello-api/).

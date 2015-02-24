@@ -3,7 +3,7 @@ layout: post
 title: "The Optimistic Programmer"
 date: "2012-11-08T19:06:00-05:00"
 comments: true
-categories: sep-blog-battle non-technical
+categories: [sep-blog-battle, non-technical]
 ---
 
 Meet Anne. Anne's a programmer in a thriving tech company. Anne goes into work every day to work on a shiny new product for her company.

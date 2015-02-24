@@ -3,7 +3,7 @@ layout: post
 title: "Using sqlite on Heroku"
 date: 2014-03-29T11:16:06-04:00
 comments: true
-categories: sql heroku ollert ruby sinatra sequel
+categories: [sql, heroku, ollert, ruby, sinatra, sequel]
 ---
 
 Or rather, "Not Using sqlite on Heroku."

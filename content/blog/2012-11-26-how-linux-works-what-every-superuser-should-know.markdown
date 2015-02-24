@@ -3,7 +3,7 @@ layout: post
 title: "How Linux Works: What Every Superuser Should Know"
 date: "2012-11-26T21:27:00-05:00"
 comments: true
-categories: write-ups linux non-technical
+categories: [write-ups, linux, non-technical]
 ---
 
 <img src="http://books.gigaimg.com/avaxhome/77/6b/000c6b77_medium.jpeg" style="border: 0" width="130px" title="How Linux Works" alt="Cover for How Linux Works" />  

@@ -3,7 +3,7 @@ layout: post
 title: "Takeaways From AgileIndy 2014"
 date: 2014-05-14T20:59:00-04:00
 comments: true
-categories: retro non-technical agile
+categories: [retro, non-technical, agile]
 ---
 
 [The AgileIndy Conference 2014](//agileindy.org/conference/) has come and gone. I wasn't sure what to expect, since it was my first conference, but I came out of it feeling rather positive.

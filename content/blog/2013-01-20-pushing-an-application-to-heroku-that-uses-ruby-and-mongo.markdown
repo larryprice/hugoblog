@@ -3,7 +3,7 @@ layout: post
 title: "Pushing an Application to Heroku that Uses Ruby and Mongo"
 date: "2013-01-20T11:55:00-05:00"
 comments: true
-categories: pokephile ruby sinatra mongoid database heroku mongolab
+categories: [pokephile, ruby, sinatra, mongoid, database, heroku, mongolab]
 ---
 
 _This is Part 3 in a multi-part series to detail the creation of a "simple" project combining [Ruby][ruby], [MongoDB][mongodb], [RSpec][rspec], [Sinatra][sinatra], and [Capybara][capybara] in preperation for a larger-scale side project set to begin January 2013. For more in this series, see the [Pokephile category][series-tag]. Part 4 of this series details moving from a development environment to a production environment using [Heroku][heroku]. The code for this side-project is located [on Github][pokephile], and the final product can be found [here][app]._

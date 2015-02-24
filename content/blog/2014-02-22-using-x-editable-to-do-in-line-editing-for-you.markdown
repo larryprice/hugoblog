@@ -3,7 +3,7 @@ layout: post
 title: "Using x-editable to do in-line editing for you"
 date: 2014-02-22T19:15:00-05:00
 comments: true
-categories: web ruby
+categories: [web, ruby]
 ---
 
 In-line editing is traditionally difficult. Taking a static HTML node and turning it into an editable text field and then sending that data off somewhere is a little bit more Javascript than I like to write. My team and I came up against a very difficult UX problem which I spent over a week trying to understand. After building and discussing several solutions, we eventually decided to narrow the scope of what the user should be able to change. We would present the user with a table where one of the columns would be editable.

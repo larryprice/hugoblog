@@ -3,7 +3,7 @@ layout: post
 title: "Letting the Browser Decide Betwen HTTP and HTTPS"
 date: 2014-02-13T17:55:00-05:00
 comments: true
-categories: web
+categories: [web]
 ---
 
 While working on SEP Labs' [Health2Wealth](//h2w.cc) app, I got my first taste of setting up a website to use secure connections. I've been using the browser extension [HTTPS Everywhere](//www.eff.org/https-everywhere) for quite some time now, so all of the web pages that I visit attempt to using `HTTPS`instead of the standard `HTTP`. When I inadvertently started testing our app with `HTTPS`, things got a little weird.

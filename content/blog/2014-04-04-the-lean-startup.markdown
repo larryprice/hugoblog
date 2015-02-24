@@ -3,7 +3,7 @@ layout: post
 title: "The Lean Startup"
 date: 2014-04-04T21:22:02-04:00
 comments: true
-categories: write-ups
+categories: [write-ups]
 ---
 
 > If you cannot fail, you cannot learn.

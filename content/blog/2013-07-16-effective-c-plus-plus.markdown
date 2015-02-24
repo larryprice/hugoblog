@@ -3,7 +3,7 @@ layout: post
 title: "Effective C++"
 date: "2013-07-16T22:11:00-05:00"
 comments: true
-categories: write-ups
+categories: [write-ups]
 ---
 
 ### The Gist

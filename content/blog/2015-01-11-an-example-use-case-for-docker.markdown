@@ -3,7 +3,7 @@ layout: post
 title: "An Example Use Case for Docker"
 date: 2015-01-11T19:22:43-05:00
 comments: true
-categories: docker web ollert
+categories: [docker, web, ollert]
 ---
 
 I spent a lot of time last week asking questions about Docker. [What](#whatdocker) is Docker? How could Docker help me [day-to-day](#whydocker)? How easy is Docker to [use](#howdocker)? How does Docker like its eggs cooked? Isn't Docker a brand of sneakers?

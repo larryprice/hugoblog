@@ -3,7 +3,7 @@ layout: post
 title: "Using the Trello API in Ruby"
 date: 2014-03-20T19:37:36-04:00
 comments: true
-categories: trello ollert ruby
+categories: [trello, ollert, ruby]
 ---
 
 So, you want to gather data using the [Trello](//trello.com) API so that you can [do something cool with it][ollert]? And you're using [Ruby](//ruby-lang.org)? Enter [ruby-trello](//github.com/jeremytregunna/ruby-trello). Install!

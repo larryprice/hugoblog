@@ -3,7 +3,7 @@ layout: post
 title: "Lessons Learned during the Conception of Ollert"
 date: 2014-06-12T20:32:00-04:00
 comments: true
-categories: non-technical ollert
+categories: [non-technical, ollert]
 ---
 
 During [SEP's](http://sep.com) previous [startup weekend](http://sep.com/labs/), I pitched an idea for a [Trello](http://trello.com) Analysis Tool called [Ollert](https://ollertapp.com). In less than three days, a team of 6 built a minimal viable product (MVP) and put it live on the internet. In a little over three months, I have slowly guided Ollert through the legal department, obtained a real domain with security, and fixed a few bugs along the way. I've learned a thing or two about seeing a hackathon project to fruition that I'd like to get in writing.

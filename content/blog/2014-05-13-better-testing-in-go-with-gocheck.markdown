@@ -3,7 +3,7 @@ layout: post
 title: "Better testing in Go with gocheck"
 date: 2014-05-13T21:14:39-04:00
 comments: true
-categories: golang testing
+categories: [golang, testing]
 ---
 
 As a quick reminder, [golang](//golang.org/) is a really fun programming language to use. It even includes [testing out of the box](//golang.org/doc/code.html#Testing)! Unfortunately, this out-of-the-box testing framework isn't all that great. It lacks the syntactic sugar of mature frameworks like [rspec](//rspec.info) or [gtest](//code.google.com/p/googletest/).

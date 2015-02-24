@@ -3,7 +3,7 @@ layout: post
 title: "Sending emails with Pony and Sendgrid"
 date: 2014-07-08T05:53:26-04:00
 comments: true
-categories: ruby web sinatra pony heroku sendgrid
+categories: [ruby, web, sinatra, pony, heroku, sendgrid]
 ---
 
 It's incredible how easy it is to send emails through a web application, there's no wonder we get so much spam. Assuming we have a [ruby](http://ruby-lang.org) app using [Sinatra](http://sinatrarb.com), [Pony](http://adam.herokuapp.com/past/2008/11/2/pony_the_express_way_to_send_email_from_ruby/) is one of the easiest ways to get started with your own spam empire.

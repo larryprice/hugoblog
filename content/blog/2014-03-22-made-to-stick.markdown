@@ -3,7 +3,7 @@ layout: post
 title: "Made to Stick"
 date: 2014-03-22T14:31:02-04:00
 comments: true
-categories: write-ups
+categories: [write-ups]
 ---
 
 > Knowledge curses us, if we find it hard to imagine what it was like not to know it. And it becomes difficult to share our knowledge with others because we can't readily re-create our listener's state of mind.

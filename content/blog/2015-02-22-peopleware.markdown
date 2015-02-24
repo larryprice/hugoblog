@@ -3,7 +3,7 @@ layout: post
 title: "Peopleware"
 date: 2015-02-22T15:56:28-05:00
 comments: true
-categories: write-ups
+categories: [write-ups]
 ---
 
 > Visual supervision is a joke for development workers. Visual supervision is for prisoners.

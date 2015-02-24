@@ -3,7 +3,7 @@ layout: post
 title: "The Trouble with Time Zones (aka Learn From My Mistakes Part 1)"
 date: "2013-08-07T22:00:00-05:00"
 comments: true
-categories: retro
+categories: [retro]
 ---
 
 > As a user, my data's LastModifiedDate should not be updated when I Export it, and it should be in UTC.

@@ -3,7 +3,7 @@ layout: post
 title: "Connecting to the Trello API"
 date: 2014-03-18T20:00:11-04:00
 comments: true
-categories: trello javascript html web ollert
+categories: [trello, javascript, html, web, ollert]
 ---
 
 [Trello](//trello.com) has a [pretty sweet API](//trello.com/docs/), which we use extensively in our Trello-analysis app [Ollert](//ollert.herokuapp.com). Initially connecting to the Trello API took us a few hours, so I'd like to make a record of how we managed to connect.

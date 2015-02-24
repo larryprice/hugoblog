@@ -3,7 +3,7 @@ layout: post
 title: "What's Still Possible"
 date: "2013-04-01T22:35:00-05:00"
 comments: true
-categories: non-technical sep-blog-battle satire
+categories: [non-technical, sep-blog-battle, satire]
 ---
 
 If every Miss America candidate had her way, there would be peace on Earth and all the hungry mouths would be fed. While Earthlings enjoy violence and controlling others too much to achieve world peace, I have a proposal to help feed those around the world who don't have enough to eat.

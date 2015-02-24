@@ -3,7 +3,7 @@ layout: post
 title: "Who Moved My Cheese?: An Amazing Way to Deal with Change in Your Work and in Your Life"
 date: "2012-11-27T20:47:00-05:00"
 comments: true
-categories: write-ups non-technical
+categories: [write-ups, non-technical]
 ---
 
 <img src="http://dontstepinthepoop.com/wp-content/uploads/2010/01/cheese.jpg" style="border: 0" width="130px" title="Who Moved My Cheese?" alt="Cover for Who Moved My Cheese?" />  

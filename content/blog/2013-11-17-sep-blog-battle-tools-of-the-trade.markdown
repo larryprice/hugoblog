@@ -3,7 +3,7 @@ layout: post
 title: "SEP Blog Battle: Tools of the Trade"
 date: "2013-11-17T20:59:00-05:00"
 comments: true
-categories: sep-blog-battle
+categories: [sep-blog-battle]
 ---
 
 To whom do I owe any programming success I may have in a given day? My education? My wonderful peers? The shriveled wad of grey goo in my head? None of the above.

@@ -3,7 +3,7 @@ layout: post
 title: "Use NVM to manage your NodeJS install"
 date: 2014-08-02T20:00:57-04:00
 comments: true
-categories: nodejs nvm
+categories: [nodejs, nvm]
 ---
 
 I've been trying to get into [NodeJS](http://nodejs.org/), and so my immediate thought is that I want to be able to install different versions for different projects, a la [rvm](https://rvm.io) for [ruby](https://ruby-lang.org). Fortunately, this already exists.
