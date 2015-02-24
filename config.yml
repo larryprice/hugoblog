@@ -8,4 +8,5 @@ taxonomies:
 permalinks:
     _posts: /blog/:year/:month/:day/:title/
 metadataformat: yaml
+pygmentsstyle: tango
 ---
