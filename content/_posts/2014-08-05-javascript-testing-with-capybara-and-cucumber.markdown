@@ -16,7 +16,7 @@ Selenium is the default Javascript driver for capybara. To install either run `g
 
 If you want to run all of your tests with Javascript enabled, you can change the default driver in your `env.rb` file. For example:
 
-``` ruby env.rb
+{{< code_block syntax="ruby" description="env.rb" >}}
 ENV['RACK_ENV'] = 'test'
 
 require_relative '../../../web'
@@ -35,11 +35,11 @@ World do
   Ollert.new
   Mongoid.purge!
 end
-```
+{{< /code_block >}}
 
 Using Selenium means that your tests will be running using Firefox. Unfortunately, this makes them much, much slower than when you were running the tests using rspec. What I recommend is to limit yourself to only use the Javascript driver when you need to. To accomplish this, we change our `env.rb` file as such:
 
-``` ruby env.rb
+{{< code_block syntax="ruby" description="env.rb" >}}
 ENV['RACK_ENV'] = 'test'
 
 require_relative '../../../web'
@@ -58,11 +58,11 @@ World do
   Ollert.new
   Mongoid.purge!
 end
-```
+{{< /code_block >}}
 
 And add the `@javascript` tag to our Cucumber feature files. I've written [about using tags in the past](/blog/2013/04/15/tags-in-c-plus-plus-cucumber-tests/), and they are incredibly useful. For example:
 
-``` cucumber DoStuff.feature
+{{< code_block syntax="cucumber" description="DoStuff.feature" >}}
 Feature: Do Stuff
 
 Scenario: Nothing happens with Javascript disbaled
@@ -75,7 +75,7 @@ Scenario: Correct text is displayed with Javascript enabled
   Given I visit the home page
   When I click "Where are they?!"
   Then I should see "I'm Batman."
-```
+{{< /code_block >}}
 
 Assuming there is some Javascript activated by clicking "Where are they?!" that displays the text "I'm Batman.", both of the above scenarios will pass. This is because none of the Javascript will run in the first scenario, so the text will not be displayed. In the second scenario, Capybara knows to use the webdriver we set up previously when it sees the `@javascript` tag.
 
@@ -87,7 +87,7 @@ Poltergeist uses [PhantomJS](http://phantomjs.org/), so we need to start by down
 
 On the ruby side, we do that same old song and dance: either do `gem install poltergeist` or add `poltergeist` to your `Gemfile` and run `bundle install`. Edit your `env.rb`:
 
-``` cucumber env.rb
+{{< code_block syntax="cucumber" description="env.rb" >}}
 ENV['RACK_ENV'] = 'test'
 
 require_relative '../../../web'
@@ -106,7 +106,7 @@ World do
   Ollert.new
   Mongoid.purge!
 end
-```
+{{< /code_block >}}
 
 Now your Javascript tests should be running using the Poltergeist webdriver. Since Poltergeist is truly headless, your tests will run much faster than they did while using Selenium, but you won't be able to see what's going on while your tests run. There are some slight syntactic differences between the way Poltergeist and Selenium handles separate windows, but other than that they are extremely similar.
 
@@ -114,12 +114,12 @@ Now your Javascript tests should be running using the Poltergeist webdriver. Sin
 
 [Capybara-webkit](https://github.com/thoughtbot/capybara-webkit) is where I eventually landed for running my own tests, after having issues accessing other windows with Poltergeist. Capybara-webkit is also headless and relies on `QtWebKit` to render pages. So, for starters, you're going to have to install `qtwebkit`. This has a varied degree of difficulty depending on which operating system you're using, but I didn't have too many problems in Ubuntu once I figured out which library I needed. For help, check [the guide](https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit). On my machine:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ sudo apt-get install libqtwebkit-dev
-```
+{{< /code_block >}}
 Once more: either do `gem install capybara-webkit` or add `capybara-webkit` to your `Gemfile` and run `bundle install`. Edit your `env.rb`:
 
-``` cucumber env.rb
+{{< code_block syntax="cucumber" description="env.rb" >}}
 ENV['RACK_ENV'] = 'test'
 
 require_relative '../../../web'
@@ -138,6 +138,6 @@ World do
   Ollert.new
   Mongoid.purge!
 end
-```
+{{< /code_block >}}
 
 Again, you won't be able to see your tests run, but they should be pretty snappy. I was able to use capybara-webkit to tackle some window issues I was having, but (as of this writing) capybara-webkit has not caught up with more modern capybara window-switching syntax. Other than that, the syntax is identical to the other drivers I've discussed for common cases. If you're running capybara-webkit on a CI server, see [this post about using Xvfb](http://blog.55minutes.com/2013/09/running-capybara-webkit-specs-with-jenkins-ci/).

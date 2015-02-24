@@ -10,9 +10,9 @@ I have a confession: I've been avoiding using [rvm](https://rvm.io/) for the pas
 
 When using `rvm` with `gnome-terminal`, I have to tell `gnome-terminal` to run as a login shell so that `/etc/profile` is sourced. The login shell is then supposed to source `$HOME/profile`, which is then supposed to source `$HOME/.bashrc`. Installing `rvm` results in me editing my `.bash_profile` to add the following line:
 
-``` bash .bash_profile
+{{< code_block syntax="bash" description=".bash_profile" >}}
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-```
+{{< /code_block >}}
 
 All my `rvm` environments seem to work, so this is a success, right?
 
@@ -22,7 +22,7 @@ Eventually I realized that this was a problem caused by not sourcing my `.bashrc
 
 The login shell sources `$HOME/.profile` UNLESS `$HOME/.bash_profile` exists, in which case it only sources the latter. So what are the contents of my `$HOME/.profile`?
 
-``` bash .profile
+{{< code_block syntax="bash" description=".profile" >}}
 # ~/.profile: executed by the command interpreter for login shells.
 
 # [cut for brevity]
@@ -36,14 +36,14 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # [cut for brevity]
-```
+{{< /code_block >}}
 
 Aha! The sneaky dot-file actually sources `$HOME/.bashrc`, and my shiny new `$HOME/.bash_profile` doesn't. I fixed this by sourcing `$HOME/.profile` in `$HOME/.bash_profile`.
 
-``` bash .bash_profile
+{{< code_block syntax="bash" description=".bash_profile" >}}
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-```
+{{< /code_block >}}
 
 For the memory-impaired: `.bash_profile` sources `.profile` sources `.bashrc`.
 

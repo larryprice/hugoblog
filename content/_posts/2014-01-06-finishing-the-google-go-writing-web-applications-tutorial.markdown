@@ -24,14 +24,14 @@ The tutorial originally has the developer store all pages in the project directo
 
 Moving templates is quite trivial. In the global scope:
 
-``` diff wiki.go https://github.com/larryprice/gowiki/commit/9994d11b5275bc5faee911e5db2c994bc91052e2
+{{< code_block description="wiki.go" syntax="diff" link="https://github.com/larryprice/gowiki/commit/9994d11b5275bc5faee911e5db2c994bc91052e2" >}}
 -var templates = template.Must(template.ParseFiles("edit.html", "view.html"))
 +var templates = template.Must(template.ParseFiles("tmpl/edit.html", "tmpl/view.html"))
-```
+{{< /code_block >}}
 
 I found moving the page data to `data/` was a little trickier, especially if the directory didn't already exist. You may not have the same issue, but I remedied this by creating the directory if it doesn't exist. My `save` function differences:
 
-``` diff wiki.go https://github.com/larryprice/gowiki/commit/e86a707d37b802b2d59b8ef261b3fdcab46d5870
+{{< code_block description="wiki.go" syntax="diff" link="https://github.com/larryprice/gowiki/commit/e86a707d37b802b2d59b8ef261b3fdcab46d5870" >}}
 func (p *Page) save() error {
 -    filename := p.Title + ".txt"
 -    return ioutil.WriteFile(filename, p.Body, 0600)
@@ -39,13 +39,13 @@ func (p *Page) save() error {
 +  filename := "data/" + p.Title + ".txt"
 +  return ioutil.WriteFile(filename, p.Body, 0600)
 }
-```
+{{< /code_block >}}
 
 #### Add a handler to make the web root redirect to /view/FrontPage
 
 All we're going to do is create a simple handler called `rootHandler` that redirects to a new page called `FrontPage`. We then add it in the `main` function. The tutorial had us wrap out handlers in a function call to take some special actions, but that wrapper would mess up our handler in its current form. So I just `Redirect` to the `view` handler, which will then decide whether to view or create the FrontPage.
 
-``` diff wiki.go https://github.com/larryprice/gowiki/commit/e41fccc2d244a3b0d62d600d94897a076c87d53d
+{{< code_block description="wiki.go" syntax="diff" link="https://github.com/larryprice/gowiki/commit/e41fccc2d244a3b0d62d600d94897a076c87d53d" >}}
 + func rootHandler(w http.ResponseWriter, r *http.Request) {
 +   http.Redirect(w, r, "/view/FrontPage", http.StatusFound)
 + }
@@ -57,13 +57,13 @@ func main() {
   http.HandleFunc("/view/", makeHandler(viewHandler))
   http.HandleFunc("/edit/", makeHandler(editHandler))
   http.HandleFunc("/save/", makeHandler(saveHandler))
-```
+{{< /code_block >}}
 
 #### Spruce up the page templates by making them valid HTML and adding some CSS rules.
 
 I took my old `.html` files and put them through [a validator](http://validator.w3.org/#validate_by_input). Making them valid only involved adding `DOCTYPE`, `html`, and `head` tags. The `head` tag needed `meta`, and `title` tags and we were valid. I've shown `view.html` below.
 
-``` diff view.html https://github.com/larryprice/gowiki/commit/771b4ecc8a550ee438720dc5c3d3f47954a1e4ff
+{{< code_block description="view.html" syntax="diff" link="https://github.com/larryprice/gowiki/commit/771b4ecc8a550ee438720dc5c3d3f47954a1e4ff" >}}
 +<!DOCTYPE html>
 +<html>
 +<head>
@@ -76,7 +76,7 @@ I took my old `.html` files and put them through [a validator](http://validator.
  
  <div>{{printf "%s" .Body}}</div>
 +</html>
-```
+{{< /code_block >}}
 
 #### Implement inter-page linking by converting instances of \[PageName\]
 
@@ -84,23 +84,23 @@ Converting [PageName] to a hyperlink was a bit more complicated than expected. I
 
 As it turns out, `ExecuteTemplate` will not escape variables of the type `template.HTML`. So I added another variable onto the `Page` struct called `DisplayBody`.
 
-``` diff wiki.go https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288
+{{< code_block description="wiki.go" syntax="diff" link="https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288" >}}
 type Page struct {
      Title string
      Body  []byte
 +    DisplayBody template.HTML
 }
-```
+{{< /code_block >}}
 
 Next, I create a regular expression to find instances of \[PageName\] and I put the defintion above the `main` method.
 
-``` diff wiki.go https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288
+{{< code_block description="wiki.go" syntax="diff" link="https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288" >}}
 +var linkRegexp = regexp.MustCompile("\\[([a-zA-Z0-9]+)\\]")
-```
+{{< /code_block >}}
 
 In my `viewHandler`, I escape `Body` and then set `DisplayBody` to that escaped string with the links substituted.
 
-``` diff wiki.go https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288
+{{< code_block description="wiki.go" syntax="diff" link="https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288" >}}
 +  escapedBody := []byte(template.HTMLEscapeString(string(p.Body)))
 +
 +  p.DisplayBody = template.HTML(linkRegexp.ReplaceAllFunc(escapedBody, func(str []byte) []byte {
@@ -110,13 +110,13 @@ In my `viewHandler`, I escape `Body` and then set `DisplayBody` to that escaped 
 +    }))
   renderTemplate(w, "view", p)
 }
-```
+{{< /code_block >}}
 
 To finish up, I modify the `view.html` to show `DisplayBody`. I don't use `printf`, because that would turn `DisplayBody` back into a `string` and `ExecuteTemplate` would escape it.
 
-``` diff wiki.go https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288
+{{< code_block description="wiki.go" syntax="diff" link="https://github.com/larryprice/gowiki/commit/38c48717420de78f15dc48152ce16d1bdb417288" >}}
 -<div>{{printf "%s" .Body}}</div>
 +<div>{{.DisplayBody}}</div>
-```
+{{< /code_block >}}
 
 And that completes the extra exercises for Google's _Writing Web Applications_ tutorial. Hopefully one day this helps someone who gets stuck.

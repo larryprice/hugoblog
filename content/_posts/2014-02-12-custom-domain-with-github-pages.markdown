@@ -22,7 +22,7 @@ My guess is you already have. If you don't have the ability to go back in time, 
 
 Find the ip address where your site is currently hosted. For me (replace URL with your own):
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ nslookup larryprice.github.io
 Server:   127.0.1.1
 Address:  127.0.1.1#53
@@ -30,7 +30,7 @@ Address:  127.0.1.1#53
 Non-authoritative answer:
 Name: larryprice.github.io
 Address: 199.27.74.133
-```
+{{< /code_block >}}
 
 You should be able to "manage" your domain on your domain provider's website. In the "management" area, you should be able to find a section about "DNS". Find something labeled "A records." There will likely already be one or two entries here - one for the IP address of your new domain and one with the IP address of your domain with "www." prepended.
 
@@ -50,9 +50,9 @@ If you're using Github Pages for a user page, we are going to make this change o
 
 All we have to do is put our new domain into a file in the root folder called `CNAME`. Let's do it in one fell swoop of the command line.
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ echo "larry-price.com" > CNAME 
-```
+{{< /code_block >}}
 
 Push that to Github and wait 0 to 10 minutes for Github to refresh your page.
 

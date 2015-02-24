@@ -12,9 +12,9 @@ Some very light cajoling led me to do some investigation into [Google Go](http:/
 
 Open up a terminal and let loose:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ sudo apt-get install golang
-```
+{{< /code_block >}}
 
 The download is pretty heavy, so this step may take some time. Eventually the installer for `golang-go` will ask you if you want to "Report installation of public packages to Go Dashboard." I've been choosing "No" to this question and have no complaints.
 
@@ -22,25 +22,25 @@ Now comes the fun part. Serious Go development relies on having a "workspace" se
 
 I'm not a big fan of putting a visible directory in `$HOME`, so I opted to make a hidden directory called `.go`. After creating the directory, the environment variable `$GOPATH` needs to be set and `$PATH` needs to be adjusted.
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ mkdir ~/.go
 $ echo "GOPATH=$HOME/.go" >> ~/.bashrc
 $ echo "export GOPATH" >> ~/.bashrc
 $ echo "PATH=\$PATH:\$GOPATH/bin # Add GOPATH/bin to PATH for scripting" >> ~/.bashrc
 $ source ~/.bashrc
-```
+{{< /code_block >}}
 
 Now I'm going to create a go project and add a link to it in the workspace I just created.
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ mkdir -p $GOPATH/src/github.com/user
 $ mkdir ~/hello-go
 $ ln -s ~/hello-go ~/.go/src/github.com/user/hello-go
-```
+{{< /code_block >}}
 
 For some actual test code, I'll add a file in my `hello-go/` directory called `hello.go` with the following code:
 
-``` go hello.go
+{{< code_block syntax="go" description="hello.go" >}}
 package main
 
 import "fmt"
@@ -48,15 +48,15 @@ import "fmt"
 func main() {
   fmt.Println("Hello world")
 }
-```
+{{< /code_block >}}
 
 Now I'm going to install the binary created from compiling this code into my `$GOPATH` to verify that my workspace is set up correctly, then I'll run it to behold the fruit of my efforts.
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ go install github.com/user/hello-go
 $ hello-go
 Hello world
-```
+{{< /code_block >}}
 
 Installing is not necessary every time I want to test that my code compiles; running `go build` in the source directory will create a local executable that can be executed for incremental testing.
 

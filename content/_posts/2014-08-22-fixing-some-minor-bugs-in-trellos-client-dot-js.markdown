@@ -18,7 +18,7 @@ During some ad-hoc testing of opening/closing the Trello authorization popup, I 
 
 From [another issue I was having](/blog/2014/07/07/deauthorizing-token-with-the-trello-client/), I already call `Trello.deauthorize()` before my application attempts to contact Trello, so now I also make a call to `Trello.clearReady()`. My `authorize()` function looks like this:
 
-``` javascript trello-controller.js
+{{< code_block syntax="javascript" description="trello-controller.js" >}}
 var authorize = function (expires, callback) {
   Trello.deauthorize();
   Trello.clearReady();
@@ -36,15 +36,15 @@ var authorize = function (expires, callback) {
     }
   });
 }
-```
+{{< /code_block >}}
 
 Since I've pulled client.js locally, I'm no longer sending my developer token when I load the file. I manually set my key when the page loads, but this could just as easily be done in my `authorize` method above.
 
-``` javascript layout.haml
+{{< code_block syntax="javascript" description="layout.haml" >}}
 :javascript
   $(document).ready(function() {
     Trello.setKey("#{ENV['PUBLIC_KEY']}")
   });
-```
+{{< /code_block >}}
 
 You can find a copy of my modified client.js [in this Gist](https://gist.github.com/larryprice/1e67ddcd53c686fbc1de).

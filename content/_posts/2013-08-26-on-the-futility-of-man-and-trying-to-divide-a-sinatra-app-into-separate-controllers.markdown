@@ -16,7 +16,7 @@ So every route is kind of a Controller. Every. Route. In Capital Punishment, the
 
 That's been pretty overwhelming, especially since the traditional way of creating routes in Sinatra is to shove them all in the same file. There are a few ways I could think of to address this. The way we chose six months ago (for better or worse) was found [on StackOverflow](http://stackoverflow.com/questions/5877000/what-is-a-controller-in-sinatra), and involves creating a bunch of different files where you shove all related routes. So you get this situation:
 
-``` ruby app.rb
+{{< code_block syntax="ruby" description="app.rb" >}}
 class App < Sinatra::Base
 end
 
@@ -31,16 +31,16 @@ class App
     erb :home
   end
 end
-```
+{{< /code_block >}}
 
-``` ruby controllers/reports_controller.rb
+{{< code_block syntax="ruby" description="controllers/reports_controller.rb" >}}
 class App
   get '/reports/user_bills' do
     erb :user_bills_report
   end
   ...
 end
-```
+{{< /code_block >}}
 
 And so on and so forth. This works fine for a while, but we've ended up with 13 "controller" files, many of which are not trivial. This also makes the App class quite large since its controllers handle most of the logic for the app. This also doesn't enforce any kind of URL-naming logic, so if a developer is working hard (s)he may create both `/reports/user_bills` and `user_info_reports` without realizing the inconsistency (s)he just injected into the system.
 

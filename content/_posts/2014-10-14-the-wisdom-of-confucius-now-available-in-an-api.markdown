@@ -22,7 +22,7 @@ There are options. You can get `fortunes` from the [/v1/fortunes](http://fortune
 
 But there's no need to get the individual models (unless you're into that kind of thing)! I also created a [/v1/cookie](http://fortunecookieapi.com/v1/cookie) endpoint to retrieve a random fortune, lesson, and lottery number as a single object. Woohoo! You can specify the number of cookies (max 100) with the `limit` parameter.
 
-```
+{{< code_block syntax="text" >}}
 GET http://fortunecookieapi.com/v1/cookie
 
 {
@@ -41,7 +41,7 @@ GET http://fortunecookieapi.com/v1/cookie
     "english": "internet"
   }
 }
-```
+{{< /code_block >}}
 
 Now you can fill that hole in your heart where the fortune cookies are missing. If you're interested in the code, you can [check it out on Github](https://github.com/larryprice/fortune-cookie-api).
 

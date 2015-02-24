@@ -10,7 +10,7 @@ During the hardening of [Ollert](https://ollertapp.com), a Trello data analysis 
 
 I created a test user on Trello with a few varied boards to allow for proper testing. In doing this, I store the user's login information in my .env file. For the most part, I can use the steps provided in [this common web_steps.rb](https://gist.github.com/larryprice/546d6c029bb3074bd84c).
 
-``` cucumber Connecting.feature
+{{< code_block syntax="cucumber" description="Connecting.feature" >}}
 Feature: Landing
 
 Background:
@@ -29,11 +29,11 @@ Scenario: Allow connecting to Trello
   Then I should not see "Connecting..."
   And I should not see "Redirecting..."
   And I should be on the boards page
-```
+{{< /code_block >}}
 
 When the Trello popup appears, we have to specify the window we're going to use. Since I'm using [capybara-webkit](https://github.com/thoughtbot/capybara-webkit), I'm going to go ahead and do all of my Trello popup activities in one step, which saves me from writing a lot of unnecessary steps.
 
-``` ruby trello_popup_steps.rb
+{{< code_block syntax="ruby" description="trello_popup_steps.rb" >}}
 When /^I press "(.*?)" on the Trello popup$/ do |button|
   trello_popup = windows.last
   page.within_window trello_popup do
@@ -53,7 +53,7 @@ When /^I authorize with Trello as the test user$/ do
     click_button "Allow"
   end
 end
-```
+{{< /code_block >}}
 
 Straightforward so far. We grab the window handle and we click links, fill in fields, and press buttons within that window.
 
@@ -65,7 +65,7 @@ Anecdotally, I contacted Trello support about this and received the following re
 
 So I guess we should just give up, right? ...Or we could manipulate the headers we send to load the Trello popup such that Trello _thinks_ we are Google Chromium.
 
-``` cucumber trello_popup_steps.rb
+{{< code_block syntax="cucumber" description="trello_popup_steps.rb" >}}
 When /^I authorize with Trello as the test user$/ do
   trello_popup = windows.last
   page.within_window trello_popup do
@@ -83,13 +83,13 @@ When /^I authorize with Trello as the test user$/ do
     click_button "Allow"
   end
 end
-```
+{{< /code_block >}}
 
 Fantastic. Now my tests pass. I can't sleep at night, but my tests pass.
 
 Unfortunately, that won't be the case if I add more tests to this `.feature` file. Hidden somewhere deep in the browser's cache or cookies or somethings, Trello is remembering that we logged in sometimes. Sometimes it even remembers that someone else has logged in. The UI of the Trello popup changes based on whether it thinks you've already logged in. In order to keep things consistent, I like to add an if-statement to take care of this case.
 
-``` cucumber trello_popup_steps.rb
+{{< code_block syntax="cucumber" description="trello_popup_steps.rb" >}}
 When /^I authorize with Trello as the test user$/ do
   trello_popup = windows.last
   page.within_window trello_popup do
@@ -111,6 +111,6 @@ When /^I authorize with Trello as the test user$/ do
     click_button "Allow"
   end
 end
-```
+{{< /code_block >}}
 
 Edge cases addressed. Now I can make connections to Trello and test my application. Be warned, I've already had these tests break once when Trello updated the UI behind the Trello popup. If Trello ever stops supporting Chromium 34.0, these tests are also likely to stop working. These tests are most useful during development, when we have the potential to break the Trello connection ourselves, and so I think they are well worth the pain of potential future maintenance.

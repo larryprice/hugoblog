@@ -12,9 +12,9 @@ Or rather, "Not Using sqlite on Heroku."
 
 Assuming you have a heroku app deployed and you have sqlite already working locally, this only takes a few steps. First we need to add a SQL database to our heroku app. From the project directory, we'll add the [heroku-postgresql](//addons.heroku.com/heroku-postgresql) addon to our app.
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ heroku addons:add heroku-postgresql:dev
-```
+{{< /code_block >}}
 
 The `dev` piece of this command tells heroku we want the small, free database. This database supports up to 10,000 rows and has a 99.5% uptime. Best of all: it's free. Other options have you pay $9/mo for 10,000,000 rows or $50+ for Unlimited usage. I recommend you start small.
 
@@ -24,7 +24,7 @@ Now we need to set up the back-end to be able to access a Postgres database when
 
 In our Gemfile, we've probably already included the sqlite gem for use in our local environment. We can go ahead and move that into a `development` block, and we need to add the `pg` gem to either `production` or the global block.
 
-``` ruby Gemfile
+{{< code_block syntax="ruby" description="Gemfile" >}}
 source "https://rubygems.org"
 
 ruby '2.1.0'
@@ -42,13 +42,13 @@ end
 group :development do
   gem 'sqlite3'
 end
-```
+{{< /code_block >}}
 
 Heroku sets `ENV['RACK_ENV']` to "production" for us, which means that the pg gem should get picked up the next time we deploy. Now we need to tell our app which database to use in which situation.
 
 One of the easiest places to make this decision is in Sinatra's `configure` block. I keep my local db in an environment variable called `LOCAL_DATABASE_URL`. This is where you use the environment variable heroku set for you when you set up your Postgres database; mine was called `HEROKU_POSTGRESQL_MAROON_URL`.
 
-``` ruby web.rb
+{{< code_block syntax="ruby" description="web.rb" >}}
 class App < Sinatra::Base
   configure :production do
     Sequel.connect ENV['HEROKU_POSTGRESQL_MAROON_URL']
@@ -58,12 +58,12 @@ class App < Sinatra::Base
     Sequel.connect ENV['LOCAL_DATABASE_URL']
   end
 end
-```
+{{< /code_block >}}
 
 This works because the default environment is "development." Test locally, and then we can deploy.
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ git push heroku master
-```
+{{< /code_block >}}
 
 And enjoy.

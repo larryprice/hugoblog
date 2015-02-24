@@ -16,18 +16,18 @@ X-editable has implementations using Bootstrap, jQuery UI, and jQuery. Since I'm
 
 First I include the necessary files at the top of my HAML document.
 
-``` haml /views/manage_data.haml
+{{< code_block syntax="haml" description="/views/manage_data.haml" >}}
 %script{src: "//code.jquery.com/jquery.js"}
 %script{src: "//getbootstrap.com/dist/js/bootstrap.min.js"}
 %link{href: "//getbootstrap.com/dist/css/bootstrap.min.css", rel: "stylesheet"}
 
 %link{href: "//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css", rel: "stylesheet"}
 %script{src: "//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"}
-```
+{{< /code_block >}}
 
 I'm going to dumb my page down so I only have to show the important parts. I'm going to create a table from an array of hashes called `@options`. Each hash has two important fields for this table: Points and Dollars. I will iterate over `@options`, displaying the `points` field as plain text and the `dollars` field as an X-editable link. Each hash also has a `value` field containing the primary key for the object to be edited.
 
-``` haml /views/manage_data.haml
+{{< code_block syntax="haml" description="/views/manage_data.haml" >}}
 .container
   .row
     .col-md-6
@@ -46,7 +46,7 @@ I'm going to dumb my page down so I only have to show the important parts. I'm g
               %td{style: "height: 45px; padding: 4px 8px; vertical-align: middle;"}
                 %a{href:"javascript:void(0)", "data-type"=>"text", "data-pk"=>"#{option[:value]}", "data-url"=>"/update", "data-title"=>"Enter dollar amount"}
                   #{option[:dollars]}
-```
+{{< /code_block >}}
 
 The important part is the `a` tag:
 
@@ -58,7 +58,7 @@ The important part is the `a` tag:
 
 Our code won't do anything yet seeing as it's not connected. We need some Javascript to do that. I put the Javascript at the top of my file, underneath the included files. The first thing we need to do is tell X-editable what type of editing we'll be doing. The options are in-line editing or a pop-up. I want the in-line editing in this case. The second thing I want to do is to set the `editable` attribute on the appropriate DOM objects. Since I'm using an array, I found the easiest way to do this was to start at the table's id (edit_points_goal) and trace down to the `a` tag.
 
-``` haml /views/manage_data.haml
+{{< code_block syntax="haml" description="/views/manage_data.haml" >}}
 :javascript
   $.fn.editable.defaults.mode = 'inline';
 
@@ -67,13 +67,13 @@ Our code won't do anything yet seeing as it's not connected. We need some Javasc
       $('#edit_points_goal tbody tr td a').editable();
     }
   });
-```
+{{< /code_block >}}
 
 Now we need to deal with the `post` request. If you're really impatient to see things work, you should be able to see your in-line editable code in action, but the `post` call will fail with a "NoMethodError."
 
 Our `post` is going to be really simple. We verify that we have a non-negative integer and we either save and return 200 or we return 400 with an appropriate message. Our table in this example is just called `Data`, and we use `find` to get a value out of the database.
 
-``` ruby web.rb
+{{< code_block syntax="ruby" description="web.rb" >}}
 post "/update" do
   data = Data.find(id: params["pk"])
 
@@ -85,7 +85,7 @@ post "/update" do
 
   return {400, [], "Please enter a valid non-negative number"}
 end
-```
+{{< /code_block >}}
 
 Things should be working now. When you enter good data and click the 'Ok' button, our `post` will be called and the text field will turn back into a link. When you enter bad data, you should see our error message below the text field box.
 

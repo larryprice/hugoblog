@@ -12,17 +12,17 @@ Many moons ago, I wrote about [setting up a Go environment in Ubuntu](/blog/2013
 
 The easiest way to install Go in Ubuntu is through `aptitude`. However, the default version in the Ubuntu repos gets stale fast. I found a tool similar to `rvm` for downloading and installing local versions of Go called [gvm](https://github.com/moovweb/gvm). For better or worse, `gvm` is installed through a bash script. Fortunately, it doesn't require sudo:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-```
+{{< /code_block >}}
 
 At this point I removed all my previous finaglig with `$GOROOT` and `$GOPATH` from my dot files. You can use `gvm listall` to see all available versions of Go. As of the writing of this blog post, `go1.4.1` is the latest release; however, `go1.4` is the most recent release available with `gvm`. I'm not sure when the list is updated, but I have confidence that it is fairly regular. To install a Go and set it as the default Go:
 
-```bash
+{{< code_block syntax="bash" >}}
 $ gvm install go1.4 --default
 $ which go
 /home/lrp/.gvm/gos/go1.4/bin/go
-```
+{{< /code_block >}}
 
 ### Managing Packages###
 
@@ -30,7 +30,7 @@ This is where I come to a fork in the road: `gvm`, the tool we used to install t
 
 `gpm` is a tool used to manage Go packages. It reads in a file called `Godeps` which contains a list of packages with versions and can install them from their individual sources. I'm currently infatuated with `gpm` as it addresses a lot of concerns I had when initially learning Go: shared local dependencies, unclear versioning, and installing dependencies from a fresh clone. Install `gvm` and `gvp`:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ pushd /tmp
 $ git clone https://github.com/pote/gvp.git && cd gvp
 $ ./configure && sudo make install
@@ -38,11 +38,11 @@ $ cd /tmp
 $ git clone https://github.com/pote/gpm.git && cd gpm
 $ ./configure && sudo make install
 $ popd
-```
+{{< /code_block >}}
 
 We can follow two paths here: using `gvm pkgset` or using a local `.godeps` directory to store our dependencies discretely. For these examples, I'll create a directory called `gotest` with a single file in it:
 
-``` go hello.go
+{{< code_block syntax="go" description="hello.go" >}}
 package main
 
 import "github.com/go-martini/martini"
@@ -55,26 +55,26 @@ func main() {
 
     server.Run()
 }
-```
+{{< /code_block >}}
 
 #### Method 1: gvm pkgset alongside gpm####
 
 Create and start using a new pkgset:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ gvm pkgset create gotest
 $ echo $GOPATH
 /home/lrp/.gvm/pkgsets/go1.4/global
 $ gvm pkgset use gotest
 $ echo $GOPATH
 /home/lrp/.gvm/pkgsets/go1.4/gotest:/home/lrp/.gvm/pkgsets/go1.4/global
-```
+{{< /code_block >}}
 
 What this means is that we are now using our `gotest` pkgset as default, but the global pkgset will be used to dig up any missing packages. In order to install any dependencies, we need to create a `Godeps` file for `gpm` to consume. Our application from above has a dependency on `go-martini`, so let's add a dependency to `v1.0` in our Godeps file:
 
-``` text Godeps
+{{< code_block syntax="text" description="Godeps" >}}
 github.com/go-martini/martini v1.0
-```
+{{< /code_block >}}
 
 After you run `go build` to verify that the dependencies aren't installed, run `gpm install` to pull the required packages into your specified pkgset. Run `go build` again and revel in your own brilliance.
 
@@ -84,19 +84,19 @@ That was pretty great, right? The only issue is remembering to type `gvm pkgset 
 
 `gpm` is intended to be similar to `npm`, a package management tool for NodeJS. The author suggests using a tool called `gvp` to set the `GOPATH` without much thought. If we start a fresh terminal in our example directory, we can use `gvp` to set up our `GOPATH`:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ echo $GOPATH
 /home/lrp/.gvm/pkgsets/go1.4/global
 $ source gvp
 $ echo $GOPATH
 /home/lrp/Projects/2015/gotest/.godeps:/home/lrp/Projects/2015/gotest
-```
+{{< /code_block >}}
 
 You can note the difference in our `GOPATH` here relative to `gvm`: we will be using our current directory as a source of code in addition to a local `.godeps` directory. Go ahead and add `.godeps` to your `.gitignore` file or equivalent. We can use the same `Godeps` file as before:
 
-``` text Godeps
+{{< code_block syntax="text" description="Godeps" >}}
 github.com/go-martini/martini v1.0
-```
+{{< /code_block >}}
 
 We run `gpm install` to install the dependencies to our local `.godeps` directory.
 

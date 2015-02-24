@@ -12,21 +12,21 @@ What does it mean to `rebase`?
 
 When you rebase your local changes onto another branch, your changes become the head of that branch. For instance, say I start working off remote branch `master`, specifically changeset `M2`. I then make some changes and commit locally, which I'll note as changeset `L`. While I was making my changes, some other developer pushed to remote branch `master`, resulting in changeset `M3`.
 
-```
+{{< code_block syntax="text" >}}
 M1 -> M2 -> M3
         \
          ->L
-```
+{{< /code_block >}}
 
 This is where `rebase` comes in. I want to rebase my local commit on top of `M3`, which will make it the new head of `master`.
 
-```
+{{< code_block syntax="bash" >}}
 $ git rebase origin/master
-```
+{{< /code_block >}}
 
-```
+{{< code_block syntax="text" >}}
 M1 -> M2 -> M3 -> L
-```
+{{< /code_block >}}
 
 Now I can keep working locally. Until I push my local `master` to `origin`, every time I `rebase` will cause all of my commits to rebase on the head of `master`.
 
@@ -36,13 +36,13 @@ What happens when you need to use a remote branch?
 
 Git's best-kept secret is `merge --squash`, a wonderful flag that gives you all the benefits of a `rebase` (linear history, fewer changesets), without all the hassle of a big fat rebase merge (rebasing infrequently can lead to merges that will haunt you in your sleep).
 
-```
+{{< code_block syntax="bash" >}}
 $ git branch
 * local-branch
 master
 $ git merge master
 $ git checkout master
 $ git merge local-branch --squash
-```
+{{< /code_block >}}
 
 This will give you a single changeset on the head of `master` containing all the changes you made in `local-branch`, including resolution of merge conflicts. `merge --squash` has eased a lot of the headaches my team had when stuck doing rebase merges previously.

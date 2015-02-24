@@ -10,31 +10,31 @@ I've been trying to get into [NodeJS](http://nodejs.org/), and so my immediate t
 
 [NVM](https://github.com/creationix/nvm) gives me the equivalent functionality of rvm but for NodeJS, making all my dreams come true. Here's how I installed it on my Linux boxes:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ curl https://raw.githubusercontent.com/creationix/nvm/v0.12.2/install.sh | bash
-```
+{{< /code_block >}}
 
 *Note: This URL will get you nvm version 0.12.2. This link may not be valid in the future, where you come from. Check out the [github repo](https://github.com/creationix/nvm) for any newer versions. If you're brave, trusting, or just really naïve, you can even change `v0.12.2` above to `master` to get the bleeding edge install.*
 
 The above line of code will download the files, install nvm in your home directory, and update your profile to include nvm's current Node version in your path. NVM autocomplete isn't in place by default, but we can enable it by adding the following to the end of our .bash_profile:
 
-``` bash
+{{< code_block syntax="bash" >}}
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
-```
+{{< /code_block >}}
 
 Now it's time to actually install us some Node! You can use `nvm ls-remote` to list the versions of Node currently available for download. At the time of this writing, the most recent version is **v0.11.13**. Installing is easy (and quick):
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ nvm install 0.11.13
 ...
 $ nvm use 0.11.13
-```
+{{< /code_block >}}
 
 Since this is the only Node on my system, I'd like to set it as the default.
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ nvm alias default 0.11.13
-```
+{{< /code_block >}}
 
 What if I'm `cd`ing out of control and I don't know what Node version I need in my current directory? Create a file called `.nvmrc` in the directory containing the version number you want nvm to use and then type `node use` ENTER; Now you're using the version of Node you meant to. This also prevents people from using the wrong versions of Node to try to run your code, which would of course be a catastrophe.
 

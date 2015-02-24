@@ -20,9 +20,9 @@ Here's the link: [https://www.openshift.com/app/account/new](https://www.openshi
 
 Octopress still uses ruby 1.9.3; for simplicity's sake, so will we. Assuming you have ruby-1.9.3 installed and the rhc gem installed (gem install rhc), create a new ruby-1.9 application on OpenShift:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ rhc app create octopress ruby-1.9
-```
+{{< /code_block >}}
 
 replacing "octopress" with your desired application name. I've found this action takes some time, usually over a minute, while OpenShift allocates resources. When your application has been created, you should see an `ssh://` URL for your git repository on OpenShift. Make sure you can get access to this later.
 
@@ -34,22 +34,22 @@ I've made some updates to the octopress repo that I haven't requested be pulled 
 
 If you're new to Octopress, clone from the master branch:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ git clone git@github.com:imathis/octopress.git
-```
+{{< /code_block >}}
 
 Either way, `cd` into your octopress directory and merge in my fork:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ git remote add octoshift git@github.com:larryprice/octopress.git
 $ git pull octoshift master
-```
+{{< /code_block >}}
 
 ###<a name="step3"></a>Step 3: Set up deployment
 
 There is a rake task for setting up an OpenShift deployment called `setup_openshift`. This rake task clobbers the `_deploy` directory and reinitializes it using the URL for your OpenShift repository, which we committed to memory in [Step 1](#step1).
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ rake setup_openshift["ssh://548e1873e0b8cddccf000094@octopress-username.rhcloud.com/~/git/octopress.git/"]
 rm -rf _deploy
 mkdir -p _deploy/public
@@ -74,15 +74,15 @@ cd -
 
 ---
 ## Now you can deploy to ssh://548e1873e0b8cddccf000094@octopress-username.rhcloud.com/~/git/octopress.git/ with `rake deploy` or `rake openshift` ##
-```
+{{< /code_block >}}
 
 ###<a name="step35"></a>Step 3.5 Set up forcing SSL
 
 Do you already have SSL for your domain? Bully for you! I've included an option to `setup_openshift` to force traffic to use `https` in a production environment. Just send a second parameter to rake and it'll do the rest.
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ rake setup_openshift["ssh://548e1873e0b8cddccf000094@octopress-username.rhcloud.com/~/git/octopress.git/",true]
-```
+{{< /code_block >}}
 
 Note that you will still need to change your URL in `_config.yml` if you are using a custom domain.
 
@@ -90,7 +90,7 @@ Note that you will still need to change your URL in `_config.yml` if you are usi
 
 Now we can just run the `openshift` or `deploy` rake tasks to deploy our app to OpenShift. This task verifies we have the latest version of our OpenShift `master` branch, installs missing gems, copies over your `public` folder, and pushes the application to OpenShift.
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ rake deploy
 ## Deploying branch to OpenShift
 ## Pulling any updates from OpenShift
@@ -148,7 +148,7 @@ To ssh://548e1873e0b8cddccf000094@octopress-username.rhcloud.com/~/git/octopress
 
 ## OpenShift deploy complete
 cd -
-```
+{{< /code_block >}}
 
 ### Fin
 

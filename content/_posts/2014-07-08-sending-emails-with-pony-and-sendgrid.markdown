@@ -12,7 +12,7 @@ Installation is, as always, trivial with ruby. Install the gem with `gem install
 
 I like to configure Pony in my application's `configure` block. I could also add it to my `config.ru`, but I like to keep that file as tiny as posible to avoid having configuration code all over the place.
 
-``` ruby web.rb
+{{< code_block syntax="ruby" description="web.rb" >}}
 # ...
 
 require 'pony'
@@ -38,7 +38,7 @@ class Application < Sinatra::Base
 
   # ...
 end
-```
+{{< /code_block >}}
 
 This block tells Pony to use the [SendGrid](http://sendgrid.com/) server to send mail, use the "myapp.com" HELO domain, and dig up the username and password fields from my environment.
 
@@ -48,7 +48,7 @@ Since I might have multiple developers working in my source code and testing the
 
 So let's actually send an email. Let's create a route that sends an email to verify a new user account; I'll take some liberties by saying we have a `User` model defined already that generates a signup verification hash. I can tell pony to send a plaintext body through the `body` option and an HTML body through the `html_body` option.
 
-``` ruby web.rb
+{{< code_block syntax="ruby" description="web.rb" >}}
 # ...
 post '/signup' do
   user = User.create! params
@@ -72,9 +72,9 @@ post '/signup' do
     )
   )
 end
-```
+{{< /code_block >}}
 
-``` haml views/verify_account_email.rb
+{{< code_block syntax="haml" description="views/verify_account_email.rb" >}}
 %p
   Hello!
 %p
@@ -105,6 +105,6 @@ end
 
 %p
   This email account is not monitored and will not receive replies. For more information, contact <a href="mailto:connect@myapp.com">connect@myapp.com</a>.
-```
+{{< /code_block >}}
 
 When you have a user hit this route, an email will be sent to the user with the given subject, to, from, and body fields using the configuration parameters given in the previous `configure` block. Fast, easy, and, best of all, no `sendmail` configuration.

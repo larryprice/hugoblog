@@ -10,15 +10,15 @@ Now that [I send emails using Pony](/blog/2014/07/08/sending-emails-with-pony-an
 
 I'm going to be using Cucumber to test my emails, but email-spec also boasts compatibility with rspec and Turnip. To get started:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ gem install email-spec
-```
+{{< /code_block >}}
 
 The developers of email-spec were kind enough to give us some free step definitions. If I was using rails, I could just type `rails generate email_spec:steps`, but since I'm using Sinatra I opted just to copy-paste the file into my `step_definitions/` directory. You can find `email_steps.rb` [on Github](https://raw.githubusercontent.com/bmabey/email-spec/master/lib/generators/email_spec/steps/templates/email_steps.rb).
 
 In [my last post about small horses and emails](/blog/2014/07/08/sending-emails-with-pony-and-sendgrid/), I used the following code to send a confirmation email on signup:
 
-``` ruby web.rb
+{{< code_block syntax="ruby" description="web.rb" >}}
 # ...
 post '/signup' do
   user = User.create! params
@@ -43,9 +43,9 @@ post '/signup' do
   )
 end
 # ...
-```
+{{< /code_block >}}
 
-``` haml /views/verify_account_email.haml
+{{< code_block syntax="haml" description="/views/verify_account_email.haml" >}}
 %p
   Hello!
 %p
@@ -76,11 +76,11 @@ end
 
 %p
   This email account is not monitored and will not receive replies. For more information, contact <a href="mailto:connect@myapp.com">connect@myapp.com</a>.
-```
+{{< /code_block >}}
 
 Given the pre-defined steps from email-spec, testing that this email gets sent is a breeze. Adding a scenario to my feature file:
 
-``` cucumber features/SignupConfirmation.feature
+{{< code_block syntax="cucumber" description="features/SignupConfirmation.feature" >}}
 Feature: Signup Confirmation
   As a new user
   When I sign up
@@ -100,6 +100,6 @@ Scenario: Receives email with correct contents
   And they should see "MyApp Account Verification" in the email subject
   And they should see "Username: prez@whitehouse.gov" in the email body
   And they should see "An account verification has been requested"
-```
+{{< /code_block >}}
 
 That's it. Now we know that an email like the one above will be sent during signup. What we can't test here is that our SMTP server (or equivalent) is working, so in reality I'm only testing that the email will attempt to send that looks like the one I test against.

@@ -10,16 +10,16 @@ The project I'm working on is slowly adding [Cucumber](https://github.com/cucumb
 
 The area of the code I deal with uses [embedded mono](http://www.mono-project.com/Embedding_Mono) to communicate with some C# libraries that we share with other applications. This means we have unmanaged memory which talks with managed memory. This has caused us more headaches than I care to remember. One such problem is that we have a static object that we only want to create and destroy once. So I write my first Cucumber test:
 
-``` cucumber DoStuff.feature
+{{< code_block syntax="cucumber" description="DoStuff.feature" >}}
 Feature: Do that thing that we have to do
 
 Scenario: Do it my way
   Given I have done step 1
   When I do step 2
   Then I should see results
-```
+{{< /code_block >}}
 
-``` c++ DoStuff_StepDefinitions.cpp
+{{< code_block syntax="c++" description="DoStuff_StepDefinitions.cpp" >}}
 #include <cucumber-cpp/defs.hpp>
 #include <gtest/gtest.h>
 #include <mono/jit/jit.h>
@@ -42,11 +42,11 @@ WHEN("^I do step 2$") { /* ... */ }
 
 THEN("^I should see results$") { /* ... */ }
 
-```
+{{< /code_block >}}
 
 Before my scenario starts, the `BEFORE()` function is called and my MonoDomain object is created. When the scenario ends, my `AFTER()` statement is called and the objects in my MonoDomain are cleaned up. Now, I add a second scenario.
 
-``` cucumber DoStuff.feature
+{{< code_block syntax="cucumber" description="DoStuff.feature" >}}
 Feature: Do that thing that we have to do
 
 Scenario: Do it my way
@@ -54,7 +54,7 @@ Scenario: Do it my way
 
 Scenario: Do it your way
   ...
-```
+{{< /code_block >}}
 
 Now I run my Cucumber test, and Mono explodes. Why? Because the `BEFORE()` and `AFTER()` functions are not _before all_ and _after all_, but _before each_ and _after each_.
 
@@ -66,7 +66,7 @@ I began to panic. I asked the person who taught me how to write Cucumber tests i
 
 Then it hit me: Cucumber is open source. I found the source [on Github](https://github.com/cucumber/cucumber-cpp) and started looking through [the example code](https://github.com/cucumber/cucumber-cpp/tree/master/examples/). It was there that I discovered [tags](https://github.com/cucumber/cucumber-cpp/tree/master/examples/FeatureShowcase/tag). Tags were the solution to my problem.
 
-``` cucumber DoStuff.feature
+{{< code_block syntax="cucumber" description="DoStuff.feature" >}}
 Feature: Do that thing that we have to do
 
 @first
@@ -76,11 +76,11 @@ Scenario: Do it my way
 @last
 Scenario: Do it your way
   ...
-```
+{{< /code_block >}}
 
 Using tags, I could label my scenarios with meaningful `@first` and `@last` tags to signify the beginning and end of my tests. The trick is to then add the required tags to my `BEFORE()` and `AFTER()` macro as such:
 
-``` c++ DoStuff_StepDefinitions.cpp
+{{< code_block syntax="c++" description="DoStuff_StepDefinitions.cpp" >}}
 #include <cucumber-cpp/defs.hpp>
 #include <gtest/gtest.h>
 #include <mono/jit/jit.h>
@@ -99,7 +99,7 @@ AFTER("@last") { mono_jit_cleanup(Context::Domain); }
 
 // ...
 
-```
+{{< /code_block >}}
 
 Now my MonoDomain is only created _before_ the scenario labeled `@first` and _after_ the scenario labeled `@last`. Obviously, this isn't the cleanest fix imaginable, but it was the cleanest fix _available_. Whenever someone wants to add a new step to this test, they need to remember to move the `@last` tag to their scenario. However, I have the hope that it will be pretty obvious that the second scenario is no longer "last" when there is a third scenario following the "last" scenario. Anyway, it leaves me happy enough, since now my tests don't explode and I'm able to reuse ~50% of the steps I had already written for the first scenario. I added a third scenario later on and 9 out of the 10 steps in the scenario were reused from the first and second scenario.
 

@@ -21,9 +21,9 @@ The application is a web app using Rails 3.2, MSSQL Server for the database, and
 
 I inherited this code and ran it on my dev build with no issues. Upon doing some testing with the staging build, the page crashed. The logs revealed the following (horrible) error:
 
-``` ruby Vague error
+{{< code_block syntax="ruby" description="Vague error" >}}
 Unicode data in a Unicode-only collation or ntext data cannot be sent to clients using DB-Library (such as ISQL) or ODBC version 3.7 or earlier.
-```
+{{< /code_block >}}
 
 What does this mean? Well. Beats me. [Several][s1] [sources][s2] had [similar][s3] [issues][s4] and the ones I liked eventually came to the conclusion that ntext and nvarchar variables in the database were ticking off the host server. [Apparently][msdn], text variables are translated to nvarchar(MAX), where MAX is something like 2GB of data. I hunted through my database and, sure enough, the 'Narrative' column was an nvarchar(MAX).
 
@@ -37,12 +37,12 @@ What does this mean? Well. Beats me. [Several][s1] [sources][s2] had [similar][s
 
 Based on the mighty power of the internet, I decided that the best thing for me to do was to change the variable in the database from a "text" to a "string" with a limit of 8000 (which translates to varchar(8000)) using this migration:
 
-``` ruby Simple migration
+{{< code_block syntax="ruby" description="Simple migration" >}}
 class ChangeNarrativeColumnToVarChar < ActiveRecord::Migration
   def change
     change_column :evaluation, :narrative, :string, :limit => 8000
   end
-```
+{{< /code_block >}}
 
 I ran through my repro steps and... Drumroll... Suspense... It worked! Or so it appeared. I went to the narrative textbox and put some words in it, saved, and confirmed that everything was great. Then I pushed it to production and heard nothing for two weeks.
 
@@ -60,9 +60,9 @@ I thought and eventually realized something: the default of a "string" in Rails 
 
 Alright. The fix. Unfortunately, the fix sucks. In my app, I had to get the whole model that contained a narrative. Doing only that, the narrative would be cut short. So then I had to get the narrative again, and this time cast that sucker to a "text."
 
-``` ruby < 1337 Hax
+{{< code_block syntax="ruby" description="< 1337 Hax" >}}
 @eval = Evaluation.find(:id => id)
 @eval.narrative = Evaluation.select("id as id, CAST(narrative as text) as narrative").where(:id => id).first.narrative
-```
+{{< /code_block >}}
 
 There's a part of me that likes sensible, clean code. This code did not come from that part of me. If you really want, you can do a select and get all the columns of your model, and then case the field in question, but what if your columns change? I didn't want to be responsible for that, especially after I hand this code off to someone else in the coming weeks.

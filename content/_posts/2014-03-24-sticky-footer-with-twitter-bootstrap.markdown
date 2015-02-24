@@ -16,7 +16,7 @@ A few days after startup weekend, I found the real solution from the good folks 
 
 Below is the HTML to create this effect with all the CSS styles embedded. Marked up with plenty of comments.
 
-``` html index.html
+{{< code_block syntax="html" description="index.html" >}}
 <!DOCTYPE html>
 <html lang="en" style="height: 100%;">
   <head>
@@ -53,6 +53,6 @@ Below is the HTML to create this effect with all the CSS styles embedded. Marked
   </div>
 </html>
 
-```
+{{< /code_block >}}
 
 Div tag ids such as "wrap", "push", and "footer" can be whatever you want. The height of the footer can be adjusted to fit whatever content you want; I found that using `min-height` instead of `height` allowed my content to resize appropriately when wrapped. Styles should definitely be moved to a css file.

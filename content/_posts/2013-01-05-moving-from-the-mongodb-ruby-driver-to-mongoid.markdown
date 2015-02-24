@@ -28,15 +28,15 @@ In a [previous post][prev], I described creating a class that would populate a d
 
 [mongoid]: http://http://mongoid.org/en/mongoid/index.html
 
-```
-sudo gem install mongoid
-```
+{{< code_block syntax="bash" >}}
+$ sudo gem install mongoid
+{{< /code_block >}}
 
 ### Refactoring ###
 
 In populater.rb, we only inserted one structure of document into our "pokemons" collection. That makes this a great opportunity to use Mongoid. We remember that there were four fields in our document: number (string), name (string), image link (string), and types (array). Knowing this, we can create a model for this data:
 
-``` ruby project/pokemon.rb
+{{< code_block syntax="ruby" description="project/pokemon.rb" >}}
 require 'mongoid'
 
 class Pokemon
@@ -47,11 +47,11 @@ class Pokemon
 	field :types, type: Array
 	field :image, type: String
 end
-```
+{{< /code_block >}}
 
 And that's it for our model. Although we specified the types in this case, it's not necessary if we want a looser definition of our model. Here's how we change our implementation file:
 
-``` ruby project/tools/populate/populater.rb
+{{< code_block syntax="ruby" description="project/tools/populate/populater.rb" >}}
 #require 'mongo' #deleted
 require_relative '../../pokemon' #added
 require 'nokogiri'
@@ -94,11 +94,11 @@ class Populater
     end
   end
 end
-```
+{{< /code_block >}}
 
 That one's easy. We deleted four lines and added 3. However, now you can see that the Populater does not have to deal with connecting to the database, it only has to know what model it wants to modify. So we've removed some complexity from this file by no longer requiring the database name on initialization. However, that means that someone else has to be in charge of setting up the initial connection. In the overlying project, we want that someone else to be a controller. In our tests, we want that someone else to be our test file. So let's do it. We're going to start by adding a config section in our before:all block.
 
-``` ruby project/tools/test/spec/populater_spec.rb
+{{< code_block syntax="ruby" description="project/tools/test/spec/populater_spec.rb" >}}
 require_relative '../../populate/populater'
 #require 'mongo' #removed
 require 'mongoid' #added
@@ -113,11 +113,11 @@ describe Populater do
 	end
 	...
 end
-```
+{{< /code_block >}}
 
 In doing this, we've set up any of our document models to use the 'test' database. Now we go through each test and replace the Mongo Ruby Driver syntax with Mongoid syntax, which is similar to Ruby's Array syntax.
 
-``` ruby project/tools/test/spec/populater_spec.rb
+{{< code_block syntax="ruby" description="project/tools/test/spec/populater_spec.rb" >}}
 ...
 
 describe Populater do
@@ -150,11 +150,11 @@ describe Populater do
 	end
 	...
 end
-```
+{{< /code_block >}}
 
 The 'new' tests are straightforward. We remove the usage of an input parameter to the Populater initializer. The only significant change we make is to the "empties pokemon collection" test. Here we replace the Mongo Ruby Driver syntax of inserting into a collection with Mongoid syntax of creating a Pokemon document. The 'create' method inserts a document into the collection with the given values, or defaults if none are given. We also see that we can remove the "find" syntax completely and just use a "count" method on the document type.
 
-``` ruby project/tools/test/spec/populater_spec.rb
+{{< code_block syntax="ruby" description="project/tools/test/spec/populater_spec.rb" >}}
 ...
 describe Populater do
 	...
@@ -175,24 +175,24 @@ describe Populater do
 	  ...
 	end
 end
-```
+{{< /code_block >}}
 
 The tests for adding 0, 1, and 2 documents to the collection are all very similar. The only change is to replace the Mongo Ruby Driver "find.count" syntax with the Mongoid "count." The "adds pokemon with a ____" tests all undergo the same changes. I replace the ".find.first" statement with a simple ".first" to get the same meaning. So our Populater has been converted to use Mongoid instead of the Mongo Ruby Driver. Bully for us.
 
 There's one more change that would be nice to make before we hang up our hats. Configuring Mongoid using the .config syntax is okay, but it would be a lot nicer to keep all of our configuration in a file. We can create such a file called "mongoid.yml" and put some configuration information in it:
 
-``` yml project/mongoid.yml
+{{< code_block syntax="yaml" description="project/mongoid.yml" >}}
 test:
   sessions:
     default:
       database: test
       hosts:
         - localhost
-```
+{{< /code_block >}}
 
 This syntax is valid in Mongoid 3.x. This is a very simply configuration for our test environment. Now we can go back into our test file and change the 'before:all' block:
 
-``` ruby project/tools/test/spec/populater_spec.rb
+{{< code_block syntax="ruby" description="project/tools/test/spec/populater_spec.rb" >}}
 ...
 describe Populater do
 	before:all do
@@ -203,6 +203,6 @@ describe Populater do
 	end
 	...
 end
-```
+{{< /code_block >}}
 
 The second parameter can be a string or a symbol. Now there's only one file to modify the environment configurations, and we're better off for it.

@@ -12,7 +12,7 @@ Recently, while working on a __top secret side-project__, I wanted to grab a ran
 
 [mongoose-simple-random](https://www.npmjs.org/package/mongoose-simple-random) is an incredibly easy way to include a random accessor on your mongoose models. All that's required is adding the plugin to the schema before compiling the model:
 
-``` javascript test.js
+{{< code_block syntax="javascript" description="test.js" >}}
 var random = require('mongoose-simple-random');
 
 var s = new Schema({
@@ -21,33 +21,33 @@ var s = new Schema({
 s.plugin(random);
 
 Test = mongoose.model('Test', s);
-```
+{{< /code_block >}}
 
 Now I can ask the model for a single random element of the `Test` model with a single call to `findOneRandom`:
 
-``` javascript find_one.js
+{{< code_block syntax="javascript" description="find_one.js" >}}
 var Test = require('./test');
 
 Test.findOneRandom(function(err, element) {
   if (err) console.log(err);
   else console.log(element);
 });
-```
+{{< /code_block >}}
 
 Need to find more than one? Use `findRandom` to get an array:
 
-``` javascript find_five.js
+{{< code_block syntax="javascript" description="find_five.js" >}}
 var Test = require('./test');
 
 Test.findRandom({}, {}, {count: 5}, function(err, results) {
   if (err) console.log(err);
   else console.log(results);
 });
-```
+{{< /code_block >}}
 
 Zowee! Just like the default `find` methods, you can pass in optional filters, fields, and options:
 
-``` javascript find_five_with_optionals.js
+{{< code_block syntax="javascript" description="find_five_with_optionals.js" >}}
 var Test = require('./test');
 
 var filter = { type: { $in: ['education', 'engineering'] } };
@@ -57,6 +57,6 @@ Test.findRandom(filter, fields, options, function(err, results) {
   if (err) console.log(err);
   else console.log(results);
 });
-```
+{{< /code_block >}}
 
 Given 1000s of objects, performance is excellent. I haven't tested it on larger-scale databases, but I wouldn't mind seeing some performance tests in the future.

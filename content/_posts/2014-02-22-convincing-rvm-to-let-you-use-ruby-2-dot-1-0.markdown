@@ -14,19 +14,19 @@ Believe it or not, all of these things can be prevented. Once upon a time, I wro
 
 In my case, I want to upgrade a project to use `ruby 2.1.0`. The first time I tried to run `rvm install ruby-2.1.0`, I ended up installing `ruby-2.1.0-preview1`. I realized that I had installed rvm on this machine around October 2013, and `ruby 2.1.0` was released in December 2013, so rvm had no idea that `ruby 2.1.0` was stable. Updating rvm (in the root of the project directory):
 
-``` bash /home/lrp/Projects/2014/projNeedingRuby210
+{{< code_block syntax="bash" description="/home/lrp/Projects/2014/projNeedingRuby210" >}}
 $ rvm get stable
-```
+{{< /code_block >}}
 
 There will be some amount of text on the screen if your system needs to be updated. Note that you must be connected to the internet if you want rvm to update. Now we do the install of our brand new ruby:
 
-``` bash /home/lrp/Projects/2014/projNeedingRuby210
+{{< code_block syntax="bash" description="/home/lrp/Projects/2014/projNeedingRuby210" >}}
 $ rvm install ruby-2.1.0
-```
+{{< /code_block >}}
 
 Again, text on the screen from fetching of data from the internet. But hopefully you see something that tells you the operation was successful. You can also verify which rubies you have installed using the `list` command:
 
-``` bash /home/lrp/Projects/2014/projNeedingRuby210
+{{< code_block syntax="bash" description="/home/lrp/Projects/2014/projNeedingRuby210" >}}
 $ rvm list rubies
    ruby-1.9.3-p448 [ x86_64 ]
 => ruby-2.0.0-p247 [ x86_64 ]
@@ -35,11 +35,11 @@ $ rvm list rubies
 # => - current
 # =* - current && default
 #  * - default
-```
+{{< /code_block >}}
 
 Now we tell our current project to use `ruby 2.1.0`:
 
-``` bash /home/lrp/Projects/2014/projNeedingRuby210
+{{< code_block syntax="bash" description="/home/lrp/Projects/2014/projNeedingRuby210" >}}
 $ rm .ruby-version .ruby-gemset
 $ rvm 2.1.0@projNeedingRuby210 --create --ruby-version
 ruby-2.1.0 - #gemset created /home/lrp/.rvm/gems/ruby-2.1.0@projNeedingRuby210
@@ -50,14 +50,14 @@ Generating gemset wrappers ruby-2.1.0@projNeedingRuby210.
 Making gemset 2.1.0@projNeedingRuby210 pristine.
 $ which ruby
 /home/lrp/.rvm/rubies/ruby-2.1.0/bin/ruby
-```
+{{< /code_block >}}
 
 Alright! Crisis averted. If you're using [bundler](//bundler.io/) with this project, be sure to change your ruby version (usually located near the top of the `Gemfile`).
 
 What about setting up a new project using `ruby 2.1.0`? Easy! Switch to the project directory and:
 
-``` bash /home/lrp/Projects/2014/newRubyProject
+{{< code_block syntax="bash" description="/home/lrp/Projects/2014/newRubyProject" >}}
 $ rvm 2.1.0@newRubyProject --create --ruby-version
-```
+{{< /code_block >}}
 
 Oh, rvm, you make life _too_ easy sometimes.

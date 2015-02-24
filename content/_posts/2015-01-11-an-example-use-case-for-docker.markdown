@@ -38,30 +38,30 @@ I started by trying to bootstrap my environment for [Ollert](https://ollertapp.c
 
 We start out with the official [ruby:2.2.0](https://registry.hub.docker.com/_/ruby/) image from the Docker Hub:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ docker run ruby:2.2.0 echo "B-b-b-b-brass t-t-t-t-tacks!"
-```
+{{< /code_block >}}
 
 OMG that step will take forever if you've never downloaded the base `debian` image. It downloads and sets up quite a few layers. If you're interested in what it's doing behind the scenes and you can read Dockerfiles, [this file](https://github.com/docker-library/ruby/blob/b7fefd2fa79882da90feb0718430680c77c5fa8b/2.2/Dockerfile) is what's being executed. Anyway, when it's done you should see a friendly reminder about what we've gotten down to. We use `docker run` to run (download first if necessary) an image; in this case, the `ruby:2.2.0` image. Everything after the image name is the command to run. Now that we've downloaded some base images, you can check out your available images using `docker images`.
 
 Now I need to install my system-level dependencies:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ docker run ruby:2.2.0 apt-get update
-```
+{{< /code_block >}}
 
 Note how this time the base image was already found in your local repository, resulting in a command that ran pretty quickly (based on your internet speeds (sorry Comcast customers!)). But what have we really done so far? We've created two separate containers: one with our initial echo command (useless) and one with all our updates. To see these containers, use `docker ps -a`. This will give you output similar to the following:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ docker ps -a
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS             NAMES
 ad5ddd55f2c2        ruby:2.2.0        "apt-get update"         2 seconds ago       Exited (0) 2 seconds ago                        mad_curie
 10cbaac4488c        ruby:2.2.0        "echo 'B-b-b-b-brass"    15 minutes ago      Exited (0) 15 minutes ago                       mad_perlman
-```
+{{< /code_block >}}
 
 These are now the containers available. We can create a new image from the first container using `docker commit ad5 rubyapp`, which will allow us to use it to create further containers. However, if we were to do this for every command we wanted to execute, we might be here for a while. We could go into `bash` on the base image and do all of our steps:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ docker run -it ruby:2.2.0 /bin/bash
 root@1be43510341e:/# apt-get update
 ...
@@ -69,11 +69,11 @@ root@1be43510341e:/# apt-get auto-remove
 ...
 root@1be43510341e:/# apt-get install -y --force-yes libqtwebkit-dev mongodb
 ...
-```
+{{< /code_block >}}
 
 We could then use this image to run our app - however, this is also tedious and a bad solution. We want something that we can see on a granular level and reproduce every time for a base image. Fortunately, Docker provides us an easy way to do this using a DSL. Introducing the `Dockerfile`:
 
-``` Dockerfile
+{{< code_block syntax="Dockerfile" >}}
 # base image
 FROM ruby:2.2.0
 
@@ -93,19 +93,19 @@ WORKDIR /usr/src/app
 
 # port where application is served
 EXPOSE 5000
-```
+{{< /code_block >}}
 
 The syntax is a little different, but all we're doing is telling Docker our base image, issuing commands, and copying files. The `ADD` command allows us to copy files from our host system. In this case, I copy over `.` to `/usr/src/app` in the container. I also copy over my Gemfile separately to [cache the bundle so it does not install every time](http://ilikestuffblog.com/2014/01/06/how-to-skip-bundle-install-when-deploying-a-rails-app-to-docker/). I then expose the port I want my application to use. Run this file as such:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ docker build -t rubyapp .
-```
+{{< /code_block >}}
 
 This creates an image called `rubyapp` and a container for every line of the Dockerfile that is run. Although your first build may take a moment, subsequent builds will be cached and should be significantly faster. Now, if we want to run my application:
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ docker run -d --name rubyappinstance rubyapp foreman start -d /usr/src/app
-```
+{{< /code_block >}}
 
 I use `foreman` to start my application from the given directory. I tell Docker that the application will be daemonized using the `-d` flag. If I check my running containers with `docker ps`, I'll see my application running. If I want to stop it, I just run `docker stop rubyappinstance`.
 

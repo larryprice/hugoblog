@@ -8,13 +8,13 @@ categories: [trello, ollert, ruby]
 
 So, you want to gather data using the [Trello](//trello.com) API so that you can [do something cool with it][ollert]? And you're using [Ruby](//ruby-lang.org)? Enter [ruby-trello](//github.com/jeremytregunna/ruby-trello). Install!
 
-``` bash
+{{< code_block syntax="bash" >}}
 $ gem install ruby-trello
-```
+{{< /code_block >}}
 
 We'll start off easy, and assume that we're writing a personal application where we only need to access data for one user at a time. We start by configuring ruby-trello. I'm going to assume that you've already generated a public key and received a member token and stored them in your environment.
 
-``` ruby global_config_test.rb
+{{< code_block syntax="ruby" description="global_config_test.rb" >}}
 require 'trello'
 
 Trello.configure do |config|
@@ -25,13 +25,13 @@ Trello.configure do |config|
   # larry-price.com/blog/2014/03/18/connecting-to-the-trello-api/
   config.member_token = ENV['MEMBER_TOKEN']
 end
-```
+{{< /code_block >}}
 
 This connects me to a specific member as found through `ENV['MEMBER_TOKEN']`. I previously wrote [another post](/blog/2014/03/18/connecting-to-the-trello-api/) about getting a member token from a user.
 
 For demonstration, I'll find myself, grab my first board, and then display the name, names of lists, members who have worked on the project, and some numbers about each of the cards in the board. This is essentially my proof of concept for a [super-cool web-app I wrote](/blog/2014/03/17/sep-startup-weekend-ollert/) called [Ollert][ollert].
 
-``` ruby global_config_test.rb
+{{< code_block syntax="ruby" description="global_config_test.rb" >}}
 ...
 
 # find myself
@@ -48,11 +48,11 @@ board.cards.each do |card|
       puts "-- Members: #{card.members.count}"
       puts "-- Labels: #{card.labels.count}"
 end
-```
+{{< /code_block >}}
 
 Wow, cool! Such data! This is really great for a single user because we only have to make the connection to Trello once (which is not incredibly fast). However, this won't work in a multi-user environment since we configured ruby-trello to use a specific member token. So how do we connect to multiple members at a time? Let's print out the same data we did above for a single user, but using `Trello::Client` to connect to Trello.
 
-``` ruby client_test.rb
+{{< code_block syntax="ruby" description="client_test.rb" >}}
 require 'trello'
 
 me = Trello::Client.new(
@@ -78,7 +78,7 @@ you = Trello::Client.new(
         puts "-- Labels: #{card.labels.count}"
   end
 end
-```
+{{< /code_block >}}
 
 Now, as your friend and teacher, I command you to use this knowledge to go [do cool stuff][ollert] with Trello!
 

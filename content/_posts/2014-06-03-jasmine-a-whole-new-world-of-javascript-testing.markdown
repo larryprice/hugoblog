@@ -16,7 +16,7 @@ We'll need Pizza. A Pizza will need several things: size, style, toppings, and p
 
 We'll start by being able to get the styles from Pizza.
 
-``` js spec/PizzaSpec.js
+{{< code_block syntax="js" description="spec/PizzaSpec.js" >}}
 describe("Pizza", function() {
   var pizza;
 
@@ -30,35 +30,35 @@ describe("Pizza", function() {
     expect(pizza.getStyles()).toContain("supreme");
   });
 });
-```
+{{< /code_block >}}
 
 The syntax is just lovely: We use `describe` to set visual context, `beforeEach` to perform a task before each spec, and `it` to encapsulate a test. The results of running `SpecRunner.html` in my browser:
 
-```
+{{< code_block syntax="bash" >}}
 Pizza should give a choice of styles
   TypeError: pizza.getStyles is not a function in file:///home/lrp/docs/jasmine/spec/PizzaSpec.js (line 9)
-```
+{{< /code_block >}}
 
 Fixing it:
 
-``` js src/pizza.js
+{{< code_block syntax="js" description="src/pizza.js" >}}
 function Pizza() {
   this.getStyles = function() {
     return ["meat lovers", "veg head", "supreme"];
   }
 }
-```
+{{< /code_block >}}
 
 And the results:
 
-```
+{{< code_block syntax="bash" >}}
 Pizza
     should give a choice of styles
-```
+{{< /code_block >}}
 
 Let's set the toppings:
 
-``` js spec/PizzaSpec.js
+{{< code_block syntax="js" description="spec/PizzaSpec.js" >}}
 describe("Pizza", function() {
   // ...
 
@@ -93,11 +93,11 @@ describe("Pizza", function() {
     });
   });
 });
-```
+{{< /code_block >}}
 
 For these tests, I nested a describe block to give better context to what I'm testing. Fixing the tests:
 
-``` js src/pizza.js
+{{< code_block syntax="js" description="src/pizza.js" >}}
 function Pizza() {
   // ...
 
@@ -128,11 +128,11 @@ function Pizza() {
     findToppings(style, extras);
   };
 }
-```
+{{< /code_block >}}
 
 And finally, I'll deal with the cost. I'll come out of scope of the nested `describe` and nest another `describe`.
 
-``` js spec/PizzaSpec.js
+{{< code_block syntax="js" description="spec/PizzaSpec.js" >}}
 describe("Pizza", function() {
   // ...
 
@@ -150,11 +150,11 @@ describe("Pizza", function() {
     });
   });
 });
-```
+{{< /code_block >}}
 
 To fix this test, I'll use my handy-dandy pizza-cost formula:
 
-``` js src/pizza.js
+{{< code_block syntax="js" description="src/pizza.js" >}}
 function Pizza() {
  // ...
 
@@ -164,13 +164,13 @@ function Pizza() {
 
   // ...
 }
-```
+{{< /code_block >}}
 
 This is great and all, but a bit simple. What if we wanted to make an ajax call? Fortunately, I can fit that into this example using [Online Pizza](http://onlinepizza.se/api/), the pizza API. Unfortuantely, the API is kind of garbage, but that doesn't make this example any more meaningless. You can [download jasmine-ajax on Github](https://github.com/pivotal/jasmine-ajax/raw/master/lib/mock-ajax.js), and stick it in your `spec/` directory and add it to `SpecRunner.html`. At this point I need to include [jquery]() as well.
 
 In order to intercept ajax calls, I'll `install` the ajax mocker in the `beforeEach` and uninstall it in an `afterEach`. Then I write my test, which verifies that the ajax call occurred and returns a response.
 
-``` js spec/PizzaSpec.js
+{{< code_block syntax="js" description="spec/PizzaSpec.js" >}}
 beforeEach(function() {
   jasmine.Ajax.install();
 
@@ -210,11 +210,11 @@ describe("sendOrder", function() {
     expect(pizza.orderSent()).toBe(true);
   });
 });
-```
+{{< /code_block >}}
 
 To get this to work, I add some logic to the `Pizza` class to set some state based on what the ajax call returns.
 
-``` js src/pizza.js
+{{< code_block syntax="js" description="src/pizza.js" >}}
 var orderSuccess;
 
 this.sendOrder = function() {
@@ -235,11 +235,11 @@ this.sendOrder = function() {
 this.orderSent = function() {
   return orderSuccess;
 }
-```
+{{< /code_block >}}
 
 Ajax calls tested. By installing Jasmine's ajax mock, all of the ajax calls were intercepted and were not sent to the server at Online Pizza. Any ajax calls that may have been fired by the `Pizza` class but were not addressed in the spec are ignored. The final test results look something like this:
 
-```
+{{< code_block syntax="bash" >}}
 Pizza
     sendOrder
         returns false for bad pizza
@@ -254,6 +254,6 @@ Pizza
     cost
         is determined by size and number of toppings
         is determined by size and number of toppings including extras
-```
+{{< /code_block >}}
 
 Full sample code [available on Github](https://github.com/larryprice/jasmine-pizza). There's a lot of other interesting things Jasmine can do that I'm still learning about. If applicable, I'll try to create a blog post for advanced Jasmine usage in the future.

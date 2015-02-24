@@ -20,7 +20,7 @@ At this point, the user is redirected to Trello and given the opportunity to All
 
 Using the __postMessage__ method of accessing a member token was significantly more fruitful. Trello provides a Javascript file named [client.js](https://trello.com/docs/gettingstarted/clientjs.html) that does most of the legwork for you. An example:
 
-``` haml
+{{< code_block syntax="haml" >}}
 %script{src: "//api.trello.com/1/client.js?key=applicationkey"}
 
 function AuthenticateTrello() {
@@ -41,7 +41,7 @@ function onAuthorizeSuccessful() {
 
 %a{href: "javascript:void(0)", onClick: "AuthenticateTrello()"}
   Connect With Trello
-```
+{{< /code_block >}}
 
 When the user clicks the link, we have Trello set to activate a "popup" that will ask them to "Allow" or "Deny" our app from accessing their data. When the user allows us access, the popup closes and we hit the "onAuthorizeSuccessful" method. In my method, I simply redirect them to the `/auth` route with `token` manually added to the params list. One of the interesting options listed above is the "persist" option, which tells Trello whether it should prompt the user for his or her token every time. By telling Trello to persist, the user will only be presented with the popup when he or she needs to reauthenticate.
 

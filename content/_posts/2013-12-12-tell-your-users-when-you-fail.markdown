@@ -10,20 +10,20 @@ Your users put a lot of faith in you. They put up with your terrible design, you
 
 I came across some code recently that irked me. This code asks for a handle to a database abstraction class and then runs a query on it. It looks kinda like this:
 
-``` ruby settings.rb
+{{< code_block syntax="ruby" description="settings.rb" >}}
 def changeSettings(newSettings)
   db = dbFactory.get("settings.db")
   if !db.nil?
     db.execute(buildSaveQuery(newSettings))
   end
 end
-```
+{{< /code_block >}}
 
 How nice that `changeSettings` doesn't try to play with a `nil` database, right? But what about the user's data? It wasn't saved. And no one knows. _Not even you_. Now, maybe the user will happily continue what he's doing until he notices that his new settings aren't quite right. So he goes back to them again. Same result. Repeat ad infinitum.
 
 How I would initially approach this is to add an `else` statement that launches a dialog giving some useful data to the user. Whatever you do, for the love of code, DO NOT tell the user that you had database problems. For most applications, the user will have no idea what that means. It might look something like this:
 
-``` ruby settings.rb
+{{< code_block syntax="ruby" description="settings.rb" >}}
 def changeSettings(newSettings)
   db = dbFactory.get("settings.db")
   if !db.nil?
@@ -36,7 +36,7 @@ def changeSettings(newSettings)
                    " or contact system support.")
   end
 end
-```
+{{< /code_block >}}
 
 This is not a bad solution. But what about all the other places in the code I get the database from the factory? I'd have to update those as well. It would be better to be able to code the factory to launch a similar error dialog whenever this happens. Even better, let me hand the factory a reference to an appropriate dialog whenever I call `dbFactory.get`.
 
