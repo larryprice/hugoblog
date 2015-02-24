@@ -1,0 +1,7 @@
+<figure class='code'>
+  <figcaption>
+    <span>{{ .Get "description" }}</span>
+    {{ with .Get "link" }}<a href="{{.}}">Source</a>{{ end }}
+  </figcaption>
+  {{ .Get "syntax" | highlight .Inner  }}
+</figure>
