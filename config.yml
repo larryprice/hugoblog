@@ -6,6 +6,6 @@ subtitle: And the Endless Cup of Coffee
 taxonomies:
     tag: tags
 permalinks:
-    post: /blog/:year/:month/:day/:title/
+    _posts: /blog/:year/:month/:day/:title/
 metadataformat: yaml
 ---
