@@ -12,11 +12,11 @@ I'll detail how to take a new or existing GH Pages blog in Octopress and deploy 
 
 I recently moved my blog from Github Pages to [OpenShift Online](https://www.openshift.com/). I did this because I wanted to utilize SSL with my custom domain - [a feature not currently available on Github Pages](https://github.com/isaacs/github/issues/156) (it's 12/14/2014 - let me know when this becomes possible!). OpenShift supports SSL with a free account, so I decided to make the switch. I wanted to use the existing architecture set up by [Octopress](https://github.com/imathis/octopress) that built my GH Pages blog. Hopefully you see a little lock icon in your address bar if you're reading this from [the site](/).
 
-###<a name="step0"></a>Step 0: Create an OpenShift account
+### <a name="step0"></a>Step 0: Create an OpenShift account
 
 Here's the link: [https://www.openshift.com/app/account/new](https://www.openshift.com/app/account/new). They're serious about the first and second options being free. The difference is signing up for the second option requires credit card information to give you the possibility of scaling your application. The second option is what allows you to add certs for doing SSL.
 
-###<a name="step1"></a>Step 1: Create a Ruby 1.9.3 application
+### <a name="step1"></a>Step 1: Create a Ruby 1.9.3 application
 
 Octopress still uses ruby 1.9.3; for simplicity's sake, so will we. Assuming you have ruby-1.9.3 installed and the rhc gem installed (gem install rhc), create a new ruby-1.9 application on OpenShift:
 
@@ -28,7 +28,7 @@ replacing "octopress" with your desired application name. I've found this action
 
 If you're using a custom domain, now is as good a time as any to set it up. OpenShift has [its own docs](https://blog.openshift.com/custom-url-names-for-your-paas-applications-host-forwarding-and-cnames-the-openshift-way/) to cover this topic.
 
-###<a name="step2"></a>Step 2: Merge in "Octoshift"
+### <a name="step2"></a>Step 2: Merge in "Octoshift"
 
 I've made some updates to the octopress repo that I haven't requested be pulled into the master branch yet. I'll update this section in the future if necessary.
 
@@ -45,7 +45,7 @@ $ git remote add octoshift git@github.com:larryprice/octopress.git
 $ git pull octoshift master
 {{< /code_block >}}
 
-###<a name="step3"></a>Step 3: Set up deployment
+### <a name="step3"></a>Step 3: Set up deployment
 
 There is a rake task for setting up an OpenShift deployment called `setup_openshift`. This rake task clobbers the `_deploy` directory and reinitializes it using the URL for your OpenShift repository, which we committed to memory in [Step 1](#step1).
 
@@ -76,7 +76,7 @@ cd -
 ## Now you can deploy to ssh://548e1873e0b8cddccf000094@octopress-username.rhcloud.com/~/git/octopress.git/ with `rake deploy` or `rake openshift` ##
 {{< /code_block >}}
 
-###<a name="step35"></a>Step 3.5 Set up forcing SSL
+### <a name="step35"></a>Step 3.5 Set up forcing SSL
 
 Do you already have SSL for your domain? Bully for you! I've included an option to `setup_openshift` to force traffic to use `https` in a production environment. Just send a second parameter to rake and it'll do the rest.
 
@@ -86,7 +86,7 @@ $ rake setup_openshift["ssh://548e1873e0b8cddccf000094@octopress-username.rhclou
 
 Note that you will still need to change your URL in `_config.yml` if you are using a custom domain.
 
-###<a name="step4"></a>Step 4: Deploy
+### <a name="step4"></a>Step 4: Deploy
 
 Now we can just run the `openshift` or `deploy` rake tasks to deploy our app to OpenShift. This task verifies we have the latest version of our OpenShift `master` branch, installs missing gems, copies over your `public` folder, and pushes the application to OpenShift.
 

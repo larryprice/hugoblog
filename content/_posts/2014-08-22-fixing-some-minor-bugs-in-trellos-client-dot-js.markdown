@@ -10,7 +10,7 @@ I'm a huge fan of [Trello](https://trello.com), and I recently created an app to
 
 During some ad-hoc testing of opening/closing the Trello authorization popup, I found that clicking "Deny" on the popup, reopening it, and then clicking "Connect" resulted in me not being able to connect. I spent some time looking into workarounds and I even contacted Trello support. After studying [client.coffee](https://trello.com/1/client.coffee), I eventually found the problem: the Trello client keeps around an anonymous object called `ready` that stores some session data. When a user clicks 'Deny', this `ready` object remembers. I was able to fix the Deny/Allow issue by pulling down a local copy of client.js and making an interface change to the module:
 
-{{< code_block description="client.js" syntax="javascript" link="https://google.com/" >}}
+{{< code_block description="client.js" syntax="javascript" >}}
   clearReady: function() {
     ready = {}
   }
